@@ -52,9 +52,11 @@ dependencies {
 
 	//migration technique
 	//runtimeOnly("org.springframework.boot:spring-boot-properties-migrator")
+	implementation 'com.vaadin:vaadin-dev'
 	testImplementation 'org.springframework.boot:spring-boot-test'
     testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
 	testImplementation 'org.springframework.boot:spring-boot-resttestclient'
+	implementation("com.vaadin:vaadin-spring-boot-starter")
 }
 
 dependencyManagement {  // MS added for Vaadin BOM
