@@ -192,3 +192,393 @@ Vaadin is running in DEVELOPMENT mode - do not use for production deployments.
 2026-06-08T16:50:38.099+02:00  INFO 3004 --- [td4biblio] [main] c.u.but3.td4biblio.Td2biblioApplication  : Started Td2biblioApplication in 12.951 seconds (process running for 13.569)
 2026-06-08T16:50:38.112+02:00  INFO 3004 --- [td4biblio] [main] c.v.b.d.DevModeHandlerManagerImpl        : Application running at http://localhost:8080/
 2026-06-08T21:37:33.268+02:00  WARN 3004 --- [td4biblio] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h5m25s485ms575µs600ns).
+2026-06-10T10:38:08.034+02:00  INFO 25488 --- [td4biblio] [main] c.u.but3.td4biblio.Td2biblioApplication  : Starting Td2biblioApplication using Java 21.0.7 with PID 25488 (C:\Users\gontaluk\Desktop\Vaadin-SAE\bin\main started by gontaluk in C:\Users\gontaluk\Desktop\Vaadin-SAE)
+2026-06-10T10:38:08.036+02:00  INFO 25488 --- [td4biblio] [main] c.u.but3.td4biblio.Td2biblioApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-10T10:38:09.451+02:00  INFO 25488 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-10T10:38:09.635+02:00  INFO 25488 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 162 ms. Found 2 JPA repository interfaces.
+2026-06-10T10:38:10.677+02:00  INFO 25488 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-06-10T10:38:10.731+02:00  INFO 25488 --- [td4biblio] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-10T10:38:10.732+02:00  INFO 25488 --- [td4biblio] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2026-06-10T10:38:10.885+02:00  INFO 25488 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-10T10:38:10.886+02:00  INFO 25488 --- [td4biblio] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2797 ms
+2026-06-10T10:38:11.244+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.hilla.push.PushEndpoint mapped to context-path: /HILLA/push
+2026-06-10T10:38:11.250+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.hilla.push.PushEndpoint
+2026-06-10T10:38:11.250+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor : Atmosphere LifeCycle
+2026-06-10T10:38:11.251+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.client.TrackMessageSizeInterceptor :  Track Message Size Interceptor using |
+2026-06-10T10:38:11.251+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SuspendTrackerInterceptor : UUID Tracking Interceptor
+2026-06-10T10:38:11.537+02:00  INFO 25488 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing AtmosphereFramework
+2026-06-10T10:38:15.546+02:00  INFO 25488 --- [td4biblio] [main] c.v.f.s.VaadinServletContextInitializer  : Search for subclasses and classes with annotations took 3518 ms
+2026-06-10T10:38:16.023+02:00  INFO 25488 --- [td4biblio] [main] c.v.b.d.startup.DevModeStartupListener   : Starting dev-mode updaters in C:\Users\gontaluk\Desktop\Vaadin-SAE folder.
+2026-06-10T10:38:16.080+02:00  INFO 25488 --- [td4biblio] [main] c.v.f.s.f.s.FullDependenciesScanner      : Visited 102 classes. Took 32 ms.
+2026-06-10T10:38:16.083+02:00  INFO 25488 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : Checking if a development mode bundle build is needed
+2026-06-10T10:38:16.455+02:00  INFO 25488 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : A development mode bundle build is not needed
+2026-06-10T10:38:16.509+02:00  INFO 25488 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Copying frontend resources from jar files ...
+2026-06-10T10:38:16.618+02:00  INFO 25488 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Visited 19 resources. Took 108 ms.
+2026-06-10T10:38:17.133+02:00  INFO 25488 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-10T10:38:17.327+02:00  INFO 25488 --- [td4biblio] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@26c700ff
+2026-06-10T10:38:17.329+02:00  INFO 25488 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-10T10:38:17.358+02:00  INFO 25488 --- [td4biblio] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/biblio?currentSchema=biblio (PostgreSQL 17.5)
+2026-06-10T10:38:17.417+02:00  INFO 25488 --- [td4biblio] [main] o.f.core.internal.database.base.Schema   : Creating schema "biblio" ...
+2026-06-10T10:38:17.441+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "biblio"."flyway_schema_history" ...
+2026-06-10T10:38:17.564+02:00  INFO 25488 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "biblio": null
+2026-06-10T10:38:17.617+02:00  INFO 25488 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Migrating schema "biblio" to version "1 - Create Table Livre"
+2026-06-10T10:38:17.639+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « auteur_p » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.640+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « auteur » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.641+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « convie2_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.642+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « convie_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.643+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « convie_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.643+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « auteur_evenement » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.644+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « est2_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.645+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « est_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.646+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « est_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.647+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « auteur_type_auteur » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.648+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « heritage_2_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.648+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « bibliothecaire_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.649+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « bibliothecaire » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.650+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « possede_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.651+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « cree_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.651+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « fournis_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.652+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « document_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.653+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « document » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.654+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « appartient2_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.654+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « appartient_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.655+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « appartient_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.656+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « document_genre_document » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.657+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « editeur_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.657+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « editeur » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.658+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « heritage_1_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.659+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « emprunteur_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.660+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « emprunteur » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.660+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « emprunt2_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.661+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « emprunt_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.662+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « emprunt_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.663+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « emprunteur_document » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.664+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « evenement_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.665+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « evenement » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.666+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « organise2_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.666+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « organise_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.667+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « organise_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.667+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « evenement_bibliothecaire » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.668+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « format_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.669+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « format » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.670+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « genre_document_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.671+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « genre_document » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.671+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « heritage_3_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.672+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « livre_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.673+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « livre » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.674+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « heritage_4_fk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.674+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « media_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.675+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « media » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.676+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « type_auteur_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.677+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « type_auteur » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.677+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: l'index « utilisateur_pk » n'existe pas, poursuite du traitement
+2026-06-10T10:38:17.678+02:00  INFO 25488 --- [td4biblio] [main] o.f.c.i.s.DefaultSqlScriptExecutor       : DB: la table « utilisateur » n'existe pas, poursuite du traitement
+2026-06-10T10:38:18.059+02:00  INFO 25488 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "biblio", now at version v1 (execution time 00:00.434s)
+2026-06-10T10:38:18.203+02:00  INFO 25488 --- [td4biblio] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-10T10:38:18.293+02:00  INFO 25488 --- [td4biblio] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2026-06-10T10:38:18.337+02:00  INFO 25488 --- [td4biblio] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-10T10:38:18.652+02:00  INFO 25488 --- [td4biblio] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-10T10:38:18.725+02:00  INFO 25488 --- [td4biblio] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10T10:38:19.530+02:00  INFO 25488 --- [td4biblio] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10T10:38:19.533+02:00  INFO 25488 --- [td4biblio] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-10T10:38:19.997+02:00  WARN 25488 --- [td4biblio] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-10T10:38:20.670+02:00  INFO 25488 --- [td4biblio] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-06-10T10:38:20.744+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler mapped to context-path: /*
+2026-06-10T10:38:20.744+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler
+2026-06-10T10:38:20.795+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.util.VoidAnnotationProcessor for processing annotation
+2026-06-10T10:38:20.806+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-10T10:38:20.815+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-10T10:38:20.819+02:00  INFO 25488 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /VAADIN/push
+2026-06-10T10:38:20.828+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-10T10:38:20.829+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-10T10:38:20.829+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-10T10:38:20.830+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-10T10:38:20.830+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-10T10:38:20.831+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-10T10:38:20.832+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-10T10:38:20.833+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-10T10:38:20.834+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-10T10:38:20.835+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-10T10:38:20.835+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-10T10:38:20.836+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-10T10:38:20.836+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-10T10:38:20.836+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-10T10:38:20.836+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.837+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.837+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.837+02:00  INFO 25488 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-10T10:38:20.837+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.837+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.837+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.838+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.838+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.838+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-10T10:38:20.838+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-10T10:38:20.839+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-10T10:38:20.839+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterCache: org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-10T10:38:20.839+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.cpr.DefaultBroadcaster
+2026-06-10T10:38:20.839+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-10T10:38:20.839+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-10T10:38:20.839+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-10T10:38:20.840+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-10T10:38:20.840+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-10T10:38:20.840+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-10T10:38:20.840+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-10T10:38:20.840+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-10T10:38:20.843+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-10T10:38:20.843+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: true
+2026-06-10T10:38:20.843+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-10T10:38:20.844+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-10T10:38:20.844+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-10T10:38:20.846+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor  Track Message Size Interceptor using | with priority BEFORE_DEFAULT 
+2026-06-10T10:38:20.936+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.cpr.DefaultAnnotationProcessor for processing annotation
+2026-06-10T10:38:20.936+02:00  INFO 25488 --- [td4biblio] [main] o.a.cpr.DefaultAnnotationProcessor       : AnnotationProcessor class org.atmosphere.cpr.DefaultAnnotationProcessor$BytecodeBasedAnnotationProcessor being used
+2026-06-10T10:38:23.071+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Auto detecting WebSocketHandler in /WEB-INF/classes/
+2026-06-10T10:38:23.072+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-10T10:38:23.072+02:00  INFO 25488 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /HILLA/push
+2026-06-10T10:38:23.073+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-10T10:38:23.074+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-10T10:38:23.074+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-10T10:38:23.074+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-10T10:38:23.074+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-10T10:38:23.075+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-10T10:38:23.075+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-10T10:38:23.075+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-10T10:38:23.075+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-10T10:38:23.075+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-10T10:38:23.076+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-10T10:38:23.076+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-10T10:38:23.076+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-10T10:38:23.076+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-10T10:38:23.076+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.076+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.076+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.077+02:00  INFO 25488 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-10T10:38:23.077+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.077+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.077+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.077+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.077+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.078+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-10T10:38:23.078+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-10T10:38:23.079+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-10T10:38:23.079+02:00  WARN 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : No BroadcasterCache configured. Broadcasted message between client reconnection will be LOST. It is recommended to configure the org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-10T10:38:23.079+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.util.SimpleBroadcaster
+2026-06-10T10:38:23.079+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-10T10:38:23.079+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-10T10:38:23.079+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-10T10:38:23.080+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-10T10:38:23.080+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-10T10:38:23.080+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-10T10:38:23.080+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-10T10:38:23.080+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-10T10:38:23.080+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-10T10:38:23.081+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-10T10:38:23.081+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: false
+2026-06-10T10:38:23.081+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-10T10:38:23.081+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-10T10:38:23.081+02:00  INFO 25488 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-10T10:38:23.095+02:00  INFO 25488 --- [td4biblio] [main] c.v.f.s.DefaultDeploymentConfiguration   : 
+Vaadin is running in DEVELOPMENT mode - do not use for production deployments.
+2026-06-10T10:38:23.114+02:00  INFO 25488 --- [td4biblio] [main] c.vaadin.flow.spring.SpringInstantiator  : The number of beans implementing 'I18NProvider' is 0. Cannot use Spring beans for I18N, falling back to the default behavior
+2026-06-10T10:38:23.218+02:00  INFO 25488 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-06-10T10:38:23.228+02:00  INFO 25488 --- [td4biblio] [main] c.u.but3.td4biblio.Td2biblioApplication  : Started Td2biblioApplication in 15.779 seconds (process running for 16.471)
+2026-06-10T10:38:23.338+02:00  INFO 25488 --- [td4biblio] [main] c.v.b.d.DevModeHandlerManagerImpl        : Application running at http://localhost:8080/
+2026-06-10T10:39:22.740+02:00  INFO 25488 --- [td4biblio] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-10T10:39:22.741+02:00  INFO 25488 --- [td4biblio] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-10T10:39:22.742+02:00  INFO 25488 --- [td4biblio] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-10T10:39:25.289+02:00  WARN 25488 --- [td4biblio] [http-nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+2026-06-10T10:39:25.289+02:00 ERROR 25488 --- [td4biblio] [http-nio-8080-exec-8] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERREUR: la colonne a1_0.id n'existe pas
+  Position : 8
+2026-06-10T10:39:25.307+02:00 ERROR 25488 --- [td4biblio] [http-nio-8080-exec-8] c.v.flow.router.InternalServerError      : There was an exception while trying to navigate to 'auteur'
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'auteurView' defined in file [C:\Users\gontaluk\Desktop\Vaadin-SAE\bin\main\com\usmb\but3\td4biblio\view\AuteurView.class]: Failed to instantiate [com.usmb.but3.td4biblio.view.AuteurView]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:321) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:309) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:357) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:227) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1598) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1556) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:563) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:392) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:385) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1290) ~[spring-context-6.2.7.jar:6.2.7]
+	at com.vaadin.flow.spring.SpringInstantiator.getOrCreate(SpringInstantiator.java:144) ~[vaadin-spring-24.7.6.jar:na]
+	at com.vaadin.flow.di.Instantiator.createRouteTarget(Instantiator.java:170) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.router.internal.AbstractNavigationStateRenderer.lambda$getRouteTarget$1(AbstractNavigationStateRenderer.java:146) ~[flow-server-24.7.6.jar:24.7.6]
+	at java.base/java.util.Optional.orElseGet(Optional.java:364) ~[na:na]
+	at com.vaadin.flow.router.internal.AbstractNavigationStateRenderer.getRouteTarget(AbstractNavigationStateRenderer.java:145) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.router.internal.AbstractNavigationStateRenderer.sendBeforeEnterEventAndPopulateChain(AbstractNavigationStateRenderer.java:638) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.router.internal.AbstractNavigationStateRenderer.createChainIfEmptyAndExecuteBeforeEnterNavigation(AbstractNavigationStateRenderer.java:619) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.router.internal.AbstractNavigationStateRenderer.handleBeforeNavigationEvents(AbstractNavigationStateRenderer.java:327) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.router.internal.AbstractNavigationStateRenderer.handle(AbstractNavigationStateRenderer.java:207) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.internal.JavaScriptNavigationStateRenderer.handle(JavaScriptNavigationStateRenderer.java:78) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.UI.handleNavigation(UI.java:2053) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.UI.renderViewForRoute(UI.java:2015) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.UI.lambda$browserNavigate$3bdbbbb5$1(UI.java:1876) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.UI.browserNavigate(UI.java:1885) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.ComponentEventBus.fireEventForListener(ComponentEventBus.java:239) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.ComponentEventBus.handleDomEvent(ComponentEventBus.java:488) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.component.ComponentEventBus.lambda$addDomTrigger$dd1b7957$1(ComponentEventBus.java:298) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.internal.nodefeature.ElementListenerMap.lambda$fireEvent$2(ElementListenerMap.java:475) ~[flow-server-24.7.6.jar:24.7.6]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at com.vaadin.flow.internal.nodefeature.ElementListenerMap.fireEvent(ElementListenerMap.java:475) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.communication.rpc.EventRpcHandler.handleNode(EventRpcHandler.java:62) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.communication.rpc.AbstractRpcInvocationHandler.handle(AbstractRpcInvocationHandler.java:79) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.communication.ServerRpcHandler.handleInvocationData(ServerRpcHandler.java:568) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.communication.ServerRpcHandler.lambda$handleInvocations$6(ServerRpcHandler.java:549) ~[flow-server-24.7.6.jar:24.7.6]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at com.vaadin.flow.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:549) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:376) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:138) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:63) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.VaadinService.handleRequest(VaadinService.java:1664) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.server.VaadinServlet.service(VaadinServlet.java:398) ~[flow-server-24.7.6.jar:24.7.6]
+	at com.vaadin.flow.spring.SpringServlet.service(SpringServlet.java:106) ~[vaadin-spring-24.7.6.jar:na]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.41.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:612) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:394) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:323) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:268) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.springframework.web.servlet.mvc.ServletForwardingController.handleRequestInternal(ServletForwardingController.java:142) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at org.springframework.web.servlet.mvc.AbstractController.handleRequest(AbstractController.java:178) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:51) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.41.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.7.jar:6.2.7]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.41.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:114) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.41.jar:10.1.41]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.usmb.but3.td4biblio.view.AuteurView]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:222) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:145) ~[spring-beans-6.2.7.jar:6.2.7]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:318) ~[spring-beans-6.2.7.jar:6.2.7]
+	... 99 common frames omitted
+Caused by: org.springframework.dao.InvalidDataAccessResourceUsageException: JDBC exception executing SQL [select a1_0.id,a1_0.date_deces,a1_0.date_naissance,a1_0.nationalite,a1_0.nom,a1_0.prenom from auteur a1_0 order by a1_0.id] [ERREUR: la colonne a1_0.id n'existe pas
+  Position : 8] [n/a]; SQL [n/a]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:281) ~[spring-orm-6.2.7.jar:6.2.7]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:256) ~[spring-orm-6.2.7.jar:6.2.7]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.2.7.jar:6.2.7]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:560) ~[spring-orm-6.2.7.jar:6.2.7]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.2.7.jar:6.2.7]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:343) ~[spring-tx-6.2.7.jar:6.2.7]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.2.7.jar:6.2.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.7.jar:6.2.7]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.5.0.jar:3.5.0]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.7.jar:6.2.7]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.2.7.jar:6.2.7]
+	at jdk.proxy2/jdk.proxy2.$Proxy180.findAll(Unknown Source) ~[na:na]
+	at com.usmb.but3.td4biblio.service.AuteurService.getAllAuteurs(AuteurService.java:22) ~[main/:na]
+	at com.usmb.but3.td4biblio.view.AuteurView.listAuteurs(AuteurView.java:88) ~[main/:na]
+	at com.usmb.but3.td4biblio.view.AuteurView.<init>(AuteurView.java:80) ~[main/:na]
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[na:na]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:209) ~[spring-beans-6.2.7.jar:6.2.7]
+	... 101 common frames omitted
+Caused by: org.hibernate.exception.SQLGrammarException: JDBC exception executing SQL [select a1_0.id,a1_0.date_deces,a1_0.date_naissance,a1_0.nationalite,a1_0.nom,a1_0.prenom from auteur a1_0 order by a1_0.id] [ERREUR: la colonne a1_0.id n'existe pas
+  Position : 8] [n/a]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:91) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:268) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:171) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.results.jdbc.internal.JdbcValuesResultSetImpl.<init>(JdbcValuesResultSetImpl.java:74) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValuesSource(JdbcSelectExecutorStandardImpl.java:355) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:137) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:102) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.executeQuery(JdbcSelectExecutor.java:91) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:165) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$1(ConcreteSqmSelectQueryPlan.java:152) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:442) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:362) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:380) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:143) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:435) ~[spring-data-jpa-3.5.0.jar:3.5.0]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.7.jar:6.2.7]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:515) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:284) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:734) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.7.jar:6.2.7]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:174) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:149) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.7.jar:6.2.7]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69) ~[spring-data-commons-3.5.0.jar:3.5.0]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.7.jar:6.2.7]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.7.jar:6.2.7]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.7.jar:6.2.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.7.jar:6.2.7]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.7.jar:6.2.7]
+	... 113 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERREUR: la colonne a1_0.id n'existe pas
+  Position : 8
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2733) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2420) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:517) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:434) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194) ~[postgresql-42.7.5.jar:42.7.5]
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137) ~[postgresql-42.7.5.jar:42.7.5]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-6.3.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-6.3.0.jar:na]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:250) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	... 146 common frames omitted
+
