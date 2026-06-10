@@ -1,7 +1,7 @@
 package com.usmb.but3.td4biblio.view;
 
-import com.usmb.but3.td4biblio.entity.Auteur;
-import com.usmb.but3.td4biblio.service.AuteurService;
+import com.usmb.but3.td4biblio.entity.Editeur;
+import com.usmb.but3.td4biblio.service.EditeurService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -20,14 +20,14 @@ import org.springframework.util.StringUtils;
 // MS added for UI unit test : @Component and @Scope("prototype") are needed for the view to be instantiated correctly
 @Component
 @Scope("prototype")
-@Route (value="editeur") 
-@PageTitle("Les Auteurs")
-@Menu(title = "Les Auteurs", order = 0, icon = "vaadin:clipboard-check")
-public class AuteurView extends VerticalLayout {
+@Route (value="auteur") 
+@PageTitle("Les Editeurs")
+@Menu(title = "Les Editeurs", order = 0, icon = "vaadin:clipboard-check")
+public class EditeurView extends VerticalLayout {
 
-	private final AuteurService editeurService;
+	private final EditeurService auteurService;
 
-	final Grid<Auteur> grid;
+	final Grid<Editeur> grid;
 
 	final TextField filter;
 
@@ -37,18 +37,18 @@ public class AuteurView extends VerticalLayout {
 		return addNewBtn;
 	}
 
-	final AuteurEditor auteur;
+	final EditeurEditeur editor;
 
-	public AuteurView(AuteurService editeurService, AuteurEditor auteur) {
-		this.editeurService = editeurService;
-		this.auteur = auteur;
-		this.grid = new Grid<>(Auteur.class);
+	public EditeurView(EditeurService auteurService, EditeurEditeur editor) {
+		this.auteurService = auteurService;
+		this.editor = editor;
+		this.grid = new Grid<>(Editeur.class);
 		this.filter = new TextField();
-		this.addNewBtn = new Button("Ajouter un editeur", VaadinIcon.PLUS.create());
+		this.addNewBtn = new Button("Ajouter un auteur", VaadinIcon.PLUS.create());
 
 		// build layout
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-		add(actions, grid, auteur);
+		add(actions, grid, editor);
 
 		grid.setHeight("300px");
 		grid.setColumns("id", "nom", "prenom", "nationalite", "dateNaissance", "dateDeces", "villeNaissance","lienWikipedia");
@@ -60,32 +60,32 @@ public class AuteurView extends VerticalLayout {
 
 		// Replace listing with filtered content when user changes filter
 		filter.setValueChangeMode(ValueChangeMode.LAZY);
-		filter.addValueChangeListener(e -> listAuteurs(e.getValue()));
+		filter.addValueChangeListener(e -> listEditeurs(e.getValue()));
 
-		// Connect selected Customer to auteur or hide if none is selected
+		// Connect selected Customer to editor or hide if none is selected
 		grid.asSingleSelect().addValueChangeListener(e -> {
-			auteur.editAuteur(e.getValue());
+			editor.editEditeur(e.getValue());
 		});
 
 		// Instantiate and edit new Customer the new button is clicked
-		addNewBtn.addClickListener(e -> auteur.editAuteur(new Auteur(null, "", "", "", null, null,"",null)));
+		addNewBtn.addClickListener(e -> editor.editEditeur(new Editeur(null, "", "", "", "")));
 
-		// Listen changes made by the auteur, refresh data from backend
-		auteur.setChangeHandler(() -> {
-			auteur.setVisible(false);
-			listAuteurs(filter.getValue());
+		// Listen changes made by the editor, refresh data from backend
+		editor.setChangeHandler(() -> {
+			editor.setVisible(false);
+			listEditeurs(filter.getValue());
 		});
 
 		// Initialize listing
-		listAuteurs(null);
+		listEditeurs(null);
 	}
 
-	// tag::listAuteurs[]
-	void listAuteurs(String filterText) {
+	// tag::listEditeurs[]
+	void listEditeurs(String filterText) {
 		if (StringUtils.hasText(filterText)) {
-			grid.setItems(editeurService.getByNomContainingIgnoreCase(filterText));
+			grid.setItems(auteurService.getByNomContainingIgnoreCase(filterText));
 		} else {
-			grid.setItems(editeurService.getAllAuteurs());
+			grid.setItems(auteurService.getAllEditeurs());
 		}
 	}
 	// end::listCustomers[]

@@ -30,7 +30,8 @@ public class Auteur {
     private String nationalite;
     private LocalDate dateNaissance;
     private LocalDate dateDeces;
-
+    private String villeNaissance;
+    private String lienWikipedia;
     public boolean isEqualTo(Auteur auteur) {
         if (this == auteur) return true;
         if (auteur == null) return false;

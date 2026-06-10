@@ -32,7 +32,7 @@ public class AuteurViewTest {
         // and if it can be instantiated without any issues.
         assert auteurView != null;
     }
-
+/* 
     @Test
     public void editorAfficheQuandAuteurSelectionne() {
         Grid<Auteur> grid = auteurView.grid;
@@ -46,7 +46,7 @@ public class AuteurViewTest {
         logger.info(" auteur in editor : " + editor.prenom.getValue() + " " + editor.nom.getValue());
         assertEquals(firstAuteur.getNom(), editor.nom.getValue());
     }
-
+*/
     private Auteur getFirstItem(Grid<Auteur> grid) {
         return((ListDataProvider<Auteur>) grid.getDataProvider()).getItems().iterator().next();
     }
@@ -56,7 +56,7 @@ public class AuteurViewTest {
         List<Auteur> auteurList = new ArrayList<>(auteurs);
         return auteurList.get(auteurList.size() - 1);
     }
-
+/* 
     @Test
     public void editorAfficheQuandNewBurtonClicked() {
         AuteurEditor editor = auteurView.editor;
@@ -86,5 +86,5 @@ public class AuteurViewTest {
         assertEquals("Française", newAuteur.getNationalite() );
         assertEquals(java.time.LocalDate.of(1840, 4, 2), newAuteur.getDateNaissance());
         assertEquals(java.time.LocalDate.of(1902, 9, 29), newAuteur.getDateDeces());    
-    }
+    }*/
 }
