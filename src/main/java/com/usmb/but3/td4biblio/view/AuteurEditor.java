@@ -56,8 +56,10 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
     		nationalite.setValue(customValue); // Set the custom value as the selected value
 		});
     }
+    ComboBox<String> villeNaissance = new ComboBox<>("Ville de naissance");
+	TextField lienWikipedia = new TextField("Lien Wikipedia");
 
-	HorizontalLayout fields = new HorizontalLayout(prenom, nom, nationalite, dateNaissance, dateDeces);
+	HorizontalLayout fields = new HorizontalLayout(prenom, nom, nationalite, dateNaissance, dateDeces, villeNaissance, lienWikipedia);
 
 	/* Action buttons */
 	Button save = new Button("Sauvegarder", VaadinIcon.CHECK.create());
