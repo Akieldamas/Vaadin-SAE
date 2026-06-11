@@ -53,7 +53,7 @@ public class AuteurView extends VerticalLayout {
 		grid.setHeight("300px");
 		grid.setColumns("id", "nom", "prenom", "nationalite", "dateNaissance", "dateDeces", "villeNaissance","lienWikipedia");
 		grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
-
+		
 		filter.setPlaceholder("Filtrer par nom");
 
 		// Hook logic to components
