@@ -5,31 +5,31 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.usmb.but3.td4biblio.entity.UtilisateurDTO;
-import com.usmb.but3.td4biblio.repository.UtilisateurRepository;
+import com.usmb.but3.td4biblio.entity.Utilisateur;
+import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 
 @Route (value="biblio") 
 @PageTitle("Menu Bibliothécaire")
 @Menu(title = "Menu Bibliothécaire", order = 2, icon = "vaadin:clipboard-check")
 
 public class BiblioView extends VerticalLayout {
-    BiblioView(UtilisateurRepository utilisateurRepository) {
-        var grid = new Grid<UtilisateurDTO>();
-        grid.addColumn(UtilisateurDTO::getId) 
+    BiblioView(UtilisateurRepo UtilisateurRepo) {
+        var grid = new Grid<Utilisateur>();
+        grid.addColumn(Utilisateur::getId) 
             .setHeader("Id");
-        grid.addColumn(UtilisateurDTO::getIdRole)
+        grid.addColumn(Utilisateur::getIdRole)
             .setHeader("Role Id");
-        grid.addColumn(UtilisateurDTO::getNom)
+        grid.addColumn(Utilisateur::getNom)
             .setHeader("Nom");
-        grid.addColumn(UtilisateurDTO::getPrenom)
+        grid.addColumn(Utilisateur::getPrenom)
             .setHeader("Prenom");
-        grid.addColumn(UtilisateurDTO::getEmail)
+        grid.addColumn(Utilisateur::getEmail)
             .setHeader("Email");
-        grid.addColumn(UtilisateurDTO::getNumeroCarte)
+        grid.addColumn(Utilisateur::getNumeroCarte)
             .setHeader("Numéro de carte");
-        grid.addColumn(UtilisateurDTO::getDateFinAbonnement)
+        grid.addColumn(Utilisateur::getDateFinAbonnement)
             .setHeader("Date de fin d'abonnement");
-        grid.setItemsPageable(pageable -> utilisateurRepository.findByRole(2).getContent()
+        grid.setItemsPageable(pageable -> UtilisateurRepo.findByRole(2).getContent()
     );
         // Layout view
         setSizeFull(); 
