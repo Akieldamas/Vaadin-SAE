@@ -21,6 +21,10 @@ public class GenreDocumentService {
         return genreDocumentRepo.findById(id).orElse(null);
     }
 
+    public GenreDocument getGenreByNom(String nom) {
+        return genreDocumentRepo.findByNom(nom).orElse(null);
+    }
+
     public GenreDocument saveGenre(GenreDocument genreDocument) {
         return genreDocumentRepo.save(genreDocument);
     }
