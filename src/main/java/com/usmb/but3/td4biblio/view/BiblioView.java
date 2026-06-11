@@ -8,30 +8,40 @@ import com.vaadin.flow.router.Route;
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 
-@Route (value="biblio") 
+@Route(value = "biblio") 
 @PageTitle("Menu Bibliothécaire")
 @Menu(title = "Menu Bibliothécaire", order = 2, icon = "vaadin:clipboard-check")
-
 public class BiblioView extends VerticalLayout {
-    BiblioView(UtilisateurRepo UtilisateurRepo) {
+
+    public BiblioView(UtilisateurRepo utilisateurRepo) {
         var grid = new Grid<Utilisateur>();
+        
         grid.addColumn(Utilisateur::getId) 
             .setHeader("Id");
-        grid.addColumn(Utilisateur::getIdRole)
-            .setHeader("Role Id");
+            
+        // Récupération sécurisée du libellé du rôle depuis l'objet associé
+        grid.addColumn(u -> u.getRoleUtilisateur() != null ? u.getRoleUtilisateur().getLibelle() : "")
+            .setHeader("Rôle");
+            
         grid.addColumn(Utilisateur::getNom)
             .setHeader("Nom");
+            
         grid.addColumn(Utilisateur::getPrenom)
-            .setHeader("Prenom");
+            .setHeader("Prénom");
+            
         grid.addColumn(Utilisateur::getEmail)
             .setHeader("Email");
+            
         grid.addColumn(Utilisateur::getNumeroCarte)
             .setHeader("Numéro de carte");
+            
         grid.addColumn(Utilisateur::getDateFinAbonnement)
             .setHeader("Date de fin d'abonnement");
-        grid.setItemsPageable(pageable -> UtilisateurRepo.findByRole(2).getContent()
-    );
-        // Layout view
+            
+        // Utilisation de la nouvelle méthode du repo (ici pour le rôle ID 2)
+        grid.setItems(utilisateurRepo.findByRoleUtilisateurId(2));
+
+        // Configuration de la mise en page Vaadin
         setSizeFull(); 
         grid.setSizeFull(); 
         add(grid); 
