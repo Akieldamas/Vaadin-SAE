@@ -94,6 +94,18 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		save.addClickListener(e -> save());
 		delete.addClickListener(e -> delete());
 		cancel.addClickListener(e -> editAuteur(auteur));
+		binder.forField(prenom)
+		.asRequired()
+		.bind(Auteur::getPrenom, Auteur::setPrenom);
+
+		binder.forField(nom)
+		.asRequired()
+		.bind(Auteur::getNom, Auteur::setNom);
+
+		binder.forField(dateNaissance)
+		.asRequired()
+		.bind(Auteur::getDateNaissance, Auteur::setDateNaissance);
+
 		binder.forField(lienWikipedia)
 		.withValidator(urlValidator)
 		.bind(Auteur::getLienWikipedia, Auteur::setLienWikipedia);
