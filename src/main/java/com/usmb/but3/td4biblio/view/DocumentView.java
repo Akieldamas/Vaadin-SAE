@@ -16,7 +16,7 @@ import org.springframework.util.StringUtils;
 
 @Route(value = "document") 
 @PageTitle("Gestion des Documents")
-@Menu(title = "Documents", order = 1, icon = "vaadin:notebook")
+@Menu(title = "Documents", order = 1, icon = "vaadin:book")
 public class DocumentView extends VerticalLayout {
 
     private final DocumentService documentService;
