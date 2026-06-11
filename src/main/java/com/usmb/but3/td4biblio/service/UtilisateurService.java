@@ -38,20 +38,15 @@ public class UtilisateurService {
     }
 
     public Utilisateur saveUtilisateur(Utilisateur utilisateur) {
-        Utilisateur savedUtilisateur = utilisateurRepo.save(utilisateur);
-        log.info("Utilisateur with id: {} saved successfully", utilisateur.getId());
-        return savedUtilisateur;
+        return utilisateurRepo.save(utilisateur);
     }
 
     public Utilisateur updateUtilisateur(Utilisateur utilisateur) {
-        Utilisateur updatedUtilisateur = utilisateurRepo.save(utilisateur);
-        log.info("Utilisateur with id: {} updated successfully", utilisateur.getId());
-        return updatedUtilisateur;
+        return utilisateurRepo.save(utilisateur);
     }
 
     public void deleteUtilisateurById(Integer id) {
         utilisateurRepo.deleteById(id);
-        log.info("Utilisateur with id: {} deleted successfully", id);
     }
 
     public List<Utilisateur> getUtilisateursByRole(Integer roleUtilisateurId) {

@@ -7,8 +7,17 @@ dev-bundle/
 # Fichiers de configuration Vite/Webpack locaux (optionnel, mais souvent ignorés si générés)
 # vite.generated.ts
 
-### Logs ###
+# Logs
 *.log
+logs/
+nn_logs/
+
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+
+# Crash dumps
+clear_dump.txt
 
 ### OS (Mac / Windows) ###
 .DS_Store
@@ -52,3 +61,4 @@ out/
 
 ### VS Code ###
 .vscode/
+logs/td4biblio.log
