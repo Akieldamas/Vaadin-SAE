@@ -21,6 +21,10 @@ public class EditeurService {
         return editeurRepo.findById(id).orElse(null);
     }
 
+    public Editeur getEditeurByNom(String nom) {
+        return editeurRepo.findByNom(nom).orElse(null);
+    }
+
     public Editeur saveEditeur(Editeur editeur) {
         return editeurRepo.save(editeur);
     }
