@@ -9,5 +9,4 @@ public class Td2biblioApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Td2biblioApplication.class, args);
 	}
-
 }
