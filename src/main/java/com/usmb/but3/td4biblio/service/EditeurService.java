@@ -3,6 +3,8 @@ package com.usmb.but3.td4biblio.service;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.entity.Editeur;
 import com.usmb.but3.td4biblio.repository.EditeurRepo;
 import lombok.RequiredArgsConstructor;
@@ -31,5 +33,12 @@ public class EditeurService {
 
     public void deleteEditeurById(Integer id) {
         editeurRepo.deleteById(id);
+    }
+        public List<Editeur> getAuteursByNomStartWithIgnoreCase(String filter) {
+        return editeurRepo.findByNomStartsWithIgnoreCase(filter);
+    }  
+
+    public List<Editeur> getByNomContainingIgnoreCase(String filter) {
+       return editeurRepo.findByNomContainingIgnoreCase(filter);
     }
 }
