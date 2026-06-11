@@ -10,7 +10,7 @@ import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 
 @Route(value = "biblio") 
 @PageTitle("Menu Bibliothécaire")
-@Menu(title = "Menu Bibliothécaire", order = 2, icon = "vaadin:clipboard-check")
+@Menu(title = "Menu Bibliothécaire", order = 2, icon = "vaadin:user-check")
 public class BiblioView extends VerticalLayout {
 
     public BiblioView(UtilisateurRepo utilisateurRepo) {

@@ -22,7 +22,7 @@ import org.springframework.util.StringUtils;
 @Scope("prototype")
 @Route (value="editeur") 
 @PageTitle("Les Editeurs")
-@Menu(title = "Les Editeurs", order = 0, icon = "vaadin:clipboard-check")
+@Menu(title = "Les Editeurs", order = 0, icon = "vaadin:office")
 public class EditeurView extends VerticalLayout {
 
 	private final EditeurService editeurService;
