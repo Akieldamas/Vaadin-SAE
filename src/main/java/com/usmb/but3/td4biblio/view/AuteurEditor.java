@@ -1,9 +1,11 @@
 package com.usmb.but3.td4biblio.view;
 
+import org.hibernate.validator.constraintvalidators.RegexpURLValidator;
 import org.springframework.context.annotation.Scope;
 
 import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.service.AuteurService;
+import com.vaadin.flow.component.BlurNotifier.BlurEvent;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
@@ -15,6 +17,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.validator.RegexpValidator;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 
@@ -39,6 +42,8 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 	 * The currently edited auteur
 	 */
 	private Auteur auteur;
+	private String regWikipediaUrl = "((http|https):\\/\\/[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&\\/\\/=]*))|^$"; // match url with http / https or nothing (|a^)
+	private String wikipediaErrorMessage = "L'URL wikipedia n'est pas valide.";
 
 	/* Fields to edit properties in Auteur entity */
 	TextField prenom = new TextField("Prénom");
@@ -56,8 +61,10 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
     		nationalite.setValue(customValue); // Set the custom value as the selected value
 		});
     }
-
-	HorizontalLayout fields = new HorizontalLayout(prenom, nom, nationalite, dateNaissance, dateDeces);
+	RegexpValidator urlValidator = new RegexpValidator(wikipediaErrorMessage,regWikipediaUrl);
+    ComboBox<String> villeNaissance = new ComboBox<>("Ville de naissance");
+	TextField lienWikipedia = new TextField("Lien Wikipedia");
+	HorizontalLayout fields = new HorizontalLayout(prenom, nom, nationalite, dateNaissance, dateDeces, villeNaissance, lienWikipedia);
 
 	/* Action buttons */
 	Button save = new Button("Sauvegarder", VaadinIcon.CHECK.create());
@@ -70,7 +77,6 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 
 	public AuteurEditor(AuteurService service) {
 		this.auteurService = service;
-
 		add(fields, actions);
 
 		// bind using naming convention
@@ -88,6 +94,21 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		save.addClickListener(e -> save());
 		delete.addClickListener(e -> delete());
 		cancel.addClickListener(e -> editAuteur(auteur));
+		binder.forField(prenom)
+		.asRequired()
+		.bind(Auteur::getPrenom, Auteur::setPrenom);
+
+		binder.forField(nom)
+		.asRequired()
+		.bind(Auteur::getNom, Auteur::setNom);
+
+		binder.forField(dateNaissance)
+		.asRequired()
+		.bind(Auteur::getDateNaissance, Auteur::setDateNaissance);
+
+		binder.forField(lienWikipedia)
+		.withValidator(urlValidator)
+		.bind(Auteur::getLienWikipedia, Auteur::setLienWikipedia);
 		setVisible(false);
 	}
 
@@ -97,8 +118,12 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 	}
 
 	void save() {
-		auteurService.saveAuteur(auteur);
-		changeHandler.onChange();
+		if(binder.isValid()){
+			auteurService.saveAuteur(auteur);
+			changeHandler.onChange();
+		} else {
+		}
+
 	}
 
 	public interface ChangeHandler {

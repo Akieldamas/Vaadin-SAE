@@ -288,3 +288,17 @@ INSERT INTO emprunt (utilisateur_id, document_id, debut_emprunt, fin_emprunt, pr
 (8, 8,  '2024-02-05', '2024-02-19', FALSE, NULL),           -- L'Amant (rendu)
 (8, 10, '2024-03-01', '2024-03-22', TRUE,  '2024-04-05'),   -- I'm Your Man prolongé (rendu)
 (8, 19, '2024-04-15', '2024-04-29', FALSE, NULL);           -- Shining BR (rendu)
+
+-- ============================================================
+--  MISE À JOUR DES SÉQUENCES
+--  Synchronisation de l'auto-incrémentation après les INSERTS
+-- ============================================================
+
+SELECT setval('role_utilisateur_id_seq', max(id)) FROM role_utilisateur;
+SELECT setval('type_auteur_id_seq', max(id)) FROM type_auteur;
+SELECT setval('format_id_seq', max(id)) FROM format;
+SELECT setval('genre_document_id_seq', max(id)) FROM genre_document;
+SELECT setval('editeur_id_seq', max(id)) FROM editeur;
+SELECT setval('auteur_id_seq', max(id)) FROM auteur;
+SELECT setval('document_id_seq', max(id)) FROM document;
+SELECT setval('utilisateur_id_seq', max(id)) FROM utilisateur;
