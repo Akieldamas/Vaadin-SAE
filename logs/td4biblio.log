@@ -13860,3 +13860,874 @@ Vaadin is running in DEVELOPMENT mode - do not use for production deployments.
 2026-06-12T15:47:40.073+02:00  INFO 15672 --- [td4biblio] [main] c.v.b.d.DevModeHandlerManagerImpl        : Application running at http://localhost:8080/
 2026-06-12T15:57:49.143+02:00  INFO 15672 --- [td4biblio] [http-nio-8080-exec-5] c.v.f.s.c.r.AbstractRpcInvocationHandler : Ignored RPC for invocation handler 'com.vaadin.flow.server.communication.rpc.EventRpcHandler' from the client side for an inactive (disabled or invisible) node id='8' element with tag'vaadin-upload' Component: 'com.vaadin.flow.component.upload.Upload' Route: 'document'
 2026-06-12T16:00:17.782+02:00  WARN 15672 --- [td4biblio] [Thread-2174] i.m.core.instrument.MeterRegistry        : This FunctionCounter has been already registered (MeterId{name='executor.completed', tags=[tag(name=applicationTaskExecutor)]}), the registration will be ignored. Note that subsequent logs will be logged at debug level.
+2026-06-12T18:00:32.775+02:00  INFO 15672 --- [td4biblio] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-12T18:00:32.783+02:00  INFO 15672 --- [td4biblio] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-12T18:00:32.815+02:00  INFO 15672 --- [td4biblio] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:00:32.818+02:00  INFO 15672 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-12T18:00:32.820+02:00  INFO 15672 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-12T18:00:44.858+02:00  INFO 4072 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Starting DocumentControllerTest using Java 21.0.7 with PID 4072 (started by dasilvda in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE)
+2026-06-12T18:00:44.859+02:00  INFO 4072 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2026-06-12T18:00:46.089+02:00  INFO 4072 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-12T18:00:46.249+02:00  INFO 4072 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 150 ms. Found 10 JPA repository interfaces.
+2026-06-12T18:00:47.130+02:00  INFO 4072 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-06-12T18:00:47.166+02:00  INFO 4072 --- [td4biblio] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-12T18:00:47.168+02:00  INFO 4072 --- [td4biblio] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2026-06-12T18:00:47.292+02:00  INFO 4072 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-12T18:00:47.293+02:00  INFO 4072 --- [td4biblio] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2417 ms
+2026-06-12T18:00:47.592+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.hilla.push.PushEndpoint mapped to context-path: /HILLA/push
+2026-06-12T18:00:47.597+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.hilla.push.PushEndpoint
+2026-06-12T18:00:47.597+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor : Atmosphere LifeCycle
+2026-06-12T18:00:47.597+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.client.TrackMessageSizeInterceptor :  Track Message Size Interceptor using |
+2026-06-12T18:00:47.597+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SuspendTrackerInterceptor : UUID Tracking Interceptor
+2026-06-12T18:00:47.800+02:00  INFO 4072 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing AtmosphereFramework
+2026-06-12T18:00:52.615+02:00  INFO 4072 --- [td4biblio] [main] c.v.f.s.VaadinServletContextInitializer  : Search for subclasses and classes with annotations took 4428 ms
+2026-06-12T18:00:54.176+02:00  INFO 4072 --- [td4biblio] [main] c.v.b.d.startup.DevModeStartupListener   : Starting dev-mode updaters in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE folder.
+2026-06-12T18:00:54.313+02:00  INFO 4072 --- [td4biblio] [main] c.v.f.s.f.s.FullDependenciesScanner      : Visited 103 classes. Took 92 ms.
+2026-06-12T18:00:54.351+02:00  INFO 4072 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : Checking if a development mode bundle build is needed
+2026-06-12T18:00:55.181+02:00  INFO 4072 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : A development mode bundle build is not needed
+2026-06-12T18:00:55.275+02:00  INFO 4072 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Copying frontend resources from jar files ...
+2026-06-12T18:00:55.552+02:00  INFO 4072 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Visited 19 resources. Took 277 ms.
+2026-06-12T18:00:57.553+02:00  INFO 4072 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-12T18:00:58.374+02:00  INFO 4072 --- [td4biblio] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5140628b
+2026-06-12T18:00:58.380+02:00  INFO 4072 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-12T18:00:58.458+02:00  INFO 4072 --- [td4biblio] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/biblio?currentSchema=biblio (PostgreSQL 17.5)
+2026-06-12T18:00:58.743+02:00  INFO 4072 --- [td4biblio] [main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.247s)
+2026-06-12T18:00:58.762+02:00  INFO 4072 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "biblio": 2
+2026-06-12T18:00:58.767+02:00  INFO 4072 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Schema "biblio" is up to date. No migration necessary.
+2026-06-12T18:00:58.926+02:00  INFO 4072 --- [td4biblio] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-12T18:00:58.986+02:00  INFO 4072 --- [td4biblio] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2026-06-12T18:00:59.022+02:00  INFO 4072 --- [td4biblio] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-12T18:00:59.267+02:00  INFO 4072 --- [td4biblio] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-12T18:00:59.334+02:00  INFO 4072 --- [td4biblio] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-12T18:01:00.230+02:00  INFO 4072 --- [td4biblio] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-12T18:01:00.236+02:00  INFO 4072 --- [td4biblio] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:01:02.083+02:00  WARN 4072 --- [td4biblio] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-12T18:01:04.307+02:00  INFO 4072 --- [td4biblio] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-06-12T18:01:04.912+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler mapped to context-path: /*
+2026-06-12T18:01:04.912+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler
+2026-06-12T18:01:04.945+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.util.VoidAnnotationProcessor for processing annotation
+2026-06-12T18:01:04.951+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:01:04.956+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:01:04.958+02:00  INFO 4072 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /VAADIN/push
+2026-06-12T18:01:04.969+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:01:04.969+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:01:04.969+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:01:04.970+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:01:04.970+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:01:04.970+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:01:04.971+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:01:04.971+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:01:04.972+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:01:04.972+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:01:04.972+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:01:04.973+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:01:04.973+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:01:04.973+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:01:04.973+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.973+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.973+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.973+02:00  INFO 4072 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:01:04.974+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.974+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.974+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.974+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.974+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.974+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:01:04.974+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:01:04.975+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:01:04.975+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterCache: org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:01:04.975+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.cpr.DefaultBroadcaster
+2026-06-12T18:01:04.975+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:01:04.975+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:01:04.976+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:01:04.976+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:01:04.976+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:01:04.976+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:01:04.976+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:01:04.976+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:01:04.979+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:01:04.980+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: true
+2026-06-12T18:01:04.980+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:01:04.980+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:01:04.980+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:01:04.982+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor  Track Message Size Interceptor using | with priority BEFORE_DEFAULT 
+2026-06-12T18:01:05.037+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.cpr.DefaultAnnotationProcessor for processing annotation
+2026-06-12T18:01:05.038+02:00  INFO 4072 --- [td4biblio] [main] o.a.cpr.DefaultAnnotationProcessor       : AnnotationProcessor class org.atmosphere.cpr.DefaultAnnotationProcessor$BytecodeBasedAnnotationProcessor being used
+2026-06-12T18:01:09.721+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Auto detecting WebSocketHandler in /WEB-INF/classes/
+2026-06-12T18:01:09.722+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:01:09.722+02:00  INFO 4072 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /HILLA/push
+2026-06-12T18:01:09.723+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:01:09.723+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:01:09.723+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:01:09.723+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:01:09.724+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:01:09.724+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:01:09.724+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:01:09.724+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:01:09.725+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:01:09.725+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:01:09.725+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:01:09.725+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:01:09.725+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:01:09.725+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.726+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:01:09.727+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:01:09.728+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:01:09.728+02:00  WARN 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : No BroadcasterCache configured. Broadcasted message between client reconnection will be LOST. It is recommended to configure the org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:01:09.728+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.util.SimpleBroadcaster
+2026-06-12T18:01:09.728+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:01:09.729+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:01:09.729+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:01:09.729+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:01:09.729+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:01:09.729+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:01:09.729+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:01:09.729+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:01:09.730+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:01:09.730+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:01:09.730+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: false
+2026-06-12T18:01:09.730+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:01:09.730+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:01:09.730+02:00  INFO 4072 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:01:09.739+02:00  INFO 4072 --- [td4biblio] [main] c.v.f.s.DefaultDeploymentConfiguration   : 
+Vaadin is running in DEVELOPMENT mode - do not use for production deployments.
+2026-06-12T18:01:09.760+02:00  INFO 4072 --- [td4biblio] [main] c.vaadin.flow.spring.SpringInstantiator  : The number of beans implementing 'I18NProvider' is 0. Cannot use Spring beans for I18N, falling back to the default behavior
+2026-06-12T18:01:09.853+02:00  INFO 4072 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 65257 (http) with context path '/'
+2026-06-12T18:01:09.862+02:00  INFO 4072 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Started DocumentControllerTest in 25.37 seconds (process running for 26.463)
+2026-06-12T18:01:09.938+02:00  INFO 4072 --- [td4biblio] [main] c.v.b.d.DevModeHandlerManagerImpl        : Application running at http://localhost:0/
+2026-06-12T18:01:10.646+02:00  INFO 4072 --- [td4biblio] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-12T18:01:10.646+02:00  INFO 4072 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-12T18:01:10.647+02:00  INFO 4072 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-06-12T18:01:10.679+02:00  WARN 4072 --- [td4biblio] [http-nio-auto-1-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'titre' for method parameter type String is not present]
+2026-06-12T18:01:11.236+02:00  INFO 4072 --- [td4biblio] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-12T18:01:11.242+02:00  INFO 4072 --- [td4biblio] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-12T18:01:11.255+02:00  INFO 4072 --- [td4biblio] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:01:11.257+02:00  INFO 4072 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-12T18:01:11.263+02:00  INFO 4072 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-12T18:02:36.569+02:00  INFO 25540 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Starting DocumentControllerTest using Java 21.0.7 with PID 25540 (started by dasilvda in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE)
+2026-06-12T18:02:36.571+02:00  INFO 25540 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2026-06-12T18:02:37.600+02:00  INFO 25540 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-12T18:02:37.754+02:00  INFO 25540 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 144 ms. Found 10 JPA repository interfaces.
+2026-06-12T18:02:38.510+02:00  INFO 25540 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-06-12T18:02:38.535+02:00  INFO 25540 --- [td4biblio] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-12T18:02:38.535+02:00  INFO 25540 --- [td4biblio] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2026-06-12T18:02:38.632+02:00  INFO 25540 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-12T18:02:38.633+02:00  INFO 25540 --- [td4biblio] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2046 ms
+2026-06-12T18:02:38.944+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.hilla.push.PushEndpoint mapped to context-path: /HILLA/push
+2026-06-12T18:02:38.950+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.hilla.push.PushEndpoint
+2026-06-12T18:02:38.951+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor : Atmosphere LifeCycle
+2026-06-12T18:02:38.951+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.client.TrackMessageSizeInterceptor :  Track Message Size Interceptor using |
+2026-06-12T18:02:38.951+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SuspendTrackerInterceptor : UUID Tracking Interceptor
+2026-06-12T18:02:39.226+02:00  INFO 25540 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing AtmosphereFramework
+2026-06-12T18:02:42.274+02:00  INFO 25540 --- [td4biblio] [main] c.v.f.s.VaadinServletContextInitializer  : Search for subclasses and classes with annotations took 2782 ms
+2026-06-12T18:02:42.678+02:00  INFO 25540 --- [td4biblio] [main] c.v.b.d.startup.DevModeStartupListener   : Starting dev-mode updaters in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE folder.
+2026-06-12T18:02:42.721+02:00  INFO 25540 --- [td4biblio] [main] c.v.f.s.f.s.FullDependenciesScanner      : Visited 103 classes. Took 29 ms.
+2026-06-12T18:02:42.723+02:00  INFO 25540 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : Checking if a development mode bundle build is needed
+2026-06-12T18:02:42.897+02:00  INFO 25540 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : A development mode bundle build is not needed
+2026-06-12T18:02:42.925+02:00  INFO 25540 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Copying frontend resources from jar files ...
+2026-06-12T18:02:42.980+02:00  INFO 25540 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Visited 19 resources. Took 54 ms.
+2026-06-12T18:02:43.210+02:00  INFO 25540 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-12T18:02:43.467+02:00  INFO 25540 --- [td4biblio] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2ceb060a
+2026-06-12T18:02:43.469+02:00  INFO 25540 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-12T18:02:43.497+02:00  INFO 25540 --- [td4biblio] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/biblio?currentSchema=biblio (PostgreSQL 17.5)
+2026-06-12T18:02:43.531+02:00  INFO 25540 --- [td4biblio] [main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.021s)
+2026-06-12T18:02:43.568+02:00  INFO 25540 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "biblio": 2
+2026-06-12T18:02:43.570+02:00  INFO 25540 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Schema "biblio" is up to date. No migration necessary.
+2026-06-12T18:02:43.633+02:00  INFO 25540 --- [td4biblio] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-12T18:02:43.672+02:00  INFO 25540 --- [td4biblio] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2026-06-12T18:02:43.695+02:00  INFO 25540 --- [td4biblio] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-12T18:02:43.955+02:00  INFO 25540 --- [td4biblio] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-12T18:02:44.015+02:00  INFO 25540 --- [td4biblio] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-12T18:02:44.798+02:00  INFO 25540 --- [td4biblio] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-12T18:02:44.800+02:00  INFO 25540 --- [td4biblio] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:02:45.206+02:00  WARN 25540 --- [td4biblio] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-12T18:02:45.698+02:00  INFO 25540 --- [td4biblio] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-06-12T18:02:45.859+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler mapped to context-path: /*
+2026-06-12T18:02:45.859+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler
+2026-06-12T18:02:45.898+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.util.VoidAnnotationProcessor for processing annotation
+2026-06-12T18:02:45.905+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:02:45.912+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:02:45.916+02:00  INFO 25540 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /VAADIN/push
+2026-06-12T18:02:45.926+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:02:45.926+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:02:45.926+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:02:45.928+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:02:45.929+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:02:45.930+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:02:45.931+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:02:45.931+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:02:45.933+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:02:45.933+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:02:45.933+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:02:45.934+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:02:45.934+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:02:45.934+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:02:45.934+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.935+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.935+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.935+02:00  INFO 25540 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:02:45.935+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.936+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.937+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.937+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.937+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.937+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:02:45.938+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:02:45.938+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:02:45.938+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterCache: org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:02:45.938+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.cpr.DefaultBroadcaster
+2026-06-12T18:02:45.939+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:02:45.939+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:02:45.939+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:02:45.940+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:02:45.940+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:02:45.940+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:02:45.941+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:02:45.942+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:02:45.945+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:02:45.945+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: true
+2026-06-12T18:02:45.945+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:02:45.946+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:02:45.947+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:02:45.950+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor  Track Message Size Interceptor using | with priority BEFORE_DEFAULT 
+2026-06-12T18:02:46.014+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.cpr.DefaultAnnotationProcessor for processing annotation
+2026-06-12T18:02:46.015+02:00  INFO 25540 --- [td4biblio] [main] o.a.cpr.DefaultAnnotationProcessor       : AnnotationProcessor class org.atmosphere.cpr.DefaultAnnotationProcessor$BytecodeBasedAnnotationProcessor being used
+2026-06-12T18:02:47.987+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Auto detecting WebSocketHandler in /WEB-INF/classes/
+2026-06-12T18:02:47.987+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:02:47.987+02:00  INFO 25540 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /HILLA/push
+2026-06-12T18:02:47.988+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:02:47.988+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:02:47.989+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:02:47.989+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:02:47.989+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:02:47.989+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:02:47.989+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:02:47.990+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:02:47.990+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:02:47.990+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:02:47.990+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:02:47.990+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:02:47.990+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:02:47.990+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:02:47.991+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:02:47.992+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:02:47.992+02:00  WARN 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : No BroadcasterCache configured. Broadcasted message between client reconnection will be LOST. It is recommended to configure the org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:02:47.992+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.util.SimpleBroadcaster
+2026-06-12T18:02:47.992+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:02:47.992+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:02:47.992+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:02:47.993+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:02:47.993+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:02:47.993+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:02:47.993+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:02:47.993+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:02:47.993+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:02:47.994+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:02:47.994+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: false
+2026-06-12T18:02:47.994+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:02:47.995+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:02:47.995+02:00  INFO 25540 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:02:48.004+02:00  INFO 25540 --- [td4biblio] [main] c.v.f.s.DefaultDeploymentConfiguration   : 
+Vaadin is running in DEVELOPMENT mode - do not use for production deployments.
+2026-06-12T18:02:48.021+02:00  INFO 25540 --- [td4biblio] [main] c.vaadin.flow.spring.SpringInstantiator  : The number of beans implementing 'I18NProvider' is 0. Cannot use Spring beans for I18N, falling back to the default behavior
+2026-06-12T18:02:48.117+02:00  INFO 25540 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 56271 (http) with context path '/'
+2026-06-12T18:02:48.126+02:00  INFO 25540 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Started DocumentControllerTest in 11.942 seconds (process running for 13.045)
+2026-06-12T18:02:48.202+02:00  INFO 25540 --- [td4biblio] [main] c.v.b.d.DevModeHandlerManagerImpl        : Application running at http://localhost:0/
+2026-06-12T18:02:48.850+02:00  INFO 25540 --- [td4biblio] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-12T18:02:48.850+02:00  INFO 25540 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-12T18:02:48.852+02:00  INFO 25540 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-12T18:02:48.883+02:00  WARN 25540 --- [td4biblio] [http-nio-auto-1-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'titre' for method parameter type String is not present]
+2026-06-12T18:02:49.400+02:00  WARN 25540 --- [td4biblio] [reactor-http-nio-3] r.netty.http.client.HttpClientConnect    : [1366322f-4, L:/127.0.0.1:51774 - R:localhost/127.0.0.1:56271] The connection observed an error
+
+org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:494) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter$1.writeTo(AbstractGenericHttpMessageConverter.java:106) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.ReactorClientHttpRequest.lambda$send$4(ReactorClientHttpRequest.java:158) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.OutputStreamPublisher$OutputStreamSubscription.invokeHandler(OutputStreamPublisher.java:211) ~[spring-web-6.2.7.jar:6.2.7]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569) ~[netty-transport-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session (through reference chain: com.usmb.but3.td4biblio.entity.Document["auteur"]->com.usmb.but3.td4biblio.entity.Auteur["types"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:400) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:359) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.StdSerializer.wrapAndThrow(StdSerializer.java:324) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:765) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:503) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:342) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1587) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1061) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:485) ~[spring-web-6.2.7.jar:6.2.7]
+	... 11 common frames omitted
+Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:635) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:101) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	... 20 common frames omitted
+
+2026-06-12T18:02:49.438+02:00  WARN 25540 --- [td4biblio] [reactor-http-nio-4] r.netty.http.client.HttpClientConnect    : [f699aeab-2, L:/127.0.0.1:51775 - R:localhost/127.0.0.1:56271] The connection observed an error
+
+org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:494) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter$1.writeTo(AbstractGenericHttpMessageConverter.java:106) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.ReactorClientHttpRequest.lambda$send$4(ReactorClientHttpRequest.java:158) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.OutputStreamPublisher$OutputStreamSubscription.invokeHandler(OutputStreamPublisher.java:211) ~[spring-web-6.2.7.jar:6.2.7]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569) ~[netty-transport-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session (through reference chain: com.usmb.but3.td4biblio.entity.Document["auteur"]->com.usmb.but3.td4biblio.entity.Auteur["types"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:400) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:359) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.StdSerializer.wrapAndThrow(StdSerializer.java:324) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:765) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:503) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:342) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1587) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1061) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:485) ~[spring-web-6.2.7.jar:6.2.7]
+	... 11 common frames omitted
+Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:635) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:101) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	... 20 common frames omitted
+
+2026-06-12T18:02:49.458+02:00  WARN 25540 --- [td4biblio] [reactor-http-nio-5] r.netty.http.client.HttpClientConnect    : [98c78ac2-1, L:/127.0.0.1:51777 - R:localhost/127.0.0.1:56271] The connection observed an error
+
+org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:494) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter$1.writeTo(AbstractGenericHttpMessageConverter.java:106) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.ReactorClientHttpRequest.lambda$send$4(ReactorClientHttpRequest.java:158) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.OutputStreamPublisher$OutputStreamSubscription.invokeHandler(OutputStreamPublisher.java:211) ~[spring-web-6.2.7.jar:6.2.7]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:566) ~[netty-transport-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session (through reference chain: com.usmb.but3.td4biblio.entity.Document["auteur"]->com.usmb.but3.td4biblio.entity.Auteur["types"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:400) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:359) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.StdSerializer.wrapAndThrow(StdSerializer.java:324) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:765) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:503) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:342) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1587) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1061) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:485) ~[spring-web-6.2.7.jar:6.2.7]
+	... 11 common frames omitted
+Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:635) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:101) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	... 20 common frames omitted
+
+2026-06-12T18:02:49.474+02:00  INFO 25540 --- [td4biblio] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-12T18:02:49.481+02:00  INFO 25540 --- [td4biblio] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-12T18:02:49.492+02:00  INFO 25540 --- [td4biblio] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:02:49.494+02:00  INFO 25540 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-12T18:02:49.497+02:00  INFO 25540 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-12T18:05:48.238+02:00  INFO 11732 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Starting DocumentControllerTest using Java 21.0.7 with PID 11732 (started by dasilvda in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE)
+2026-06-12T18:05:48.239+02:00  INFO 11732 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2026-06-12T18:05:49.184+02:00  INFO 11732 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-12T18:05:49.342+02:00  INFO 11732 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149 ms. Found 10 JPA repository interfaces.
+2026-06-12T18:05:50.102+02:00  INFO 11732 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-06-12T18:05:50.116+02:00  INFO 11732 --- [td4biblio] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-12T18:05:50.116+02:00  INFO 11732 --- [td4biblio] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2026-06-12T18:05:50.216+02:00  INFO 11732 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-12T18:05:50.217+02:00  INFO 11732 --- [td4biblio] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1963 ms
+2026-06-12T18:05:50.522+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.hilla.push.PushEndpoint mapped to context-path: /HILLA/push
+2026-06-12T18:05:50.527+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.hilla.push.PushEndpoint
+2026-06-12T18:05:50.527+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor : Atmosphere LifeCycle
+2026-06-12T18:05:50.527+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.client.TrackMessageSizeInterceptor :  Track Message Size Interceptor using |
+2026-06-12T18:05:50.527+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SuspendTrackerInterceptor : UUID Tracking Interceptor
+2026-06-12T18:05:50.772+02:00  INFO 11732 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing AtmosphereFramework
+2026-06-12T18:05:53.957+02:00  INFO 11732 --- [td4biblio] [main] c.v.f.s.VaadinServletContextInitializer  : Search for subclasses and classes with annotations took 2867 ms
+2026-06-12T18:05:54.441+02:00  INFO 11732 --- [td4biblio] [main] c.v.b.d.startup.DevModeStartupListener   : Starting dev-mode updaters in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE folder.
+2026-06-12T18:05:54.479+02:00  INFO 11732 --- [td4biblio] [main] c.v.f.s.f.s.FullDependenciesScanner      : Visited 103 classes. Took 22 ms.
+2026-06-12T18:05:54.480+02:00  INFO 11732 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : Checking if a development mode bundle build is needed
+2026-06-12T18:05:54.684+02:00  INFO 11732 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : A development mode bundle build is not needed
+2026-06-12T18:05:54.714+02:00  INFO 11732 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Copying frontend resources from jar files ...
+2026-06-12T18:05:54.773+02:00  INFO 11732 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Visited 19 resources. Took 58 ms.
+2026-06-12T18:05:55.071+02:00  INFO 11732 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-12T18:05:55.258+02:00  INFO 11732 --- [td4biblio] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@63d53653
+2026-06-12T18:05:55.260+02:00  INFO 11732 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-12T18:05:55.287+02:00  INFO 11732 --- [td4biblio] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/biblio?currentSchema=biblio (PostgreSQL 17.5)
+2026-06-12T18:05:55.327+02:00  INFO 11732 --- [td4biblio] [main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.024s)
+2026-06-12T18:05:55.376+02:00  INFO 11732 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "biblio": 2
+2026-06-12T18:05:55.384+02:00  INFO 11732 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Schema "biblio" is up to date. No migration necessary.
+2026-06-12T18:05:55.485+02:00  INFO 11732 --- [td4biblio] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-12T18:05:55.533+02:00  INFO 11732 --- [td4biblio] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2026-06-12T18:05:55.561+02:00  INFO 11732 --- [td4biblio] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-12T18:05:55.784+02:00  INFO 11732 --- [td4biblio] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-12T18:05:55.849+02:00  INFO 11732 --- [td4biblio] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-12T18:05:56.718+02:00  INFO 11732 --- [td4biblio] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-12T18:05:56.721+02:00  INFO 11732 --- [td4biblio] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:05:57.121+02:00  WARN 11732 --- [td4biblio] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-12T18:05:57.579+02:00  INFO 11732 --- [td4biblio] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-06-12T18:05:57.695+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler mapped to context-path: /*
+2026-06-12T18:05:57.695+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler
+2026-06-12T18:05:57.718+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.util.VoidAnnotationProcessor for processing annotation
+2026-06-12T18:05:57.724+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:05:57.728+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:05:57.731+02:00  INFO 11732 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /VAADIN/push
+2026-06-12T18:05:57.738+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:05:57.738+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:05:57.739+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:05:57.739+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:05:57.739+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:05:57.740+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:05:57.740+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:05:57.740+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:05:57.741+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:05:57.741+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:05:57.741+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:05:57.741+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:05:57.742+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:05:57.742+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:05:57.742+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.742+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.742+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.742+02:00  INFO 11732 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:05:57.743+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.743+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.743+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.743+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.744+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.744+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:05:57.744+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterCache: org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.cpr.DefaultBroadcaster
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:05:57.745+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:05:57.746+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:05:57.746+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:05:57.748+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:05:57.748+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: true
+2026-06-12T18:05:57.748+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:05:57.748+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:05:57.748+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:05:57.750+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor  Track Message Size Interceptor using | with priority BEFORE_DEFAULT 
+2026-06-12T18:05:57.795+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.cpr.DefaultAnnotationProcessor for processing annotation
+2026-06-12T18:05:57.796+02:00  INFO 11732 --- [td4biblio] [main] o.a.cpr.DefaultAnnotationProcessor       : AnnotationProcessor class org.atmosphere.cpr.DefaultAnnotationProcessor$BytecodeBasedAnnotationProcessor being used
+2026-06-12T18:05:59.805+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Auto detecting WebSocketHandler in /WEB-INF/classes/
+2026-06-12T18:05:59.806+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:05:59.806+02:00  INFO 11732 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /HILLA/push
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:05:59.807+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.808+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.809+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.809+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:05:59.809+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:05:59.809+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:05:59.809+02:00  WARN 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : No BroadcasterCache configured. Broadcasted message between client reconnection will be LOST. It is recommended to configure the org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:05:59.809+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.util.SimpleBroadcaster
+2026-06-12T18:05:59.809+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: false
+2026-06-12T18:05:59.810+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:05:59.811+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:05:59.811+02:00  INFO 11732 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:05:59.819+02:00  INFO 11732 --- [td4biblio] [main] c.v.f.s.DefaultDeploymentConfiguration   : 
+Vaadin is running in DEVELOPMENT mode - do not use for production deployments.
+2026-06-12T18:05:59.839+02:00  INFO 11732 --- [td4biblio] [main] c.vaadin.flow.spring.SpringInstantiator  : The number of beans implementing 'I18NProvider' is 0. Cannot use Spring beans for I18N, falling back to the default behavior
+2026-06-12T18:05:59.920+02:00  INFO 11732 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 55289 (http) with context path '/'
+2026-06-12T18:05:59.928+02:00  INFO 11732 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Started DocumentControllerTest in 11.993 seconds (process running for 12.954)
+2026-06-12T18:05:59.983+02:00  INFO 11732 --- [td4biblio] [main] c.v.b.d.DevModeHandlerManagerImpl        : Application running at http://localhost:0/
+2026-06-12T18:06:00.602+02:00  INFO 11732 --- [td4biblio] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-12T18:06:00.602+02:00  INFO 11732 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-12T18:06:00.604+02:00  INFO 11732 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-12T18:06:00.632+02:00  WARN 11732 --- [td4biblio] [http-nio-auto-1-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'titre' for method parameter type String is not present]
+2026-06-12T18:06:01.095+02:00  WARN 11732 --- [td4biblio] [reactor-http-nio-3] r.netty.http.client.HttpClientConnect    : [ff4b2b10-4, L:/127.0.0.1:54123 - R:localhost/127.0.0.1:55289] The connection observed an error
+
+org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:494) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter$1.writeTo(AbstractGenericHttpMessageConverter.java:106) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.ReactorClientHttpRequest.lambda$send$4(ReactorClientHttpRequest.java:158) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.OutputStreamPublisher$OutputStreamSubscription.invokeHandler(OutputStreamPublisher.java:211) ~[spring-web-6.2.7.jar:6.2.7]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569) ~[netty-transport-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session (through reference chain: com.usmb.but3.td4biblio.entity.Document["auteur"]->com.usmb.but3.td4biblio.entity.Auteur["types"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:400) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:359) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.StdSerializer.wrapAndThrow(StdSerializer.java:324) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:765) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:503) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:342) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1587) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1061) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:485) ~[spring-web-6.2.7.jar:6.2.7]
+	... 11 common frames omitted
+Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:635) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:101) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	... 20 common frames omitted
+
+2026-06-12T18:06:01.134+02:00  WARN 11732 --- [td4biblio] [reactor-http-nio-4] r.netty.http.client.HttpClientConnect    : [2d287f74-2, L:/127.0.0.1:54127 - R:localhost/127.0.0.1:55289] The connection observed an error
+
+org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:494) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter$1.writeTo(AbstractGenericHttpMessageConverter.java:106) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.ReactorClientHttpRequest.lambda$send$4(ReactorClientHttpRequest.java:158) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.OutputStreamPublisher$OutputStreamSubscription.invokeHandler(OutputStreamPublisher.java:211) ~[spring-web-6.2.7.jar:6.2.7]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569) ~[netty-transport-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session (through reference chain: com.usmb.but3.td4biblio.entity.Document["auteur"]->com.usmb.but3.td4biblio.entity.Auteur["types"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:400) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:359) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.StdSerializer.wrapAndThrow(StdSerializer.java:324) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:765) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:503) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:342) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1587) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1061) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:485) ~[spring-web-6.2.7.jar:6.2.7]
+	... 11 common frames omitted
+Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:635) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:101) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	... 20 common frames omitted
+
+2026-06-12T18:06:01.150+02:00  WARN 11732 --- [td4biblio] [reactor-http-nio-5] r.netty.http.client.HttpClientConnect    : [5e1c1173-1, L:/127.0.0.1:54128 - R:localhost/127.0.0.1:55289] The connection observed an error
+
+org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:494) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter$1.writeTo(AbstractGenericHttpMessageConverter.java:106) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.ReactorClientHttpRequest.lambda$send$4(ReactorClientHttpRequest.java:158) ~[spring-web-6.2.7.jar:6.2.7]
+	at org.springframework.http.client.OutputStreamPublisher$OutputStreamSubscription.invokeHandler(OutputStreamPublisher.java:211) ~[spring-web-6.2.7.jar:6.2.7]
+	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:566) ~[netty-transport-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.121.Final.jar:4.1.121.Final]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session (through reference chain: com.usmb.but3.td4biblio.entity.Document["auteur"]->com.usmb.but3.td4biblio.entity.Auteur["types"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:400) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:359) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.StdSerializer.wrapAndThrow(StdSerializer.java:324) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:765) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:183) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:503) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:342) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1587) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1061) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:485) ~[spring-web-6.2.7.jar:6.2.7]
+	... 11 common frames omitted
+Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.usmb.but3.td4biblio.entity.Auteur.types: could not initialize proxy - no Session
+	at org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:635) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353) ~[hibernate-core-6.6.15.Final.jar:6.6.15.Final]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:101) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.CollectionSerializer.serialize(CollectionSerializer.java:25) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:732) ~[jackson-databind-2.19.0.jar:2.19.0]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:760) ~[jackson-databind-2.19.0.jar:2.19.0]
+	... 20 common frames omitted
+
+2026-06-12T18:06:01.165+02:00  INFO 11732 --- [td4biblio] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-12T18:06:01.224+02:00  INFO 11732 --- [td4biblio] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-12T18:06:01.243+02:00  INFO 11732 --- [td4biblio] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:06:01.246+02:00  INFO 11732 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-12T18:06:01.250+02:00  INFO 11732 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-12T18:06:58.123+02:00  INFO 30568 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Starting DocumentControllerTest using Java 21.0.7 with PID 30568 (started by dasilvda in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE)
+2026-06-12T18:06:58.125+02:00  INFO 30568 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2026-06-12T18:06:59.221+02:00  INFO 30568 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-12T18:06:59.399+02:00  INFO 30568 --- [td4biblio] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 167 ms. Found 10 JPA repository interfaces.
+2026-06-12T18:07:00.217+02:00  INFO 30568 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-06-12T18:07:00.235+02:00  INFO 30568 --- [td4biblio] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-12T18:07:00.236+02:00  INFO 30568 --- [td4biblio] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2026-06-12T18:07:00.372+02:00  INFO 30568 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-12T18:07:00.373+02:00  INFO 30568 --- [td4biblio] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2234 ms
+2026-06-12T18:07:00.629+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.hilla.push.PushEndpoint mapped to context-path: /HILLA/push
+2026-06-12T18:07:00.632+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.hilla.push.PushEndpoint
+2026-06-12T18:07:00.633+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AtmosphereResourceLifecycleInterceptor : Atmosphere LifeCycle
+2026-06-12T18:07:00.633+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.client.TrackMessageSizeInterceptor :  Track Message Size Interceptor using |
+2026-06-12T18:07:00.633+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SuspendTrackerInterceptor : UUID Tracking Interceptor
+2026-06-12T18:07:00.859+02:00  INFO 30568 --- [td4biblio] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing AtmosphereFramework
+2026-06-12T18:07:04.687+02:00  INFO 30568 --- [td4biblio] [main] c.v.f.s.VaadinServletContextInitializer  : Search for subclasses and classes with annotations took 3454 ms
+2026-06-12T18:07:05.294+02:00  INFO 30568 --- [td4biblio] [main] c.v.b.d.startup.DevModeStartupListener   : Starting dev-mode updaters in C:\Users\TEMP.IUT-ACY.001\Downloads\Vaadin-SAE folder.
+2026-06-12T18:07:05.331+02:00  INFO 30568 --- [td4biblio] [main] c.v.f.s.f.s.FullDependenciesScanner      : Visited 103 classes. Took 21 ms.
+2026-06-12T18:07:05.333+02:00  INFO 30568 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : Checking if a development mode bundle build is needed
+2026-06-12T18:07:05.552+02:00  INFO 30568 --- [td4biblio] [main] c.v.f.s.frontend.BundleValidationUtil    : A development mode bundle build is not needed
+2026-06-12T18:07:05.589+02:00  INFO 30568 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Copying frontend resources from jar files ...
+2026-06-12T18:07:05.666+02:00  INFO 30568 --- [td4biblio] [vaadin-dev-server-1] c.v.f.s.frontend.TaskCopyFrontendFiles   : Visited 19 resources. Took 76 ms.
+2026-06-12T18:07:05.963+02:00  INFO 30568 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-12T18:07:06.151+02:00  INFO 30568 --- [td4biblio] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@48d40212
+2026-06-12T18:07:06.153+02:00  INFO 30568 --- [td4biblio] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-12T18:07:06.189+02:00  INFO 30568 --- [td4biblio] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/biblio?currentSchema=biblio (PostgreSQL 17.5)
+2026-06-12T18:07:06.239+02:00  INFO 30568 --- [td4biblio] [main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.030s)
+2026-06-12T18:07:06.309+02:00  INFO 30568 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "biblio": 2
+2026-06-12T18:07:06.318+02:00  INFO 30568 --- [td4biblio] [main] o.f.core.internal.command.DbMigrate      : Schema "biblio" is up to date. No migration necessary.
+2026-06-12T18:07:06.444+02:00  INFO 30568 --- [td4biblio] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-12T18:07:06.521+02:00  INFO 30568 --- [td4biblio] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2026-06-12T18:07:06.560+02:00  INFO 30568 --- [td4biblio] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-12T18:07:06.826+02:00  INFO 30568 --- [td4biblio] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-12T18:07:06.917+02:00  INFO 30568 --- [td4biblio] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-12T18:07:07.816+02:00  INFO 30568 --- [td4biblio] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-12T18:07:07.819+02:00  INFO 30568 --- [td4biblio] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:07:08.433+02:00  WARN 30568 --- [td4biblio] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-12T18:07:10.170+02:00  INFO 30568 --- [td4biblio] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-06-12T18:07:10.396+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler mapped to context-path: /*
+2026-06-12T18:07:10.396+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed the following AtmosphereInterceptor mapped to AtmosphereHandler com.vaadin.flow.server.communication.PushAtmosphereHandler
+2026-06-12T18:07:10.432+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.util.VoidAnnotationProcessor for processing annotation
+2026-06-12T18:07:10.438+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:07:10.445+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:07:10.449+02:00  INFO 30568 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /VAADIN/push
+2026-06-12T18:07:10.462+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:07:10.463+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:07:10.463+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:07:10.463+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:07:10.464+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:07:10.465+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:07:10.465+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:07:10.466+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:07:10.467+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:07:10.467+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:07:10.468+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:07:10.468+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:07:10.468+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:07:10.468+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:07:10.468+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.468+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.469+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.469+02:00  INFO 30568 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:07:10.469+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.469+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.469+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.469+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.469+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.470+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:07:10.470+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:07:10.471+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:07:10.471+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterCache: org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:07:10.471+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.cpr.DefaultBroadcaster
+2026-06-12T18:07:10.471+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:07:10.471+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:07:10.471+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:07:10.471+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:07:10.473+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:07:10.473+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:07:10.473+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:07:10.473+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:07:10.476+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:07:10.476+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: true
+2026-06-12T18:07:10.476+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:07:10.477+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:07:10.477+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:07:10.480+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor  Track Message Size Interceptor using | with priority BEFORE_DEFAULT 
+2026-06-12T18:07:10.557+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.cpr.DefaultAnnotationProcessor for processing annotation
+2026-06-12T18:07:10.557+02:00  INFO 30568 --- [td4biblio] [main] o.a.cpr.DefaultAnnotationProcessor       : AnnotationProcessor class org.atmosphere.cpr.DefaultAnnotationProcessor$BytecodeBasedAnnotationProcessor being used
+2026-06-12T18:07:15.118+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Auto detecting WebSocketHandler in /WEB-INF/classes/
+2026-06-12T18:07:15.119+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed WebSocketProtocol org.atmosphere.websocket.protocol.SimpleHttpProtocol 
+2026-06-12T18:07:15.119+02:00  INFO 30568 --- [td4biblio] [main] o.a.container.JSR356AsyncSupport         : JSR 356 Mapping path /HILLA/push
+2026-06-12T18:07:15.121+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installing Default AtmosphereInterceptors
+2026-06-12T18:07:15.121+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CorsInterceptor : CORS Interceptor Support
+2026-06-12T18:07:15.121+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.CacheHeadersInterceptor : Default Response's Headers Interceptor
+2026-06-12T18:07:15.122+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.PaddingAtmosphereInterceptor : Browser Padding Interceptor Support
+2026-06-12T18:07:15.122+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.AndroidAtmosphereInterceptor : Android Interceptor Support
+2026-06-12T18:07:15.122+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.HeartbeatInterceptor : Heartbeat Interceptor Support
+2026-06-12T18:07:15.123+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.SSEAtmosphereInterceptor : SSE Interceptor Support
+2026-06-12T18:07:15.123+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JSONPAtmosphereInterceptor : JSONP Interceptor Support
+2026-06-12T18:07:15.124+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.JavaScriptProtocol : Atmosphere JavaScript Protocol
+2026-06-12T18:07:15.124+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor : org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor
+2026-06-12T18:07:15.125+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.OnDisconnectInterceptor : Browser disconnection detection
+2026-06-12T18:07:15.125+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : 	org.atmosphere.interceptor.IdleResourceInterceptor : org.atmosphere.interceptor.IdleResourceInterceptor
+2026-06-12T18:07:15.125+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Set org.atmosphere.cpr.AtmosphereInterceptor.disableDefaults to disable them.
+2026-06-12T18:07:15.125+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor CORS Interceptor Support with priority FIRST_BEFORE_DEFAULT 
+2026-06-12T18:07:15.126+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Default Response's Headers Interceptor with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.127+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser Padding Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.127+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Android Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.128+02:00  INFO 30568 --- [td4biblio] [main] o.a.interceptor.HeartbeatInterceptor     : HeartbeatInterceptor configured with padding value 'X', client frequency 0 seconds and server frequency 60 seconds
+2026-06-12T18:07:15.128+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Heartbeat Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.128+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor SSE Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.128+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor JSONP Interceptor Support with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.129+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Atmosphere JavaScript Protocol with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.130+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.WebSocketMessageSuspendInterceptor with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.131+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor Browser disconnection detection with priority AFTER_DEFAULT 
+2026-06-12T18:07:15.131+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Installed AtmosphereInterceptor org.atmosphere.interceptor.IdleResourceInterceptor with priority BEFORE_DEFAULT 
+2026-06-12T18:07:15.132+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using EndpointMapper class org.atmosphere.util.DefaultEndpointMapper
+2026-06-12T18:07:15.133+02:00  WARN 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : No BroadcasterCache configured. Broadcasted message between client reconnection will be LOST. It is recommended to configure the org.atmosphere.cache.UUIDBroadcasterCache
+2026-06-12T18:07:15.133+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Default Broadcaster Class: org.atmosphere.util.SimpleBroadcaster
+2026-06-12T18:07:15.133+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Shared List Resources: false
+2026-06-12T18:07:15.133+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Broadcaster Polling Wait Time 100
+2026-06-12T18:07:15.133+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Shared ExecutorService supported: true
+2026-06-12T18:07:15.133+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.util.ForkJoinPool         : Using ForkJoinPool  java.util.concurrent.ForkJoinPool. Set the org.atmosphere.cpr.broadcaster.maxAsyncWriteThreads to -1 to fully use its power.
+2026-06-12T18:07:15.133+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Messaging ExecutorService Pool Size unavailable - Not instance of ThreadPoolExecutor
+2026-06-12T18:07:15.134+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Async I/O Thread Pool Size: 200
+2026-06-12T18:07:15.137+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using BroadcasterFactory: org.atmosphere.cpr.DefaultBroadcasterFactory
+2026-06-12T18:07:15.137+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using AtmosphereResurceFactory: org.atmosphere.cpr.DefaultAtmosphereResourceFactory
+2026-06-12T18:07:15.138+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Using WebSocketProcessor: org.atmosphere.websocket.DefaultWebSocketProcessor
+2026-06-12T18:07:15.138+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Invoke AtmosphereInterceptor on WebSocket message true
+2026-06-12T18:07:15.139+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : HttpSession supported: false
+2026-06-12T18:07:15.139+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using org.atmosphere.inject.InjectableObjectFactory for dependency injection and object creation
+2026-06-12T18:07:15.140+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere is using async support: org.atmosphere.container.JSR356AsyncSupport running under container: Apache Tomcat/10.1.41 using jakarta.servlet/3.0 and jsr356/WebSocket API
+2026-06-12T18:07:15.140+02:00  INFO 30568 --- [td4biblio] [main] org.atmosphere.cpr.AtmosphereFramework   : Atmosphere Framework 3.0.5.slf4jvaadin1 started.
+2026-06-12T18:07:15.334+02:00  INFO 30568 --- [td4biblio] [main] c.v.f.s.DefaultDeploymentConfiguration   : 
+Vaadin is running in DEVELOPMENT mode - do not use for production deployments.
+2026-06-12T18:07:15.503+02:00  INFO 30568 --- [td4biblio] [main] c.vaadin.flow.spring.SpringInstantiator  : The number of beans implementing 'I18NProvider' is 0. Cannot use Spring beans for I18N, falling back to the default behavior
+2026-06-12T18:07:15.967+02:00  INFO 30568 --- [td4biblio] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 59948 (http) with context path '/'
+2026-06-12T18:07:16.016+02:00  INFO 30568 --- [td4biblio] [main] c.u.b.t.c.DocumentControllerTest         : Started DocumentControllerTest in 18.205 seconds (process running for 19.126)
+2026-06-12T18:07:16.352+02:00  INFO 30568 --- [td4biblio] [main] c.v.b.d.DevModeHandlerManagerImpl        : Application running at http://localhost:0/
+2026-06-12T18:07:18.382+02:00  INFO 30568 --- [td4biblio] [http-nio-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-12T18:07:18.384+02:00  INFO 30568 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-12T18:07:18.386+02:00  INFO 30568 --- [td4biblio] [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-06-12T18:07:18.450+02:00  WARN 30568 --- [td4biblio] [http-nio-auto-1-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'titre' for method parameter type String is not present]
+2026-06-12T18:07:21.386+02:00  INFO 30568 --- [td4biblio] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-12T18:07:21.438+02:00  INFO 30568 --- [td4biblio] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-06-12T18:07:21.488+02:00  INFO 30568 --- [td4biblio] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-12T18:07:21.493+02:00  INFO 30568 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-12T18:07:21.517+02:00  INFO 30568 --- [td4biblio] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
