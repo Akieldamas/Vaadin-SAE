@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -106,6 +106,9 @@ public class DocumentService {
             String datePublicationStr = row.get("date_publication");
             if (datePublicationStr != null && !datePublicationStr.isEmpty())
                 newDocument.setDatePublication(LocalDate.parse(datePublicationStr.trim(), formatter));
+
+            newDocument.setCreatedAt(LocalDateTime.now());
+            newDocument.setUpdatedAt(LocalDateTime.now());
 
             String fullName = row.get("auteur"); // "George Orwell"
             String[] parts = fullName.split(" ", 2); // ["George", "Orwell"]
