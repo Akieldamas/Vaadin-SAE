@@ -17,6 +17,7 @@ public final class MainView extends Main implements BeforeEnterObserver {
     MainView() {
         addClassName(LumoUtility.Padding.MEDIUM);
         //add(new ViewToolbar("Main"));
+        add(new HeaderView());
         add(new Div("Choisissez une option dans le menu à gauche."));
     }
     @Override
