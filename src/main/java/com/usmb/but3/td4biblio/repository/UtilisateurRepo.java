@@ -12,4 +12,5 @@ import com.usmb.but3.td4biblio.entity.Utilisateur;
  */
 public interface UtilisateurRepo extends JpaRepository<Utilisateur, Integer> {
     List<Utilisateur> findByRoleUtilisateurId(Integer roleUtilisateurId);
+    Utilisateur getUtilisateurByLoginAndMotDePasse(String login, String motDePasse);
 }

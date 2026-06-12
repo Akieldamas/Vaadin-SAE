@@ -9,6 +9,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -23,7 +25,7 @@ import org.springframework.util.StringUtils;
 @Route (value="editeur") 
 @PageTitle("Les Editeurs")
 @Menu(title = "Les Editeurs", order = 0, icon = "vaadin:office")
-public class EditeurView extends VerticalLayout {
+public class EditeurView extends VerticalLayout  implements BeforeEnterObserver {
 
 	private final EditeurService editeurService;
 
@@ -38,8 +40,16 @@ public class EditeurView extends VerticalLayout {
 	}
 
 	final EditeurEditor editor;
-
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur==null) {
+            event.rerouteTo("login"); // redirect to login page
+        }
+    }
 	public EditeurView(EditeurService editeurService, EditeurEditor editor) {
+		if (LoginView.utilisateur==null) {
+			this.getUI().ifPresent(ui -> ui.navigate("/login"));
+		} 
 		this.editeurService = editeurService;
 		this.editor = editor;
 		this.grid = new Grid<>(Editeur.class);
