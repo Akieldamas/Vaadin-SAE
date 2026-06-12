@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 
+import com.usmb.but3.td4biblio.entity.Editeur;
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 
@@ -53,4 +55,16 @@ public class UtilisateurService {
         // Permet de filtrer par ID de rôle pour la vue
         return utilisateurRepo.findByRoleUtilisateurId(roleUtilisateurId);
     }
+    public List<Utilisateur> getUtilisateursByRoleWithDate(Integer roleUtilisateurId) {
+        // Permet de filtrer par ID de rôle pour la vue
+        return utilisateurRepo.findByRoleUtilisateurIdAndDateFinAbonnementBefore(roleUtilisateurId, LocalDate.now());
+    }
+
+    public List<Utilisateur> getByNomOrNumeroCarte(String nom, String numeroCarte) {
+       return utilisateurRepo.findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurId(nom, numeroCarte, 2);
+    }
+
+    public List<Utilisateur> getByNomOrNumeroCarteWithDate(String nom, String numeroCarte) {
+        return utilisateurRepo.findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurIdAndDateFinAbonnementBefore(nom, numeroCarte, 2, LocalDate.now());
+     }
 }
