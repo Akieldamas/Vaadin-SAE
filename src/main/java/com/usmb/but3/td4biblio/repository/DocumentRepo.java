@@ -1,6 +1,8 @@
 package com.usmb.but3.td4biblio.repository;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.usmb.but3.td4biblio.entity.Document;
 /**
@@ -14,4 +16,5 @@ public interface DocumentRepo extends JpaRepository<Document, Integer> {
     List<Document> findByEditeurId(Integer editeurId);
     List<Document> findByCodeEmplacement(String codeEmplacement);
     List<Document> findByTitreContainingIgnoreCase(String filter);
+    Optional<Document> findByCodeEmprunt(String codeEmprunt);
 }
