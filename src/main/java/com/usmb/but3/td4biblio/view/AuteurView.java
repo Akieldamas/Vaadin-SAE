@@ -9,10 +9,13 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import org.hibernate.query.Page;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -23,7 +26,7 @@ import org.springframework.util.StringUtils;
 @Route (value="auteur") 
 @PageTitle("Les Auteurs")
 @Menu(title = "Les Auteurs", order = 0, icon = "vaadin:user")
-public class AuteurView extends VerticalLayout {
+public class AuteurView extends VerticalLayout implements BeforeEnterObserver{
 
 	private final AuteurService auteurService;
 
@@ -38,7 +41,12 @@ public class AuteurView extends VerticalLayout {
 	}
 
 	final AuteurEditor editor;
-
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur==null) {
+            event.rerouteTo("login"); // redirect to login page
+        }
+    }
 	public AuteurView(AuteurService auteurService, AuteurEditor editor) {
 		this.auteurService = auteurService;
 		this.editor = editor;

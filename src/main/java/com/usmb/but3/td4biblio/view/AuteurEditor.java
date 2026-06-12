@@ -62,7 +62,7 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		});
     }
 	RegexpValidator urlValidator = new RegexpValidator(wikipediaErrorMessage,regWikipediaUrl);
-    ComboBox<String> villeNaissance = new ComboBox<>("Ville de naissance");
+    TextField villeNaissance = new TextField("Ville de naissance");
 	TextField lienWikipedia = new TextField("Lien Wikipedia");
 	HorizontalLayout fields = new HorizontalLayout(prenom, nom, nationalite, dateNaissance, dateDeces, villeNaissance, lienWikipedia);
 

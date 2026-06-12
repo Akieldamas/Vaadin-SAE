@@ -53,4 +53,8 @@ public class UtilisateurService {
         // Permet de filtrer par ID de rôle pour la vue
         return utilisateurRepo.findByRoleUtilisateurId(roleUtilisateurId);
     }
+    public Utilisateur getUtilisateurByLoginAndMotDePasse(String login, String motDePasse) {
+        // Permet de filtrer par ID de rôle pour la vue
+        return utilisateurRepo.getUtilisateurByLoginAndMotDePasse(login, motDePasse);
+    }
 }
