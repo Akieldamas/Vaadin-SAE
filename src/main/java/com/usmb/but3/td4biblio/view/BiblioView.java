@@ -13,6 +13,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -22,12 +24,20 @@ import com.vaadin.flow.component.button.ButtonVariant;
 @Route(value = "biblio") 
 @PageTitle("Menu Bibliothécaire")
 @Menu(title = "Menu Bibliothécaire", order = 2, icon = "vaadin:user-check")
-public class BiblioView extends VerticalLayout {
-
+public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur==null) {
+            event.rerouteTo("login"); // redirect to login page
+        }
+    }
     private final UtilisateurService utilisateurService;
     final Grid<Utilisateur> grid;
 
     public BiblioView(UtilisateurService utilisateurService) {
+        if (LoginView.utilisateur==null) {
+			this.getUI().ifPresent(ui -> ui.navigate("/login"));
+		} 
         this.grid = new Grid<Utilisateur>();
         this.utilisateurService = utilisateurService;
         var searchLayout = new HorizontalLayout();

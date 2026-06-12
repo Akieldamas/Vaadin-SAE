@@ -16,4 +16,5 @@ public interface UtilisateurRepo extends JpaRepository<Utilisateur, Integer> {
     List<Utilisateur> findByRoleUtilisateurIdAndDateFinAbonnementBefore(Integer roleUtilisateurId, LocalDate date);
     List<Utilisateur> findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurId(String nom, String numeroCarte, Integer id);
     List<Utilisateur> findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurIdAndDateFinAbonnementBefore(String nom, String numeroCarte, Integer id, LocalDate date);
+    Utilisateur getUtilisateurByLoginAndMotDePasse(String login, String motDePasse);
 }

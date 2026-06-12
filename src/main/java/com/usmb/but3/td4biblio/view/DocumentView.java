@@ -9,6 +9,8 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -17,14 +19,22 @@ import org.springframework.util.StringUtils;
 @Route(value = "document") 
 @PageTitle("Gestion des Documents")
 @Menu(title = "Documents", order = 1, icon = "vaadin:book")
-public class DocumentView extends VerticalLayout {
+public class DocumentView extends VerticalLayout implements BeforeEnterObserver {
 
     private final DocumentService documentService;
     final Grid<Document> grid;
     final TextField filter;
     private final Button addNewBtn;
-
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur==null) {
+            event.rerouteTo("login"); // redirect to login page
+        }
+    }
     public DocumentView(DocumentService documentService, DocumentEditor editor) {
+        if (LoginView.utilisateur==null) {
+			this.getUI().ifPresent(ui -> ui.navigate("/login"));
+		} 
         this.documentService = documentService;
         this.grid = new Grid<>(Document.class, false); // false pour définir les colonnes manuellement
         this.filter = new TextField();

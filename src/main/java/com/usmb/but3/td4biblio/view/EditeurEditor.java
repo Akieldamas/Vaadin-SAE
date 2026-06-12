@@ -126,6 +126,7 @@ public class EditeurEditor extends VerticalLayout implements KeyNotifier {
 		setVisible(true);
 
 	}
+	
 
 	public void setChangeHandler(ChangeHandler h) {
 		// ChangeHandler is notified when either save or delete
