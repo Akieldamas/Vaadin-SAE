@@ -4,33 +4,29 @@ package com.usmb.but3.td4biblio.view;
 import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.service.DocumentService;
 import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.upload.Upload;
-import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.InputStreamFactory;
+import com.vaadin.flow.server.StreamResource;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.util.StringUtils;
 
 @Route(value = "document") 
@@ -43,7 +39,6 @@ public class DocumentView extends VerticalLayout {
     final TextField filter;
     private final Button addNewBtn;
     private final Button exportBtn;
-   // private final Upload upload;
 
 
     public DocumentView(DocumentService documentService, DocumentEditor editor) {
@@ -51,69 +46,20 @@ public class DocumentView extends VerticalLayout {
         this.grid = new Grid<>(Document.class, false); // false pour définir les colonnes manuellement
         this.filter = new TextField();
         this.addNewBtn = new Button("Ajouter un document", VaadinIcon.PLUS.create());
-        
-        MemoryBuffer buffer = new MemoryBuffer();
-        Upload upload = new Upload(buffer);
-        upload.setAutoUpload(true);
-        upload.setAcceptedFileTypes(".csv");
-        
-        // Add an explicit "Importer CSV" button
-        Button uploadBtn = new Button("Importer CSV");
-        upload.setUploadButton(uploadBtn);
+        this.exportBtn = new Button("Export CSV", VaadinIcon.DOWNLOAD.create());      
 
-        this.exportBtn = new Button("Export CSV", VaadinIcon.DOWNLOAD.create());
-
-        
-        // Keep it compact — no drop zone text
-        upload.setDropLabel(null);
-        upload.setWidth("auto"); // don't let it stretch
-        
-        upload.addSucceededListener(event -> {
-            try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(buffer.getInputStream(), Charset.forName("Windows-1252")))) {
-                
-                String headerLine = reader.readLine();
-                String[] headers = headerLine.split(";");
-                
-                List<Map<String, String>> rows = new ArrayList<>();
-                
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] values = line.split(";");
-                    Map<String, String> row = new HashMap<>();
-                    for (int i = 0; i < headers.length; i++) {
-                        row.put(headers[i].trim(), i < values.length ? values[i].trim() : "");
-                    }
-                    rows.add(row);
-                }
-        
-                Pair<Boolean, String> returned = documentService.importFromCsv(rows);
-                Boolean result = returned.getLeft();
-                String message = returned.getRight();
-        
-                UI ui = UI.getCurrent();
-                ui.access(() -> {
-                    Notification notification = new Notification();
-                    notification.setDuration(5000);
-                    notification.setPosition(Notification.Position.BOTTOM_START);
-                    notification.addThemeVariants(
-                        result ? NotificationVariant.LUMO_SUCCESS : NotificationVariant.LUMO_ERROR
-                    );
-                    Icon icon = result ? VaadinIcon.CHECK_CIRCLE.create() : VaadinIcon.EXCLAMATION_CIRCLE.create();
-                    HorizontalLayout layout = new HorizontalLayout(icon, new Text(message));
-                    layout.setAlignItems(FlexComponent.Alignment.CENTER);
-                    notification.add(layout);
-                    notification.open();
-                    if (result) listDocuments(null);
-                });
-        
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        exportBtn.addClickListener(e -> {
+            String csvContent = documentService.ExportToCSV();
+            InputStreamFactory factory = () -> new ByteArrayInputStream(csvContent.getBytes(StandardCharsets.ISO_8859_1));
+            StreamResource resource = new StreamResource("documents.csv", factory);
+            Anchor downloadLink = new Anchor(resource, "");
+            downloadLink.getElement().setAttribute("download", true);
+            downloadLink.getElement().setAttribute("style", "display:none");
+            add(downloadLink);
+            downloadLink.getElement().callJsFunction("click");
         });
-        
 
-        HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn, upload);
+        HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn, exportBtn);
         add(actions, grid, editor);
 
         // Configuration des colonnes du Grid
@@ -135,7 +81,7 @@ public class DocumentView extends VerticalLayout {
         filter.addValueChangeListener(e -> listDocuments(e.getValue()));
 
         grid.asSingleSelect().addValueChangeListener(e -> editor.editDocument(e.getValue()));
-
+        
         addNewBtn.addClickListener(e -> editor.editDocument(new Document()));
         exportBtn.addClickListener(e -> documentService.ExportToCSV());
 

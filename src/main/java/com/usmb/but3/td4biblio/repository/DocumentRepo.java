@@ -16,5 +16,4 @@ public interface DocumentRepo extends JpaRepository<Document, Integer> {
     List<Document> findByEditeurId(Integer editeurId);
     List<Document> findByCodeEmplacement(String codeEmplacement);
     List<Document> findByTitreContainingIgnoreCase(String filter);
-    Optional<Document> findByCodeEmprunt(String codeEmprunt);
 }

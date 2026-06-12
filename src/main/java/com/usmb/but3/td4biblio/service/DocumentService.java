@@ -1,5 +1,7 @@
 package com.usmb.but3.td4biblio.service;
 
+import java.io.IOException;
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -7,11 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.opencsv.CSVWriter;
 import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.entity.Editeur;
@@ -187,7 +192,45 @@ public class DocumentService {
         return (val != null && !val.isEmpty()) ? new BigDecimal(val) : null;
     }
 
-    public void ExportToCSV() {
+    @Transactional
+    public String ExportToCSV() {
+        List<Document> documents = documentRepo.findAll();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+        StringWriter writer = new StringWriter();
+        try {
+            CSVWriter csvWriter = new CSVWriter(writer, ';', 
+            CSVWriter.NO_QUOTE_CHARACTER,
+            CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+            CSVWriter.DEFAULT_LINE_END);
+                     
+            csvWriter.writeNext(new String[]{"titre", "description", "genre", "lien_gif", "code_emplacement", "code_isbn", "code_emprunt", "specificite", "date_acquisition",
+            "date_publication",	"auteur", "editeur", "longueur", "largeur", "poids"});
+
+            for (Document doc : documents) {
+                csvWriter.writeNext(new String[]{
+                    doc.getTitre(),
+                    doc.getGenres().stream().map(GenreDocument::getNom).collect(Collectors.joining(",")),
+                    doc.getDescription(),
+                    doc.getLienGif(),
+                    doc.getCodeEmplacement(),
+                    doc.getCodeIsbn() != null ? doc.getCodeIsbn() : "",
+                    doc.getCodeEmprunt() != null ? doc.getCodeEmprunt() : "",
+                    doc.getSpecificite() != null ? doc.getSpecificite() : "",
+                    doc.getDateAcquisition() != null ? doc.getDateAcquisition().format(formatter) : "",
+                    doc.getDatePublication() != null ? doc.getDatePublication().format(formatter) : "",
+                    doc.getAuteur() != null ? doc.getAuteur().getNom() : "",
+                    doc.getEditeur() != null ? doc.getEditeur().getNom() : "",
+                    doc.getFormat() != null ? doc.getFormat().getLongueur().toString() : "",
+                    doc.getFormat() != null ? doc.getFormat().getLargeur().toString() : "",
+                    doc.getFormat() != null ? doc.getFormat().getPoids().toString() : "",
+                });
+            }
+
+            csvWriter.close();
+        } catch (IOException e)
+         {e.printStackTrace();}
+
+        return writer.toString();
     }
 }
