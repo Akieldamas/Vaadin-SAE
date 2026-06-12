@@ -1,5 +1,6 @@
 package com.usmb.but3.td4biblio.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,7 @@ import com.usmb.but3.td4biblio.entity.Utilisateur;
 public interface UtilisateurRepo extends JpaRepository<Utilisateur, Integer> {
     List<Utilisateur> findByRoleUtilisateurId(Integer roleUtilisateurId);
     Utilisateur getUtilisateurByLoginAndMotDePasse(String login, String motDePasse);
+    List<Utilisateur> findByRoleUtilisateurIdAndDateFinAbonnementBefore(Integer roleUtilisateurId, LocalDate date);
+    List<Utilisateur> findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurId(String nom, String numeroCarte, Integer id);
+    List<Utilisateur> findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurIdAndDateFinAbonnementBefore(String nom, String numeroCarte, Integer id, LocalDate date);
 }

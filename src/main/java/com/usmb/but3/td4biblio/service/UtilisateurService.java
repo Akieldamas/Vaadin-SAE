@@ -1,15 +1,17 @@
 package com.usmb.but3.td4biblio.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 
-import java.util.List;
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * La couche Service pour la gestion des utilisateurs.
@@ -57,4 +59,16 @@ public class UtilisateurService {
         // Permet de filtrer par ID de rôle pour la vue
         return utilisateurRepo.getUtilisateurByLoginAndMotDePasse(login, motDePasse);
     }
+    public List<Utilisateur> getUtilisateursByRoleWithDate(Integer roleUtilisateurId) {
+        // Permet de filtrer par ID de rôle pour la vue
+        return utilisateurRepo.findByRoleUtilisateurIdAndDateFinAbonnementBefore(roleUtilisateurId, LocalDate.now());
+    }
+
+    public List<Utilisateur> getByNomOrNumeroCarte(String nom, String numeroCarte) {
+       return utilisateurRepo.findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurId(nom, numeroCarte, 2);
+    }
+
+    public List<Utilisateur> getByNomOrNumeroCarteWithDate(String nom, String numeroCarte) {
+        return utilisateurRepo.findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurIdAndDateFinAbonnementBefore(nom, numeroCarte, 2, LocalDate.now());
+     }
 }
