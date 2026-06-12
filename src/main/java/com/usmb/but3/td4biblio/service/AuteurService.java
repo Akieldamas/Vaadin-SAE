@@ -44,8 +44,8 @@ public class AuteurService {
         return auteurRepo.findByNomAndPrenom(nom, prenom);
     }
     public List<Auteur> getAuteursByNomLikeAndPrenomLike(String nom, String prenom) {
-        //return auteurRepo.findByNomLikeAndPrenomLike("%" + nom + "%", "%" + prenom + "%");
-        return auteurRepo.findByNomLikeAndPrenomLike(nom,prenom);
+        return auteurRepo.findByNomLikeAndPrenomLike("%" + nom + "%", "%" + prenom + "%");
+        //return auteurRepo.findByNomLikeAndPrenomLike(nom,prenom);
     }  
 
     public List<Auteur> getAuteursByNomStartWithIgnoreCase(String filter) {

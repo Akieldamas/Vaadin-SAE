@@ -12,6 +12,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -50,6 +52,7 @@ public class Auteur {
 
     // Relation N-N avec TypeAuteur via la table de liaison
     @ManyToMany
+    @ToString.Exclude
     @JoinTable(name = "auteur_type_auteur", joinColumns = @JoinColumn(name = "auteur_id"), inverseJoinColumns = @JoinColumn(name = "type_auteur_id"))
     private List<TypeAuteur> types;
 

@@ -1,13 +1,13 @@
 package com.usmb.but3.td4biblio.service;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,7 @@ import com.usmb.but3.td4biblio.entity.Editeur;
 import com.usmb.but3.td4biblio.entity.Format;
 import com.usmb.but3.td4biblio.entity.GenreDocument;
 import com.usmb.but3.td4biblio.repository.DocumentRepo;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -56,11 +57,12 @@ public class DocumentService {
         return documentRepo.findByAuteurId(auteurId);
     }   
 
-    public void importFromCsv(List<Map<String, String>> rows) {
-        
+    public Pair<Boolean, String> importFromCsv(List<Map<String, String>> rows) {
+
+        System.out.print(rows);
         for (Map<String, String> row : rows) {
             Document newDocument = new Document();
-            newDocument.setTitre(row.get("title"));
+            newDocument.setTitre(row.get("titre"));
             newDocument.setDescription(row.get("description"));
             System.out.println("ROW: " + row);
             System.out.println("date_acquisition: " + row.get("date_acquisition"));
@@ -82,29 +84,20 @@ public class DocumentService {
 
             newDocument.setGenres(genreList);
 
-
-            // most likely subject to change as they were meant to be separated from document
-            String nbPagesStr = row.get("nb_pages");
-            String dureeStr = row.get("duree");
-            if (nbPagesStr != null && !nbPagesStr.isEmpty())
-                newDocument.setNbPages(Integer.parseInt(nbPagesStr));
-
-            if (dureeStr != null && !dureeStr.isEmpty())
-                System.out.println("");
-                //newDocument.setDuree(Integer.parseInt(dureeStr));
-
             newDocument.setLienGif(row.get("lien_gif"));
             newDocument.setCodeEmplacement(row.get("code_emplacement"));
             newDocument.setCodeIsbn(row.get("code_isbn"));
             newDocument.setCodeEmprunt(row.get("code_emprunt"));
             newDocument.setSpecificite(row.get("specificite"));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
             String dateAcquisitionStr = row.get("date_acquisition");
             if (dateAcquisitionStr != null && !dateAcquisitionStr.isEmpty())
-                newDocument.setDateAcquisition(LocalDate.parse(dateAcquisitionStr));
-            
+                newDocument.setDateAcquisition(LocalDate.parse(dateAcquisitionStr.trim(), formatter));
+
             String datePublicationStr = row.get("date_publication");
             if (datePublicationStr != null && !datePublicationStr.isEmpty())
-                newDocument.setDatePublication(LocalDate.parse(datePublicationStr));
+                newDocument.setDatePublication(LocalDate.parse(datePublicationStr.trim(), formatter));
 
             String fullName = row.get("auteur"); // "George Orwell"
             String[] parts = fullName.split(" ", 2); // ["George", "Orwell"]
@@ -118,33 +111,74 @@ public class DocumentService {
             } else {
                 auteurs = auteurService.getByNomContainingIgnoreCase(fullName);
             }
+            
+            System.out.println("auteurs found: " + auteurs.size());
+            //unallow if unfound
 
             Auteur auteur = auteurs.isEmpty() ? null : auteurs.get(0);
+            if (auteur == null) {
+                return Pair.of(false, "L'auteur '" + row.get("auteur") + "' n'existe pas.");
+            }
+
+            System.out.println("auteur found: " + auteur.getNom());
             newDocument.setAuteur(auteur);
 
+            // unallow if unfound
             Editeur editeur = editeurService.getEditeurByNom(row.get("editeur"));
+            if (editeur == null)
+            {
+                return Pair.of(false, "L'éditeur '" + row.get("editeur") + "' n'existe pas.");
+            }
             newDocument.setEditeur(editeur);
 
             String longueurStr = row.get("longueur");
             String largeurStr = row.get("largeur");
             String poidsStr = row.get("poids");
-            
+
+            // if no dimensions -> go away, if no format already found -> create, if found and poids is also the same then use it. 
             if (longueurStr != null && largeurStr != null && poidsStr != null && !longueurStr.isEmpty() && !largeurStr.isEmpty() && !poidsStr.isEmpty())
             {
-                Format newFormat = new Format();
-                newFormat.setLongueur(parseBigDecimalOrNull(longueurStr));
-                newFormat.setLargeur(parseBigDecimalOrNull(largeurStr));
-                newFormat.setPoids(parseBigDecimalOrNull(poidsStr));
-                
-                newFormat = formatService.saveFormat(newFormat);
-                newDocument.setFormat(newFormat);
-            }
+                BigDecimal longueur = parseBigDecimalOrNull(longueurStr);
+                BigDecimal largeur = parseBigDecimalOrNull(largeurStr);
+                BigDecimal poids = parseBigDecimalOrNull(poidsStr);
 
+                List<Format> formats = formatService.findByDimensions(longueur, largeur);
+                Format format;
+
+                if (formats.isEmpty()) {
+                    
+                    Format newFormat = new Format();
+                    newFormat.setLongueur(longueur);
+                    newFormat.setLargeur(largeur);
+                    newFormat.setPoids(poids);
+                    format = formatService.saveFormat(newFormat);
+                }
+                else {
+                    format = formats.stream()
+                    .filter(f -> f.getPoids().compareTo(poids) == 0)
+                    .findFirst()
+                    .orElse(formats.get(0));
+                }
+                
+                newDocument.setFormat(format);
+            }
+            else {
+                return Pair.of(false, "Les dimensions ou poids n'ont pas été indiqués.");
+            }
+            // newDocument.setFormat(format);
+
+            // if a document already exists then update? or smth of the sort.
             documentRepo.save(newDocument);
         }
+        return Pair.of(true, "Les documents ont été sauvegardés avec succès.");
+
     }
 
     private BigDecimal parseBigDecimalOrNull(String val) {
         return (val != null && !val.isEmpty()) ? new BigDecimal(val) : null;
+    }
+
+    public void ExportToCSV() {
+        
     }
 }

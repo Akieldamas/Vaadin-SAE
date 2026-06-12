@@ -18,6 +18,7 @@ import com.vaadin.flow.router.Route;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +59,7 @@ public class DocumentView extends VerticalLayout {
         
         upload.addSucceededListener(event -> {
             try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(buffer.getInputStream()))) {
+                new InputStreamReader(buffer.getInputStream(), Charset.forName("Windows-1252")))) {
                 
                 String headerLine = reader.readLine();
                 String[] headers = headerLine.split(";");
