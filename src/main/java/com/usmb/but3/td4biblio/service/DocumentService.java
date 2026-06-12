@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.data.domain.Sort;
@@ -62,6 +63,7 @@ public class DocumentService {
     }
 
     public Pair<Boolean, String> importFromCsv(List<Map<String, String>> rows) {
+        List<Document> documentsAajouter = new ArrayList<Document>();
 
         System.out.print(rows);
         for (Map<String, String> row : rows) {
@@ -101,6 +103,7 @@ public class DocumentService {
 
             newDocument.setLienGif(row.get("lien_gif"));
             newDocument.setCodeEmplacement(row.get("code_emplacement"));
+
             newDocument.setCodeIsbn(row.get("code_isbn"));
             newDocument.setCodeEmprunt(row.get("code_emprunt"));
             newDocument.setSpecificite(row.get("specificite"));
@@ -187,6 +190,6 @@ public class DocumentService {
         return (val != null && !val.isEmpty()) ? new BigDecimal(val) : null;
     }
     public void ExportToCSV() {
-        
+
     }
 }

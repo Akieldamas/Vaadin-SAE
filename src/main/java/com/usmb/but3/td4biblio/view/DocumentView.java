@@ -3,9 +3,15 @@ package com.usmb.but3.td4biblio.view;
 
 import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.service.DocumentService;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -26,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.util.StringUtils;
 
 @Route(value = "document") 
@@ -37,6 +44,7 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
     final Grid<Document> grid;
     final TextField filter;
     private final Button addNewBtn;
+    private final Button exportBtn;
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
         if (LoginView.utilisateur==null) {
@@ -61,6 +69,9 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
         // Add an explicit "Importer CSV" button
         Button uploadBtn = new Button("Importer CSV");
         upload.setUploadButton(uploadBtn);
+
+        this.exportBtn = new Button("Export CSV", VaadinIcon.DOWNLOAD.create());
+
         
         // Keep it compact — no drop zone text
         upload.setDropLabel(null);
@@ -84,9 +95,27 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
                     }
                     rows.add(row);
                 }
-
-                documentService.importFromCsv(rows);
-                listDocuments(null);
+        
+                Pair<Boolean, String> returned = documentService.importFromCsv(rows);
+                Boolean result = returned.getLeft();
+                String message = returned.getRight();
+        
+                UI ui = UI.getCurrent();
+                ui.access(() -> {
+                    Notification notification = new Notification();
+                    notification.setDuration(5000);
+                    notification.setPosition(Notification.Position.BOTTOM_START);
+                    notification.addThemeVariants(
+                        result ? NotificationVariant.LUMO_SUCCESS : NotificationVariant.LUMO_ERROR
+                    );
+                    Icon icon = result ? VaadinIcon.CHECK_CIRCLE.create() : VaadinIcon.EXCLAMATION_CIRCLE.create();
+                    HorizontalLayout layout = new HorizontalLayout(icon, new Text(message));
+                    layout.setAlignItems(FlexComponent.Alignment.CENTER);
+                    notification.add(layout);
+                    notification.open();
+                    if (result) listDocuments(null);
+                });
+        
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -117,6 +146,7 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
         grid.asSingleSelect().addValueChangeListener(e -> editor.editDocument(e.getValue()));
 
         addNewBtn.addClickListener(e -> editor.editDocument(new Document()));
+        exportBtn.addClickListener(e -> documentService.ExportToCSV());
 
         editor.setChangeHandler(() -> {
             editor.setVisible(false);
@@ -133,4 +163,6 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
             grid.setItems(documentService.getAllDocuments());
         }
     }
+
+
 }
