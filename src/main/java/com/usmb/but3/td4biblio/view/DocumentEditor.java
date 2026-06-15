@@ -20,6 +20,7 @@ import com.usmb.but3.td4biblio.service.AuteurService;
 import com.usmb.but3.td4biblio.service.DocumentService;
 import com.usmb.but3.td4biblio.service.EditeurService;
 import com.usmb.but3.td4biblio.service.FormatService;
+import com.usmb.but3.td4biblio.service.ImportExportService;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.Text;
@@ -55,6 +56,7 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     private final AuteurService auteurService;
     private final EditeurService editeurService;
     private final FormatService formatService;
+    private final ImportExportService importExportService;
 
     private Document document;
 
@@ -85,11 +87,12 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     private ChangeHandler changeHandler;
 
     public DocumentEditor(DocumentService documentService, AuteurService auteurService, 
-                          EditeurService editeurService, FormatService formatService) {
+                          EditeurService editeurService, FormatService formatService, ImportExportService importExportService) {
         this.documentService = documentService;
         this.auteurService = auteurService;
         this.editeurService = editeurService;
         this.formatService = formatService;
+        this.importExportService = importExportService;
 
         // Configuration des ComboBox
         auteur.setItemLabelGenerator(Auteur::getDesc);
@@ -124,7 +127,7 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
                     rows.add(row);
                 }
         
-                Pair<Boolean, String> returned = documentService.importFromCsv(rows);
+                Pair<Boolean, String> returned = importExportService.ImportDocumentsFromCSV(rows);
                 Boolean result = returned.getLeft();
                 String message = returned.getRight();
         
