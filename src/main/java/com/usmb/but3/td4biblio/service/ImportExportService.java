@@ -40,7 +40,7 @@ public class ImportExportService {
         String[] documentFormat = {"titre", "description", "genre", "lien_gif", "code_emplacement", "code_isbn", "code_emprunt", "specificite", "date_acquisition",
             "date_publication",	"auteur", "editeur", "longueur", "largeur", "poids"};
 
-        String[] exampleDocument = {"1984", "Un livre très mystérieux!", "Fiction, Psychologique", "https://tenor.com/dvDDJiI7Bmw.gif", "A1-491", "OUI", "", "25/11/2026",
+        String[] exampleDocument = {"1984", "Un livre très mystérieux!", "Fiction, Psychologique", "https://tenor.com/dvDDJiI7Bmw.gif", "A1-491", "9494939", "OUI", "", "25/11/2026",
         "12/02/2018", "Jean-Jacques Rousseau", "Editeur Inc.", "14", "12", "20"};
 
 
@@ -97,17 +97,19 @@ public class ImportExportService {
             String genresStr = row.get("genre");
             List<GenreDocument> genreList = new ArrayList<>();
 
-            if (genresStr != null && !genresStr.isEmpty()) {
-                for (String g : genresStr.split(",")) {
-                    GenreDocument genre = genreDocumentService.getGenreByNom(g.trim());
-                    if (genre == null) {
-                        GenreDocument newGenre = new GenreDocument();
-                        newGenre.setNom(g.trim());
-                        genre = genreDocumentService.saveGenre(newGenre);
-                    }
-                    genreList.add(genre);
+            if (genresStr == null || genresStr.isEmpty()) 
+                return Pair.of(false, "Le document: " + row.get("titre" + " n'a pas de genres associés."));
+            
+            for (String g : genresStr.split(",")) {
+                GenreDocument genre = genreDocumentService.getGenreByNom(g.trim());
+                if (genre == null) {
+                    GenreDocument newGenre = new GenreDocument();
+                    newGenre.setNom(g.trim());
+                    genre = genreDocumentService.saveGenre(newGenre);
                 }
+                genreList.add(genre);
             }
+            
 
             newDocument.setGenres(genreList);
 
