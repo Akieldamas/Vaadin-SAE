@@ -41,6 +41,12 @@ public class Utilisateur {
     @Column(name = "numero_carte", length = 10)
     private String numeroCarte;
 
+    @Column(name = "duree_emprunt_semaines")
+    private Integer dureeEmpruntMax;
+
+    @Column(name = "max_emprunts")
+    private Integer maxEmprunts;
+
     @ManyToOne
     @JoinColumn(name = "role_utilisateur_id", nullable = false)
     private RoleUtilisateur roleUtilisateur;
@@ -85,8 +91,20 @@ public class Utilisateur {
         return numeroCarte;
     }
 
-    public void setNumeroCarte(String numeroCarte) {
-        this.numeroCarte = numeroCarte;
+    public Integer getDureeEmpruntMax() {
+        return dureeEmpruntMax;
+    }
+
+    public void setDureeEmpruntMax(Integer dureeEmpruntMax) {
+        this.dureeEmpruntMax = dureeEmpruntMax;
+    }
+
+    public Integer getMaxEmprunts() {
+        return maxEmprunts;
+    }
+
+    public void setMaxEmprunts(Integer maxEmprunts) {
+        this.maxEmprunts = maxEmprunts;
     }
 
     @Override

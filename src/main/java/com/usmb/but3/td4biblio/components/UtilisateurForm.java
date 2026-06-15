@@ -1,8 +1,9 @@
-package com.usmb.but3.td4biblio.product;
+package com.usmb.but3.td4biblio.components;
 
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.textfield.IntegerField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import org.jspecify.annotations.Nullable;
@@ -18,6 +19,8 @@ public class UtilisateurForm extends Composite<FormLayout> {
     private TextField emailField;
     public TextField cardField;
     private DatePicker dateFinAbonnementField;
+    private IntegerField dureeEmpruntMaxField;
+    private IntegerField maxEmpruntsField;
 
     public UtilisateurForm() {
         FormLayout layout = getContent();
@@ -31,8 +34,13 @@ public class UtilisateurForm extends Composite<FormLayout> {
         cardField = new TextField("Numéro de carte");
         cardField.setReadOnly(true);
         dateFinAbonnementField = new DatePicker("Date de fin d'abonnement");
+        dureeEmpruntMaxField = new IntegerField("Durée d'emprunt maximale (semaines)");
+        dureeEmpruntMaxField.setRequired(true);
+        maxEmpruntsField = new IntegerField("Nombre maximum d'emprunts");
+        maxEmpruntsField.setRequired(true);
 
-        layout.add(nomField, prenomField, emailField, cardField, dateFinAbonnementField);
+
+        layout.add(nomField, prenomField, emailField, cardField, dateFinAbonnementField, dureeEmpruntMaxField, maxEmpruntsField);
 
         binder = new Binder<>();
         binder.bind(nomField, Utilisateur::getNom, Utilisateur::setNom);
@@ -40,7 +48,8 @@ public class UtilisateurForm extends Composite<FormLayout> {
         binder.bind(emailField, Utilisateur::getEmail, Utilisateur::setEmail);
         binder.bind(cardField, Utilisateur::getNumeroCarte, Utilisateur::setNumeroCarte);
         binder.bind(dateFinAbonnementField, Utilisateur::getDateFinAbonnement, Utilisateur::setDateFinAbonnement);
-
+        binder.bind(dureeEmpruntMaxField, Utilisateur::getDureeEmpruntMax, Utilisateur::setDureeEmpruntMax);
+        binder.bind(maxEmpruntsField, Utilisateur::getMaxEmprunts, Utilisateur::setMaxEmprunts);
     }
 
     public void setUtilisateurDetails(@Nullable Utilisateur details) {
