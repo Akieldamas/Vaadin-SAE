@@ -1,27 +1,11 @@
 package com.usmb.but3.td4biblio.service;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.opencsv.CSVWriter;
-import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.entity.Document;
-import com.usmb.but3.td4biblio.entity.Editeur;
-import com.usmb.but3.td4biblio.entity.Format;
-import com.usmb.but3.td4biblio.entity.GenreDocument;
 import com.usmb.but3.td4biblio.repository.DocumentRepo;
 
 import lombok.RequiredArgsConstructor;
@@ -29,12 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class DocumentService {
-
     private final DocumentRepo documentRepo;
-    private final AuteurService auteurService;
-    private final FormatService formatService;
-    private final EditeurService editeurService;
-    private final GenreDocumentService genreDocumentService;
 
     public List<Document> getAllDocuments() {
         return documentRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
@@ -239,4 +218,5 @@ public class DocumentService {
 
         return writer.toString();
     }
+    }   
 }
