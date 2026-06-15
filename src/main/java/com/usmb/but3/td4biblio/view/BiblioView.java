@@ -80,6 +80,14 @@ public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
         grid.addColumn(Utilisateur::getDateFinAbonnement)
             .setHeader("Date de fin d'abonnement")
             .setSortProperty("dateFinAbonnement");
+
+        grid.addColumn(Utilisateur::getDureeEmpruntMax)
+            .setHeader("Durée d'emprunt maximale (semaines)")
+            .setSortProperty("dureeEmpruntMax");
+
+        grid.addColumn(Utilisateur::getMaxEmprunts)
+            .setHeader("Nombre maximum d'emprunts")
+            .setSortProperty("maxEmprunts");
             
         var drawer = new UtilisateurDrawer(details -> {
             var saved = utilisateurService.saveUtilisateur(details);

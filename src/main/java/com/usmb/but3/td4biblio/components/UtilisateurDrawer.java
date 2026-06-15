@@ -5,7 +5,7 @@ import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility;
-import com.usmb.but3.td4biblio.product.UtilisateurForm;
+
 import org.jspecify.annotations.Nullable;
 
 import com.usmb.but3.td4biblio.entity.Utilisateur;
