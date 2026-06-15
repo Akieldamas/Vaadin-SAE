@@ -21,9 +21,6 @@ public class Document {
     private String titre;
     private String description;
     
-    @Column(name = "nb_pages")
-    private Integer nbPages;
-    
     @Column(name = "lien_gif")
     private String lienGif;
     
