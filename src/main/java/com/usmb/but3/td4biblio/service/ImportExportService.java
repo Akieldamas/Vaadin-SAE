@@ -22,6 +22,7 @@ import com.usmb.but3.td4biblio.entity.Editeur;
 import com.usmb.but3.td4biblio.entity.Format;
 import com.usmb.but3.td4biblio.entity.GenreDocument;
 import com.usmb.but3.td4biblio.entity.TypeAuteur;
+import com.usmb.but3.td4biblio.entity.TypeDocument;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,14 +34,15 @@ public class ImportExportService {
     private final EditeurService editeurService;
     private final GenreDocumentService genreDocumentService;
     private final DocumentService documentService;
+    private final TypeDocumentService typeDocumentService;
 
     private final TypeAuteurService typeAuteurService;
 
     public Pair<String[], String[]> GetCSVFormat(String type) { // "document" "auteur"
-        String[] documentFormat = {"titre", "description", "genre", "lien_gif", "code_emplacement", "code_isbn", "code_emprunt", "specificite", "date_acquisition",
+        String[] documentFormat = {"titre", "description", "genre", "type_document", "lien_gif", "code_emplacement", "code_isbn", "code_emprunt", "specificite", "date_acquisition",
             "date_publication",	"auteur", "editeur", "longueur", "largeur", "poids"};
 
-        String[] exampleDocument = {"1984", "Un livre très mystérieux!", "Fiction, Psychologique", "https://tenor.com/dvDDJiI7Bmw.gif", "A1-491", "9494939", "OUI", "", "25/11/2026",
+        String[] exampleDocument = {"1984", "Un livre très mystérieux!", "Fiction, Psychologique", "Livre", "https://tenor.com/dvDDJiI7Bmw.gif", "A1-491", "9494939", "OUI", "", "25/11/2026",
         "12/02/2018", "Jean-Jacques Rousseau", "Editeur Inc.", "14", "12", "20"};
 
 
@@ -110,10 +112,21 @@ public class ImportExportService {
                 }
                 genreList.add(genre);
             }
-            
 
             newDocument.setGenres(genreList);
+            
+            String type_documentStr = row.get("type_document");
+            if (type_documentStr == null || type_documentStr.isEmpty())
+                return Pair.of(false, "Le document: " + row.get("titre") + " n'a pas de type de document associé (Livre, Film, etc).");
 
+            TypeDocument typeDoc = typeDocumentService.getTypeDocumentByNom(type_documentStr);
+            if (typeDoc == null) {
+                TypeDocument newTypeDocument = new TypeDocument();
+                newTypeDocument.setNom(type_documentStr);
+                typeDoc = typeDocumentService.saveTypeDocument(newTypeDocument);
+            }
+
+            newDocument.setTypeDocument(typeDoc);
             newDocument.setLienGif(row.get("lien_gif"));
             newDocument.setCodeEmplacement(row.get("code_emplacement"));
 
@@ -234,8 +247,9 @@ public class ImportExportService {
             for (Document doc : documents) {
                 csvWriter.writeNext(new String[] {
                         doc.getTitre(),
-                        doc.getGenres().stream().map(GenreDocument::getNom).collect(Collectors.joining(",")),
                         doc.getDescription(),
+                        doc.getGenres().stream().map(GenreDocument::getNom).collect(Collectors.joining(",")),
+                        doc.getTypeDocument().getNom(),
                         doc.getLienGif(),
                         doc.getCodeEmplacement(),
                         doc.getCodeIsbn() != null ? "=\"" + doc.getCodeIsbn() + "\"" : "",

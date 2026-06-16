@@ -51,7 +51,7 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
         if (LoginView.utilisateur==null) {
             event.rerouteTo("login"); // redirect to login page
         }
-}   
+    }   
 
     private final DocumentService documentService;
     private final ImportExportService importExportService;
@@ -108,18 +108,6 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
             downloadLink.getElement().callJsFunction("click");
         });
 
-        int empruntes = empruntService.getAllEmprunts().size();
-
-        HorizontalLayout statsBar = new HorizontalLayout(
-            createStatCard("Total", totalSpan, documents.size()),
-            createStatCard("Empruntés", empruntesSpan, empruntes),
-            createStatCard("Disponibles", disponiblesSpan, )
-        );
-
-        statsBar.addClassNames(Gap.MEDIUM, Padding.SMALL);
-        HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn, exportBtn, downloadTemplateBtn);
-        add(actions, statsBar, grid, editor);
-
         // Configuration des colonnes du Grid
         grid.addColumn(Document::getId).setHeader("ID").setWidth("70px").setFlexGrow(0);
         grid.addColumn(Document::getTitre).setHeader("Titre").setSortable(true);
@@ -162,11 +150,24 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
         });
 
         listDocuments(null);
+
+        int empruntes = empruntService.getAllEmprunts().size();
+        int disponibilites = documents.size() - empruntes;
+
+        HorizontalLayout statsBar = new HorizontalLayout(
+            createStatCard("Total", totalSpan, documents.size()),
+            createStatCard("Empruntés", empruntesSpan, empruntes),
+            createStatCard("Disponibles", disponiblesSpan, disponibilites)
+        );
+
+        statsBar.addClassNames(Gap.MEDIUM, Padding.SMALL);
+        HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn, exportBtn, downloadTemplateBtn);
+        add(actions, statsBar, grid, editor);
     }
 
     void listDocuments(String filterText) {
         if (StringUtils.hasText(filterText)) {
-            documents = documentService.getByTitreContainingIgnoreCase(filterText)
+            documents = documentService.getByTitreContainingIgnoreCase(filterText);
             grid.setItems(documents);
         } else {
             documents = documentService.getAllDocuments();
