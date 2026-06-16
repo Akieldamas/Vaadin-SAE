@@ -94,6 +94,7 @@ public class ImportExportService {
             System.out.println("ROW: " + row);
             System.out.println("date_acquisition: " + row.get("date_acquisition"));
             System.out.println("date_publication: " + row.get("date_publication"));
+            
             String genresStr = row.get("genre");
             List<GenreDocument> genreList = new ArrayList<>();
 
@@ -116,7 +117,11 @@ public class ImportExportService {
             newDocument.setLienGif(row.get("lien_gif"));
             newDocument.setCodeEmplacement(row.get("code_emplacement"));
 
-            newDocument.setCodeIsbn(row.get("code_isbn"));
+            String rawIsbn = row.get("code_isbn");
+            if (rawIsbn != null) {
+                rawIsbn = rawIsbn.replaceAll("[\"=]", "");
+                newDocument.setCodeIsbn(rawIsbn.isBlank() ? null : rawIsbn);
+            }
             newDocument.setCodeEmprunt(row.get("code_emprunt"));
             newDocument.setSpecificite(row.get("specificite"));
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -233,7 +238,7 @@ public class ImportExportService {
                         doc.getDescription(),
                         doc.getLienGif(),
                         doc.getCodeEmplacement(),
-                        doc.getCodeIsbn() != null ? doc.getCodeIsbn() : "",
+                        doc.getCodeIsbn() != null ? "=\"" + doc.getCodeIsbn() + "\"" : "",
                         doc.getCodeEmprunt() != null ? doc.getCodeEmprunt() : "",
                         doc.getSpecificite() != null ? doc.getSpecificite() : "",
                         doc.getDateAcquisition() != null ? doc.getDateAcquisition().format(formatter) : "",
