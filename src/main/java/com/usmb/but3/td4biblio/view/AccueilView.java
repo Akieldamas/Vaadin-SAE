@@ -1,23 +1,16 @@
 package com.usmb.but3.td4biblio.view;
 import java.util.ArrayList;
 
-import com.nimbusds.jose.Header;
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.orderedlayout.FlexLayout.FlexDirection;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.dom.Style.JustifyContent;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.lumo.LumoUtility.Margin.Minus.Horizontal;
 
 @PageTitle("Accueil")
 @Route(value = "accueil")
@@ -35,7 +28,7 @@ public class AccueilView extends VerticalLayout {
             Button accessApp = new Button("Application", e -> {
                 this.getUI().ifPresent(ui -> ui.navigate("auteur"));
             });
-            Button accessDocs = new Button("Documents", e -> {
+            Button accessDocs = new Button("Nouveaux arrivages !", e -> {
                 this.getUI().ifPresent(ui -> ui.navigate("auteur"));
             });
             buttons.add(accessApp);

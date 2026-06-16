@@ -1,10 +1,8 @@
 package com.usmb.but3.td4biblio.view;
 
-import java.util.Comparator;
-import java.util.List;
-
-import com.usmb.but3.td4biblio.controller.DocumentController;
 import com.usmb.but3.td4biblio.entity.Document;
+import com.usmb.but3.td4biblio.entity.GenreDocument;
+
 import com.usmb.but3.td4biblio.service.DocumentService;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -41,7 +39,10 @@ public class SpecificDocumentView extends VerticalLayout implements HasUrlParame
             Image gif = new Image(currentDocument.getLienGif(), "gif descriptif");
             div.add(gif);
         }   
-        vLayout.add(title, div);
+        String descriptionDetaillee = (currentDocument.getNbPages()!=null?"Ce livre comporte "+currentDocument.getNbPages()+" pages.":"")+" Il a été réalisé par "+currentDocument.getAuteur().getNom();
+        Paragraph descriptionDetailleeP = new Paragraph(descriptionDetaillee);
+
+        vLayout.add(title, div,descriptionDetailleeP);
         add(vLayout);
     }
     
