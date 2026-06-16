@@ -111,11 +111,13 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
         // Configuration des colonnes du Grid
         grid.addColumn(Document::getId).setHeader("ID").setWidth("70px").setFlexGrow(0);
         grid.addColumn(Document::getTitre).setHeader("Titre").setSortable(true);
+
+        grid.addColumn(d -> d.getTypeDocument() != null ? d.getTypeDocument().getNom() : "");
         
         grid.addColumn(d -> d.getAuteur() != null ? d.getAuteur().getNom() : "")
             .setHeader("Auteur");
             
-        grid.addColumn(d -> d.getEditeur() != null ? d.getEditeur().getNom() : "")
+        grid.addColumn(d -> d.getEditeur() != null ? d.getEditeur().getNom() : "") 
             .setHeader("Éditeur");
 
         grid.addComponentColumn(document -> {

@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -17,19 +18,24 @@ import com.usmb.but3.td4biblio.entity.Bibliotheque;
 import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.entity.Editeur;
 import com.usmb.but3.td4biblio.entity.Format;
+import com.usmb.but3.td4biblio.entity.GenreDocument;
+import com.usmb.but3.td4biblio.entity.TypeDocument;
 import com.usmb.but3.td4biblio.service.AuteurService;
 import com.usmb.but3.td4biblio.service.BibliothequeService;
 import com.usmb.but3.td4biblio.service.DocumentService;
 import com.usmb.but3.td4biblio.service.EditeurService;
 import com.usmb.but3.td4biblio.service.FormatService;
+import com.usmb.but3.td4biblio.service.GenreDocumentService;
 import com.usmb.but3.td4biblio.service.ImportExportService;
 import com.usmb.but3.td4biblio.service.NotificationService;
+import com.usmb.but3.td4biblio.service.TypeDocumentService;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
@@ -46,6 +52,7 @@ import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.binder.PropertyId;
 import com.vaadin.flow.server.InputStreamFactory;
 import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.spring.annotation.SpringComponent;
@@ -61,6 +68,8 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     private final FormatService formatService;
     private final ImportExportService importExportService;
     private final BibliothequeService bibliothequeService;
+    private final GenreDocumentService genreDocumentService;
+    private final TypeDocumentService typeDocumentService;
 
     private Document document;
 
@@ -81,6 +90,9 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     ComboBox<Editeur> editeur = new ComboBox<>("Éditeur");
     ComboBox<Format> format = new ComboBox<>("Format");
     ComboBox<Bibliotheque> bibliothequeCombo = new ComboBox<>("Bibliothèque");
+    ComboBox<TypeDocument> typeDocument = new ComboBox<>("Type de Document");
+    @PropertyId("genresList")
+    MultiSelectComboBox<GenreDocument> genres = new MultiSelectComboBox<>("Genre(s)");
 
     /* Boutons d'action */
     Button save = new Button("Sauvegarder", VaadinIcon.CHECK.create());
@@ -92,13 +104,17 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     private ChangeHandler changeHandler;
 
     public DocumentEditor(DocumentService documentService, AuteurService auteurService, 
-                          EditeurService editeurService, FormatService formatService, ImportExportService importExportService, BibliothequeService bibliothequeService) {
+                          EditeurService editeurService, FormatService formatService, ImportExportService importExportService, BibliothequeService bibliothequeService, 
+                           GenreDocumentService genreDocumentService, TypeDocumentService typeDocumentService) {
+
         this.documentService = documentService;
         this.auteurService = auteurService;
         this.editeurService = editeurService;
         this.formatService = formatService;
         this.importExportService = importExportService;
         this.bibliothequeService = bibliothequeService;
+        this.genreDocumentService = genreDocumentService;
+        this.typeDocumentService = typeDocumentService;
 
         // Configuration des ComboBox
         auteur.setItemLabelGenerator(Auteur::getDesc);
@@ -108,6 +124,12 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
         bibliothequeCombo.setItems(bibliothequeService.getAllBibliotheques());
         bibliothequeCombo.setItemLabelGenerator(Bibliotheque::getNom);
         bibliothequeCombo.setRequiredIndicatorVisible(true);
+
+        genres.setItems(genreDocumentService.getAllGenres());
+        genres.setItemLabelGenerator(GenreDocument::getNom);
+
+        typeDocument.setItems(typeDocumentService.getAllTypeDocuments());
+        typeDocument.setItemLabelGenerator(TypeDocument::getNom);
 
         upload.setAutoUpload(true);
         upload.setAcceptedFileTypes(".csv");
@@ -160,13 +182,13 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
             }
         });
 
-        HorizontalLayout row1 = new HorizontalLayout(titre, description);
+        HorizontalLayout row1 = new HorizontalLayout(titre, description, genres, typeDocument);
 
-        HorizontalLayout row2 = new HorizontalLayout(auteur, editeur, format);
+        HorizontalLayout row2 = new HorizontalLayout(auteur, editeur, format, codeIsbn);
 
-        HorizontalLayout row3 = new HorizontalLayout(codeIsbn, nbPages, datePublication, dateAcquisition);
+        HorizontalLayout row3 = new HorizontalLayout(datePublication, dateAcquisition, bibliothequeCombo);
 
-        HorizontalLayout row4 = new HorizontalLayout(save, cancel, delete, bibliothequeCombo, upload);
+        HorizontalLayout row4 = new HorizontalLayout(save, cancel, delete, upload);
 
         add(row1, row2, row3, row4);
         
@@ -177,7 +199,15 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
         binder.forField(auteur).asRequired("L'auteur est obligatoire").bind(Document::getAuteur, Document::setAuteur);
         binder.forField(editeur).asRequired("L'éditeur est obligatoire").bind(Document::getEditeur, Document::setEditeur);
         binder.forField(format).asRequired("Le format est obligatoire").bind(Document::getFormat, Document::setFormat);
-
+        binder.forField(genres)
+        .asRequired("Genre(s) obligatoires")
+        .bind(
+            doc -> new HashSet<>(doc.getGenres()),
+            (doc, value) -> doc.setGenres(new ArrayList<>(value))
+        );
+        binder.forField(typeDocument).asRequired("Type de document obligatoire").bind(Document::getTypeDocument, Document::setTypeDocument);
+        binder.forField(bibliothequeCombo).asRequired("Bibliothèque à choisir obligatoire").bind(Document::getBibliotheque, Document::setBibliotheque);
+        
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
         cancel.addClickListener(e -> setVisible(false));
@@ -214,6 +244,9 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
         auteur.setItems(auteurService.getAllAuteurs());
         editeur.setItems(editeurService.getAllEditeurs());
         format.setItems(formatService.getAllFormats());
+        typeDocument.setItems(typeDocumentService.getAllTypeDocuments());
+        bibliothequeCombo.setItems(bibliothequeService.getAllBibliotheques());
+        genres.setItems(genreDocumentService.getAllGenres());
 
         cancel.setVisible(true);
         binder.setBean(document);
