@@ -147,39 +147,39 @@ INSERT INTO document (
     (8, 'L''Amant', '142 pages. Relation amoureuse et interdite dans le Vietnam colonial.', NULL, 'A1-008', '9782707301000', 'OUI', '', '2022-06-10', '1984-01-01', '2022-06-10 10:00:00', '2024-04-01 08:00:00', 10, 1, 2, 1, 2),
 
 -- === FILMS / VIDÉOS (type_id = 2) ===
-    (13, 'Inception', '148 min. Un voleur s''infiltre dans les rêves pour y implanter une idée.', NULL, 'C3-001', NULL, 'OUI', 'AUCUNE', '2020-11-20', '2010-07-16', '2020-11-20 14:00:00', '2024-03-01 08:00:00', 5, 4, 5, 2, 1),
-    (14, 'E.T. l''extra-terrestre', '115 min. Un enfant se lie d''amitié avec un extraterrestre perdu sur Terre.', NULL, 'C3-002', NULL, 'OUI', 'AUCUNE', '2018-08-01', '1982-06-11', '2018-08-01 09:00:00', '2024-03-01 08:00:00', 6, 4, 6, 2, 1),
-    (15, 'Le Voyage de Chihiro', '125 min. Une fillette doit travailler dans des thermes pour esprits pour sauver ses parents.', NULL, 'C3-003', NULL, 'OUI', 'AUCUNE', '2021-04-05', '2001-07-20', '2021-04-05 10:00:00', '2024-03-20 09:00:00', 9, 4, 6, 2, 1),
-    (16, 'Dune (2021)', '155 min. Adaptation du roman de Frank Herbert par Denis Villeneuve.', NULL, 'C3-004', NULL, 'OUI', 'AUCUNE', '2022-01-15', '2021-09-15', '2022-01-15 10:00:00', '2024-03-20 09:00:00', 12, 4, 5, 2, 1),
+    (13, 'Inception', '148 min. Un voleur s''infiltre dans les rêves pour y implanter une idée.', NULL, 'C3-001', NULL, 'OUI', '', '2020-11-20', '2010-07-16', '2020-11-20 14:00:00', '2024-03-01 08:00:00', 5, 4, 5, 2, 1),
+    (14, 'E.T. l''extra-terrestre', '115 min. Un enfant se lie d''amitié avec un extraterrestre perdu sur Terre.', NULL, 'C3-002', NULL, 'OUI', '', '2018-08-01', '1982-06-11', '2018-08-01 09:00:00', '2024-03-01 08:00:00', 6, 4, 6, 2, 1),
+    (15, 'Le Voyage de Chihiro', '125 min. Une fillette doit travailler dans des thermes pour esprits pour sauver ses parents.', NULL, 'C3-003', NULL, 'OUI', '', '2021-04-05', '2001-07-20', '2021-04-05 10:00:00', '2024-03-20 09:00:00', 9, 4, 6, 2, 1),
+    (16, 'Dune (2021)', '155 min. Adaptation du roman de Frank Herbert par Denis Villeneuve.', NULL, 'C3-004', NULL, 'OUI', '', '2022-01-15', '2021-09-15', '2022-01-15 10:00:00', '2024-03-20 09:00:00', 12, 4, 5, 2, 1),
     (17, 'Interstellar — Blu-ray', '169 min. Édition Blu-ray collector du film de Christopher Nolan.', NULL, 'D4-001', NULL, 'NON', 'VALEUR', '2022-05-10', '2014-11-07', '2022-05-10 11:00:00', '2024-04-10 09:00:00', 5, 5, 5, 2, 2),
-    (18, 'Le Château Ambulant — Blu-ray', '119 min. Adaptation du roman de Diana Wynne Jones par Miyazaki.', NULL, 'D4-002', NULL, 'OUI', 'AUCUNE', '2023-02-20', '2004-11-20', '2023-02-20 10:00:00', '2024-04-10 09:00:00', 9, 5, 6, 2, 2),
-    (19, 'Shining — Blu-ray', '146 min. Adaptation du roman de Stephen King par Stanley Kubrick.', NULL, 'D4-003', NULL, 'OUI', 'AUCUNE', '2020-10-31', '1980-05-23', '2020-10-31 13:00:00', '2024-04-10 09:00:00', 4, 5, 5, 2, 2),
-    (26, 'Tenet', '150 min. Un agent secret utilise l''inversion du temps pour empêcher la Troisième Guerre mondiale.', NULL, 'C3-005', NULL, 'OUI', 'AUCUNE', '2021-01-15', '2020-08-26', '2021-01-15 10:00:00', '2024-01-15 10:00:00', 5, 4, 5, 2, 2),
-    (27, 'The Batman', '176 min. Le Chevalier Noir enquête sur une série de crimes commis par le Sphinx à Gotham City.', NULL, 'C3-006', NULL, 'OUI', 'AUCUNE', '2022-07-20', '2022-03-02', '2022-07-20 11:00:00', '2024-01-15 10:00:00', 5, 4, 5, 2, 2),
+    (18, 'Le Château Ambulant — Blu-ray', '119 min. Adaptation du roman de Diana Wynne Jones par Miyazaki.', NULL, 'D4-002', NULL, 'OUI', '', '2023-02-20', '2004-11-20', '2023-02-20 10:00:00', '2024-04-10 09:00:00', 9, 5, 6, 2, 2),
+    (19, 'Shining — Blu-ray', '146 min. Adaptation du roman de Stephen King par Stanley Kubrick.', NULL, 'D4-003', NULL, 'OUI', '', '2020-10-31', '1980-05-23', '2020-10-31 13:00:00', '2024-04-10 09:00:00', 4, 5, 5, 2, 2),
+    (26, 'Tenet', '150 min. Un agent secret utilise l''inversion du temps pour empêcher la Troisième Guerre mondiale.', NULL, 'C3-005', NULL, 'OUI', '', '2021-01-15', '2020-08-26', '2021-01-15 10:00:00', '2024-01-15 10:00:00', 5, 4, 5, 2, 2),
+    (27, 'The Batman', '176 min. Le Chevalier Noir enquête sur une série de crimes commis par le Sphinx à Gotham City.', NULL, 'C3-006', NULL, 'OUI', '', '2022-07-20', '2022-03-02', '2022-07-20 11:00:00', '2024-01-15 10:00:00', 5, 4, 5, 2, 2),
 
 -- === MAGASINES (type_id = 3) ===
-    (20, 'National Geographic N°250', '144 pages. Magazine d''exploration, de science et de photographie historique.', NULL, 'E5-001', NULL, 'OUI', 'AUCUNE', '2024-01-10', '2023-12-01', '2024-01-10 08:00:00', '2024-01-10 08:00:00', 1, 1, 1, 3, 1),
+    (20, 'National Geographic N°250', '144 pages. Magazine d''exploration, de science et de photographie historique.', NULL, 'E5-001', NULL, 'OUI', '', '2024-01-10', '2023-12-01', '2024-01-10 08:00:00', '2024-01-10 08:00:00', 1, 1, 1, 3, 1),
 
 -- === JOURNAUX (type_id = 4) ===
     (21, 'Le Monde - Édition Spéciale', '32 pages. Journal quotidien d''actualités nationales et internationales.', NULL, 'F6-001', NULL, 'NON', 'FRAGILITE', '2024-02-01', '2024-02-01', '2024-02-01 07:00:00', '2024-02-01 07:00:00', 2, 1, 2, 4, 2),
 
 -- === ALBUMS / MUSIQUE (type_id = 5) ===
-    (9, 'Songs of Leonard Cohen', '41 min (10 pistes). Premier album studio de Leonard Cohen, folk introspectif.', NULL, 'B2-001', NULL, 'OUI', 'AUCUNE', '2019-02-14', '1967-12-27', '2019-02-14 15:00:00', '2024-01-20 10:00:00', 8, 3, 4, 5, 1),
-    (10, 'I''m Your Man', '40 min (8 pistes). Album synthpop et cabaret, synthèse de l''œuvre de Cohen.', NULL, 'B2-002', NULL, 'OUI', 'AUCUNE', '2019-02-14', '1988-02-01', '2019-02-14 15:10:00', '2024-01-20 10:00:00', 8, 3, 4, 5, 1),
-    (11, 'Interstellar — Bande originale', '71 min (16 pistes). Composition orchestrale et orgue pour le film de Christopher Nolan.', NULL, 'B2-003', NULL, 'OUI', 'AUCUNE', '2021-03-20', '2014-11-17', '2021-03-20 09:30:00', '2024-02-15 08:00:00', 7, 3, 4, 5, 2),
-    (12, 'Dune — Bande originale (2021)', '74 min (9 pistes). Bande originale de Denis Villeneuve, composition de Hans Zimmer.', NULL, 'B2-004', NULL, 'OUI', 'AUCUNE', '2022-01-10', '2021-09-03', '2022-01-10 10:00:00', '2024-02-15 08:00:00', 7, 3, 4, 5, 2),
+    (9, 'Songs of Leonard Cohen', '41 min (10 pistes). Premier album studio de Leonard Cohen, folk introspectif.', NULL, 'B2-001', NULL, 'OUI', '', '2019-02-14', '1967-12-27', '2019-02-14 15:00:00', '2024-01-20 10:00:00', 8, 3, 4, 5, 1),
+    (10, 'I''m Your Man', '40 min (8 pistes). Album synthpop et cabaret, synthèse de l''œuvre de Cohen.', NULL, 'B2-002', NULL, 'OUI', '', '2019-02-14', '1988-02-01', '2019-02-14 15:10:00', '2024-01-20 10:00:00', 8, 3, 4, 5, 1),
+    (11, 'Interstellar — Bande originale', '71 min (16 pistes). Composition orchestrale et orgue pour le film de Christopher Nolan.', NULL, 'B2-003', NULL, 'OUI', '', '2021-03-20', '2014-11-17', '2021-03-20 09:30:00', '2024-02-15 08:00:00', 7, 3, 4, 5, 2),
+    (12, 'Dune — Bande originale (2021)', '74 min (9 pistes). Bande originale de Denis Villeneuve, composition de Hans Zimmer.', NULL, 'B2-004', NULL, 'OUI', '', '2022-01-10', '2021-09-03', '2022-01-10 10:00:00', '2024-02-15 08:00:00', 7, 3, 4, 5, 2),
 
 -- === BANDES DESSINÉES (type_id = 6) ===
-    (22, 'Astérix le Gaulois', '48 pages. Première aventure mythique d''Astérix et Obélix contre les Romains.', NULL, 'G7-001', '9782012101333', 'OUI', 'AUCUNE', '2022-03-15', '1961-10-01', '2022-03-15 10:00:00', '2024-01-15 10:00:00', 4, 2, 3, 6, 1),
+    (22, 'Astérix le Gaulois', '48 pages. Première aventure mythique d''Astérix et Obélix contre les Romains.', NULL, 'G7-001', '9782012101333', 'OUI', '', '2022-03-15', '1961-10-01', '2022-03-15 10:00:00', '2024-01-15 10:00:00', 4, 2, 3, 6, 1),
 
 -- === JEUX VIDÉO (type_id = 7) ===
-    (23, 'The Legend of Zelda: Breath of the Wild', 'Jeu Console (Switch/WiiU). Jeu vidéo d''action-aventure en monde ouvert.', NULL, 'H8-001', NULL, 'OUI', 'AUCUNE', '2021-06-20', '2017-03-03', '2021-06-20 14:00:00', '2024-02-01 09:00:00', 5, 3, 5, 7, 2),
+    (23, 'The Legend of Zelda: Breath of the Wild', 'Jeu Console (Switch/WiiU). Jeu vidéo d''action-aventure en monde ouvert.', NULL, 'H8-001', NULL, 'OUI', '', '2021-06-20', '2017-03-03', '2021-06-20 14:00:00', '2024-02-01 09:00:00', 5, 3, 5, 7, 2),
 
 -- === SÉRIES TV (type_id = 8) ===
-    (24, 'Breaking Bad - Intégrale Saison 1', '340 min (7 épisodes). Série télévisée dramatique suivant l''évolution de Walter White.', NULL, 'I9-001', NULL, 'OUI', 'AUCUNE', '2020-05-12', '2008-01-20', '2020-05-12 11:00:00', '2024-03-01 10:00:00', 6, 4, 6, 8, 1),
+    (24, 'Breaking Bad - Intégrale Saison 1', '340 min (7 épisodes). Série télévisée dramatique suivant l''évolution de Walter White.', NULL, 'I9-001', NULL, 'OUI', '', '2020-05-12', '2008-01-20', '2020-05-12 11:00:00', '2024-03-01 10:00:00', 6, 4, 6, 8, 1),
 
 -- === JEUX DE SOCIÉTÉ (type_id = 9) ===
-    (25, 'Catan', 'Partie de 60-90 min (3-4 joueurs). Jeu de plateau, de stratégie et de négociation de ressources.', NULL, 'J10-001', NULL, 'OUI', 'AUCUNE', '2023-11-18', '1995-01-01', '2023-11-18 15:00:00', '2023-11-18 15:00:00', 11, 2, 2, 9, 2);
+    (25, 'Catan', 'Partie de 60-90 min (3-4 joueurs). Jeu de plateau, de stratégie et de négociation de ressources.', NULL, 'J10-001', NULL, 'OUI', '', '2023-11-18', '1995-01-01', '2023-11-18 15:00:00', '2023-11-18 15:00:00', 11, 2, 2, 9, 2);
 
 -- ------------------------------------------------------------
 --  ASSOCIATIONS DOCUMENT <-> GENRE

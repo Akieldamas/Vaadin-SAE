@@ -36,7 +36,12 @@ public class DocumentService {
     public List<Document> getByTitreContainingIgnoreCase(String filter) {
         return documentRepo.findByTitreContainingIgnoreCase(filter);
     }
+
     public List<Document> getByAuteurId(Integer auteurId) {
         return documentRepo.findByAuteurId(auteurId);
-    }   
+    }
+
+    public List<Document> getDocumentsDisponibles() {
+        return documentRepo.findDocumentsDisponibles();
+    }
 }
