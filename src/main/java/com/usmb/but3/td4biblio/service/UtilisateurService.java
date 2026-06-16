@@ -70,5 +70,9 @@ public class UtilisateurService {
 
     public List<Utilisateur> getByNomOrNumeroCarteWithDate(String nom, String numeroCarte) {
         return utilisateurRepo.findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurIdAndDateFinAbonnementBefore(nom, numeroCarte, 2, LocalDate.now());
-     }
+    }
+
+    public List<Utilisateur> getUtilisateursAutorises() {
+        return utilisateurRepo.findUtilisateursAutorises();
+    }
 }
