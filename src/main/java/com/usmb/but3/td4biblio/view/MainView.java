@@ -22,7 +22,7 @@ public final class MainView extends Main implements BeforeEnterObserver {
     }
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        event.forwardTo(LoginView.class);
+        event.forwardTo(AccueilView.class);
     }
     /**
      * Navigates to the main view.

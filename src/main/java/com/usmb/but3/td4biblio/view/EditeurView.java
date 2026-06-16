@@ -55,7 +55,7 @@ public class EditeurView extends VerticalLayout  implements BeforeEnterObserver 
 		this.grid = new Grid<>(Editeur.class);
 		this.filter = new TextField();
 		this.addNewBtn = new Button("Ajouter un editeur", VaadinIcon.PLUS.create());
-
+		
 		// build layout
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
 		add(actions, grid, editor);

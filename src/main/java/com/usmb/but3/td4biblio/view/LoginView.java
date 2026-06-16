@@ -26,7 +26,7 @@ public class LoginView extends VerticalLayout {
             utilisateur = utilisateurRepo.getUtilisateurByLoginAndMotDePasse(username, password);
             // Simple demo authentication
             if (utilisateur!=null) {
-                this.getUI().ifPresent(ui -> ui.navigate("auteur"));
+                this.getUI().ifPresent(ui -> ui.navigate("accueil"));
             } else {
                 loginForm.setError(true);
             }

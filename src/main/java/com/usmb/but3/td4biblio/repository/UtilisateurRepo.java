@@ -1,10 +1,12 @@
 package com.usmb.but3.td4biblio.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDate;
 import org.springframework.data.jpa.repository.Query;
+
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 
 /**
@@ -17,7 +19,6 @@ public interface UtilisateurRepo extends JpaRepository<Utilisateur, Integer> {
     List<Utilisateur> findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurId(String nom, String numeroCarte, Integer id);
     List<Utilisateur> findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurIdAndDateFinAbonnementBefore(String nom, String numeroCarte, Integer id, LocalDate date);
     Utilisateur getUtilisateurByLoginAndMotDePasse(String login, String motDePasse);
-
     @Query("SELECT u FROM Utilisateur u WHERE u.roleUtilisateur.id <> 1")
     List<Utilisateur> findUtilisateursAutorises();
 }

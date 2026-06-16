@@ -3,10 +3,11 @@ package com.usmb.but3.td4biblio.view;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-
+import com.usmb.but3.td4biblio.components.UtilisateurDrawer;
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.service.UtilisateurService;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -22,11 +23,12 @@ import com.vaadin.flow.router.Route;
 
 @Component
 @Scope("prototype")
-@Route(value = "biblio") 
+@Route(value = "biblio")
 @PageTitle("Menu Bibliothécaire")
 @Menu(title = "Menu Bibliothécaire", order = 2, icon = "vaadin:user-check")
+
 public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
-    
+
     private final UtilisateurService utilisateurService;
     final Grid<Utilisateur> grid;
     final TextField nomField;
@@ -34,7 +36,6 @@ public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
     final Checkbox checkDateEchue;
     private final Button addNewBtn;
     final BiblioEditor editor; // Remplacement du Drawer par le nouvel Editeur
-
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
         if (LoginView.utilisateur == null) {
@@ -42,7 +43,11 @@ public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
         }
     }
 
+
     public BiblioView(UtilisateurService utilisateurService, BiblioEditor editor) {
+        if (LoginView.utilisateur==null) {
+            this.getUI().ifPresent(ui -> ui.navigate("/login"));
+        }
         this.utilisateurService = utilisateurService;
         this.editor = editor;
         
@@ -59,7 +64,7 @@ public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
         numCarteField.setPlaceholder("Filtrer par n° carte"); 
         numCarteField.setPrefixComponent(VaadinIcon.SEARCH.create());
         numCarteField.setValueChangeMode(ValueChangeMode.LAZY);
-
+        checkDateEchue.setLabel("Afficher les emprunteurs dont l'abonnement n'est plus valide");        
         HorizontalLayout searchLayout = new HorizontalLayout(nomField, numCarteField, checkDateEchue, addNewBtn);
         searchLayout.setAlignItems(Alignment.CENTER);
         
@@ -110,7 +115,7 @@ public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
                 grid.setItems(utilisateurService.getByNomOrNumeroCarte(nom, numeroCarte));
             }
         } else {
-            if (check != null && check) {   
+            if (check != null && check) {
                 grid.setItems(utilisateurService.getUtilisateursByRoleWithDate(2));
             } else {
                 grid.setItems(utilisateurService.getUtilisateursByRole(2));
