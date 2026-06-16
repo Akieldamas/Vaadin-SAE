@@ -250,8 +250,8 @@ public class ImportExportService {
             for (Document doc : documents) {
                 csvWriter.writeNext(new String[] {
                         doc.getTitre(),
-                        doc.getGenres().stream().map(GenreDocument::getNom).collect(Collectors.joining(",")),
                         doc.getDescription(),
+                        doc.getGenres().stream().map(GenreDocument::getNom).collect(Collectors.joining(",")),
                         doc.getTypeDocument().getNom(),
                         doc.getLienGif(),
                         doc.getCodeEmplacement(),
