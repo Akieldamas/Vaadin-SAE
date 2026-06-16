@@ -31,6 +31,12 @@ import org.springframework.util.StringUtils;
 @PageTitle("Gestion des Documents")
 @Menu(title = "Documents", order = 1, icon = "vaadin:book")
 public class DocumentView extends VerticalLayout implements BeforeEnterObserver {
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur==null) {
+            event.rerouteTo("login"); // redirect to login page
+        }
+}   
 
     private final DocumentService documentService;
     private final ImportExportService importExportService;
@@ -130,6 +136,5 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
             grid.setItems(documentService.getAllDocuments());
         }
     }
-
 
 }
