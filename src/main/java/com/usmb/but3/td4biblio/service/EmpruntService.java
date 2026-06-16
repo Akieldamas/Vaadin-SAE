@@ -71,4 +71,7 @@ public class EmpruntService {
         }
         return empruntRepo.searchEmprunts(filterText);
     }
+    public List<Emprunt> getEmpruntsDeLUtilisateur(Integer utilisateurId) {
+        return empruntRepo.findByUtilisateurId(utilisateurId);
+    }
 }
