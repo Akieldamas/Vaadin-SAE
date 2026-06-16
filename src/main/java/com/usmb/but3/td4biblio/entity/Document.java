@@ -20,30 +20,30 @@ public class Document {
 
     private String titre;
     private String description;
-    
+
     @Column(name = "lien_gif")
     private String lienGif;
-    
+
     @Column(name = "code_emplacement", length = 10)
     private String codeEmplacement;
-    
+
     @Column(name = "code_isbn", length = 13)
     private String codeIsbn;
-    
+
     @Column(name = "code_emprunt")
     private String codeEmprunt;
-    
+
     private String specificite;
-    
+
     @Column(name = "date_acquisition")
     private LocalDate dateAcquisition;
-    
+
     @Column(name = "date_publication")
     private LocalDate datePublication;
-    
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-    
+
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
@@ -61,10 +61,13 @@ public class Document {
 
     // Relation N-N avec GenreDocument
     @ManyToMany
-    @JoinTable(
-        name = "document_genre_document",
-        joinColumns = @JoinColumn(name = "document_id"),
-        inverseJoinColumns = @JoinColumn(name = "genre_document_id")
-    )
+    @JoinTable(name = "document_genre_document", joinColumns = @JoinColumn(name = "document_id"), inverseJoinColumns = @JoinColumn(name = "genre_document_id"))
     private List<GenreDocument> genres;
+    @ManyToOne
+    @JoinColumn(name = "type_id", nullable = false)
+    private TypeDocument typeDocument;
+
+    @ManyToOne
+    @JoinColumn(name = "bibliotheque_id", nullable = false)
+    private Bibliotheque bibliotheque;
 }
