@@ -1,14 +1,15 @@
 package com.usmb.but3.td4biblio.view;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.service.UtilisateurService;
-import com.usmb.but3.td4biblio.components.UtilisateurDrawer;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -18,146 +19,102 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 
+@Component
+@Scope("prototype")
 @Route(value = "biblio") 
 @PageTitle("Menu Bibliothécaire")
 @Menu(title = "Menu Bibliothécaire", order = 2, icon = "vaadin:user-check")
 public class BiblioView extends VerticalLayout implements BeforeEnterObserver {
-    @Override
-    public void beforeEnter(BeforeEnterEvent event) {
-        if (LoginView.utilisateur==null) {
-            event.rerouteTo("login"); // redirect to login page
-        }
-    }
+    
     private final UtilisateurService utilisateurService;
     final Grid<Utilisateur> grid;
+    final TextField nomField;
+    final TextField numCarteField;
+    final Checkbox checkDateEchue;
+    private final Button addNewBtn;
+    final BiblioEditor editor; // Remplacement du Drawer par le nouvel Editeur
 
-    public BiblioView(UtilisateurService utilisateurService) {
-        if (LoginView.utilisateur==null) {
-			this.getUI().ifPresent(ui -> ui.navigate("/login"));
-		} 
-        this.grid = new Grid<Utilisateur>();
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur == null) {
+            event.rerouteTo("login");
+        }
+    }
+
+    public BiblioView(UtilisateurService utilisateurService, BiblioEditor editor) {
         this.utilisateurService = utilisateurService;
-        var searchLayout = new HorizontalLayout();
-        var nomField = new TextField();
-        var numCarteField = new TextField();
-        var checkDateEchue =new Checkbox();
+        this.editor = editor;
+        
+        this.grid = new Grid<>(Utilisateur.class, false);
+        this.nomField = new TextField();
+        this.numCarteField = new TextField();
+        this.checkDateEchue = new Checkbox("Afficher abonnements échus");
+        this.addNewBtn = new Button("Ajouter un emprunteur", VaadinIcon.PLUS.create());
+
         nomField.setPlaceholder("Filtrer par nom"); 
         nomField.setPrefixComponent(VaadinIcon.SEARCH.create());
         nomField.setValueChangeMode(ValueChangeMode.LAZY);
-        numCarteField.setPlaceholder("Filtrer par numero de carte"); 
+        
+        numCarteField.setPlaceholder("Filtrer par n° carte"); 
         numCarteField.setPrefixComponent(VaadinIcon.SEARCH.create());
         numCarteField.setValueChangeMode(ValueChangeMode.LAZY);
-        checkDateEchue.setLabel("Afficher les emprunteurs dont l'abonnement n'est plus valide");
 
+        HorizontalLayout searchLayout = new HorizontalLayout(nomField, numCarteField, checkDateEchue, addNewBtn);
+        searchLayout.setAlignItems(Alignment.CENTER);
         
-        grid.addColumn(Utilisateur::getId) 
-            .setHeader("Id")
-            .setSortProperty("id");
-            
-        // Récupération sécurisée du libellé du rôle depuis l'objet associé
-        grid.addColumn(u -> u.getRoleUtilisateur() != null ? u.getRoleUtilisateur().getLibelle() : "")
-            .setHeader("Rôle");
-            
-        grid.addColumn(Utilisateur::getNom)
-            .setHeader("Nom")
-            .setSortProperty("nom");
-            
-        grid.addColumn(Utilisateur::getPrenom)
-            .setHeader("Prénom")
-            .setSortProperty("prenom");
-            
-        grid.addColumn(Utilisateur::getEmail)
-            .setHeader("Email")
-            .setSortProperty("email");
-            
-        grid.addColumn(Utilisateur::getNumeroCarte)
-            .setHeader("Numéro de carte")
-            .setSortProperty("numeroCarte");
-            
-        grid.addColumn(Utilisateur::getDateFinAbonnement)
-            .setHeader("Date de fin d'abonnement")
-            .setSortProperty("dateFinAbonnement");
+        // Ajout de l'éditeur sous la grille
+        add(searchLayout, grid, editor);
 
-        grid.addColumn(Utilisateur::getDureeEmpruntMax)
-            .setHeader("Durée d'emprunt maximale (semaines)")
-            .setSortProperty("dureeEmpruntMax");
+        // Configuration de la grille
+        grid.addColumn(Utilisateur::getId).setHeader("Id").setSortable(true);
+        grid.addColumn(u -> u.getRoleUtilisateur() != null ? u.getRoleUtilisateur().getLibelle() : "").setHeader("Rôle");
+        grid.addColumn(Utilisateur::getNom).setHeader("Nom").setSortable(true);
+        grid.addColumn(Utilisateur::getPrenom).setHeader("Prénom").setSortable(true);
+        grid.addColumn(Utilisateur::getEmail).setHeader("Email").setSortable(true);
+        grid.addColumn(Utilisateur::getNumeroCarte).setHeader("Numéro de carte").setSortable(true);
+        grid.addColumn(Utilisateur::getDateFinAbonnement).setHeader("Date fin d'abonnement").setSortable(true);
+        grid.addColumn(Utilisateur::getDureeEmpruntMax).setHeader("Durée max (semaines)").setSortable(true);
+        grid.addColumn(Utilisateur::getMaxEmprunts).setHeader("Max emprunts").setSortable(true);
 
-        grid.addColumn(Utilisateur::getMaxEmprunts)
-            .setHeader("Nombre maximum d'emprunts")
-            .setSortProperty("maxEmprunts");
-            
-        var drawer = new UtilisateurDrawer(details -> {
-            var saved = utilisateurService.saveUtilisateur(details);
-            grid.getDataProvider().refreshItem(saved);
-            return saved;
-        });
+        grid.setHeight("400px");
 
-        var deleteButton = new Button("Supprimer", e -> {
-            Utilisateur selected = grid.asSingleSelect().getValue();
-            if (selected != null) {
-                utilisateurService.deleteUtilisateurById(selected.getId());
-                grid.getDataProvider().refreshAll();
-            }
-        });
-
-        deleteButton.addThemeVariants(ButtonVariant.LUMO_ERROR);
-
+        // Listeners pour les filtres
         nomField.addValueChangeListener(e -> listEmprunteurs(e.getValue(), numCarteField.getValue(), checkDateEchue.getValue()));
         numCarteField.addValueChangeListener(e -> listEmprunteurs(nomField.getValue(), e.getValue(), checkDateEchue.getValue()));
         checkDateEchue.addValueChangeListener(e -> listEmprunteurs(nomField.getValue(), numCarteField.getValue(), e.getValue()));
 
-        grid.asSingleSelect().addValueChangeListener(event -> {
-            Utilisateur selected = event.getValue();
-            if (selected != null) {
-                drawer.setUtilisateurDetails(utilisateurService.getUtilisateurById(selected.getId()));
-            } else {
-                drawer.setUtilisateurDetails(null);
-            }
+        // Quand on clique sur une ligne, on ouvre l'éditeur
+        grid.asSingleSelect().addValueChangeListener(e -> {
+            editor.editUtilisateur(e.getValue());
         });
 
-        // Configuration de la mise en page Vaadin
-        setSizeFull(); 
-        setSpacing(false);
-        
-        searchLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
-        searchLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        searchLayout.setWidthFull();
-        searchLayout.add(nomField);
-        searchLayout.add(numCarteField);
-        searchLayout.add(checkDateEchue);
+        // Quand on veut ajouter un nouveau membre
+        addNewBtn.addClickListener(e -> editor.editUtilisateur(new Utilisateur()));
 
-        var listLayout = new VerticalLayout(searchLayout, grid, deleteButton); 
-        listLayout.setSizeFull();
+        // Quand l'éditeur a fini de sauvegarder ou supprimer, on recharge la liste et on le cache
+        editor.setChangeHandler(() -> {
+            editor.setVisible(false);
+            listEmprunteurs(nomField.getValue(), numCarteField.getValue(), checkDateEchue.getValue());
+        });
 
-        var layout = new HorizontalLayout(listLayout, drawer);
-        add(layout);
-        layout.setSizeFull();
-        setFlexShrink(0, drawer);
-
+        // Chargement initial
         listEmprunteurs(null, null, false);
     }
 
     void listEmprunteurs(String nom, String numeroCarte, Boolean check) {
-		if (StringUtils.hasText(nom) || StringUtils.hasText(numeroCarte)) {
-            if (check)
-            {
+        if (StringUtils.hasText(nom) || StringUtils.hasText(numeroCarte)) {
+            if (check != null && check) {
                 grid.setItems(utilisateurService.getByNomOrNumeroCarteWithDate(nom, numeroCarte));
-            }
-            else{
+            } else {
                 grid.setItems(utilisateurService.getByNomOrNumeroCarte(nom, numeroCarte));
             }
-		} else {
-            if (check)
-            {   
+        } else {
+            if (check != null && check) {   
                 grid.setItems(utilisateurService.getUtilisateursByRoleWithDate(2));
-            }
-            else {
+            } else {
                 grid.setItems(utilisateurService.getUtilisateursByRole(2));
             }
-			
-		}
-	}
+        }
+    }
 }

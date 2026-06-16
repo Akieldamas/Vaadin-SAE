@@ -71,4 +71,8 @@ public class UtilisateurService {
         // Permet de filtrer par ID de rôle pour la vue
         return utilisateurRepo.getUtilisateurByLoginAndMotDePasse(login, motDePasse);
     }
+
+    public List<Utilisateur> getUtilisateursAutorises() {
+        return utilisateurRepo.findUtilisateursAutorises();
+    }
 }

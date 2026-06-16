@@ -241,41 +241,40 @@ INSERT INTO utilisateur (
 --  ne peut pas avoir deux emprunts actifs sur le même doc.
 --  Quelques emprunts terminés, quelques en cours, un prolongé.
 -- ------------------------------------------------------------
-INSERT INTO emprunt (utilisateur_id, document_id, debut_emprunt, fin_emprunt, prolongation, fin_prolongation) VALUES
+INSERT INTO emprunt (utilisateur_id, document_id, debut_emprunt, date_fin_prevue, date_rendu, prolongation) VALUES
+    -- Alice : emprunts terminés (date_rendu présente, pas prolongation)
+    (3, 1,  '2024-01-10', '2024-01-24', '2024-01-24', FALSE), -- 1984 (rendu)
+    (3, 9,  '2024-02-01', '2024-02-15', '2024-02-14', FALSE), -- Songs of Cohen (rendu)
 
--- Alice : emprunts terminés
-(3, 1,  '2024-01-10', '2024-01-24', FALSE, NULL),           -- 1984 (rendu)
-(3, 9,  '2024-02-01', '2024-02-15', FALSE, NULL),           -- Songs of Cohen (rendu)
+    -- Alice : emprunt en cours (date_rendu est NULL)
+    (3, 13, '2024-04-20', '2024-05-04', NULL,         FALSE), -- Inception DVD (en cours)
 
--- Alice : emprunt en cours
-(3, 13, '2024-04-20', '2024-05-04', FALSE, NULL),           -- Inception DVD (en cours)
+    -- Lucas : emprunts terminés + un prolongé
+    (4, 3,  '2024-02-10', '2024-02-24', '2024-02-24', FALSE), -- L'Étranger (rendu)
+    (4, 7,  '2024-03-01', '2024-04-12', '2024-04-12', TRUE), -- SDA prolongé (rendu, la date finale inclut la prolongation)
 
--- Lucas : emprunts terminés + prolongé
-(4, 3,  '2024-02-10', '2024-02-24', FALSE, NULL),           -- L'Étranger (rendu)
-(4, 7,  '2024-03-01', '2024-03-29', TRUE,  '2024-04-12'),   -- SDA prolongé (rendu)
+    -- Lucas : emprunt en cours
+    (4, 17, '2024-04-25', '2024-05-09', NULL,         FALSE), -- Interstellar Blu-ray (en cours)
 
--- Lucas : emprunt en cours
-(4, 17, '2024-04-25', '2024-05-09', FALSE, NULL),           -- Interstellar Blu-ray (en cours)
+    -- Sofia : emprunts variés
+    (5, 4,  '2024-01-20', '2024-02-03', '2024-02-02', FALSE), -- La Peste (rendu)
+    (5, 15, '2024-03-15', '2024-03-29', '2024-03-29', FALSE), -- Chihiro DVD (rendu)
+    (5, 11, '2024-04-28', '2024-05-12', NULL,         FALSE), -- BO Interstellar CD (en cours)
 
--- Sofia : emprunts variés
-(5, 4,  '2024-01-20', '2024-02-03', FALSE, NULL),           -- La Peste (rendu)
-(5, 15, '2024-03-15', '2024-03-29', FALSE, NULL),           -- Chihiro DVD (rendu)
-(5, 11, '2024-04-28', '2024-05-12', FALSE, NULL),           -- BO Interstellar CD (en cours)
+    -- Théo
+    (6, 6,  '2024-02-20', '2024-03-06', '2024-03-05', FALSE), -- Ça (rendu)
+    (6, 14, '2024-04-01', '2024-04-15', '2024-04-15', FALSE), -- E.T. DVD (rendu)
+    (6, 18, '2024-04-30', '2024-05-14', NULL,         FALSE), -- Château ambulant BR (en cours)
 
--- Théo
-(6, 6,  '2024-02-20', '2024-03-06', FALSE, NULL),           -- Ça (rendu)
-(6, 14, '2024-04-01', '2024-04-15', FALSE, NULL),           -- E.T. DVD (rendu)
-(6, 18, '2024-04-30', '2024-05-14', FALSE, NULL),           -- Château ambulant BR (en cours)
+    -- Camille
+    (7, 5,  '2024-03-10', '2024-03-24', '2024-03-24', FALSE), -- Main gauche nuit (rendu)
+    (7, 12, '2024-03-25', '2024-04-08', '2024-04-07', FALSE), -- BO Dune CD (rendu)
+    (7, 16, '2024-05-01', '2024-05-15', NULL,         FALSE), -- Dune DVD (en cours)
 
--- Camille
-(7, 5,  '2024-03-10', '2024-03-24', FALSE, NULL),           -- Main gauche nuit (rendu)
-(7, 12, '2024-03-25', '2024-04-08', FALSE, NULL),           -- BO Dune CD (rendu)
-(7, 16, '2024-05-01', '2024-05-15', FALSE, NULL),           -- Dune DVD (en cours)
-
--- Romain
-(8, 8,  '2024-02-05', '2024-02-19', FALSE, NULL),           -- L'Amant (rendu)
-(8, 10, '2024-03-01', '2024-03-22', TRUE,  '2024-04-05'),   -- I'm Your Man prolongé (rendu)
-(8, 19, '2024-04-15', '2024-04-29', FALSE, NULL);           -- Shining BR (rendu)
+    -- Romain
+    (8, 8,  '2024-02-05', '2024-02-19', '2024-02-19', FALSE), -- L'Amant (rendu)
+    (8, 10, '2024-03-01', '2024-04-05', '2024-04-05', TRUE), -- I'm Your Man prolongé (rendu)
+    (8, 19, '2024-04-15', '2024-04-29', '2024-04-28', FALSE); -- Shining BR (rendu)
 
 -- ============================================================
 --  MISE À JOUR DES SÉQUENCES
