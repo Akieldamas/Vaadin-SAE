@@ -38,12 +38,7 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
     final TextField filter;
     private final Button addNewBtn;
     private final Button exportBtn;
-    @Override
-    public void beforeEnter(BeforeEnterEvent event) {
-        if (LoginView.utilisateur==null) {
-            event.rerouteTo("login"); // redirect to login page
-        }
-    }    private final Button downloadTemplateBtn;
+    private final Button downloadTemplateBtn;
 
 
     public DocumentView(DocumentService documentService, DocumentEditor editor, ImportExportService importExportService) {
