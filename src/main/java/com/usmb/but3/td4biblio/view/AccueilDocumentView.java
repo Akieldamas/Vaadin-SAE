@@ -1,5 +1,6 @@
 package com.usmb.but3.td4biblio.view;
 
+import java.util.Comparator;
 import java.util.List;
 
 import com.nimbusds.jose.Header;
@@ -7,8 +8,10 @@ import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 import com.usmb.but3.td4biblio.service.DocumentService;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
@@ -21,6 +24,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.dom.Style.JustifyContent;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.LumoUtility.Margin.Minus.Horizontal;
 
 @PageTitle("AccueilDocument")
@@ -42,12 +46,15 @@ public class AccueilDocumentView extends VerticalLayout {
         title.getStyle().set("font-size", "25px");
         title.getStyle().set("font-weight","bold");
         List<Document> documents = documentService.getAllDocuments();
+        documents.sort(Comparator.comparing(Document::getDateAcquisition).reversed());
         Div container = new Div();
         container.getStyle().set("display", "flex");
         container.getStyle().set("flex-direction", "row");
         for(Document doc : documents){
             Div card = new Div();
+            card.addClassName("card");
             card.getStyle().set("diplay", "flex");
+            card.getStyle().set("position", "relative");
 
             card.getStyle().setWidth("350px");
             card.getStyle().setHeight("200px");
@@ -73,13 +80,21 @@ public class AccueilDocumentView extends VerticalLayout {
             descriptionLivre.getStyle().set("text-align", "justify");
             descriptionLivre.getStyle().set("margin", "5px");
 
-            Paragraph datePublicationLivre = new Paragraph("Livre reçus le : "+doc.getDateAcquisition().toString());   
-            descriptionLivre.getStyle().set("text-align", "justify");
-            descriptionLivre.getStyle().set("margin", "5px");
-            descriptionLivre.getStyle().set("height", "max");
-            descriptionLivre.getStyle().set("text-align", "right");
+            Paragraph datePublicationLivre = new Paragraph("Livre reçu le : "+doc.getDateAcquisition().toString());   
+            datePublicationLivre.getStyle().set("position", "absolute");
+            datePublicationLivre.getStyle().set("right", "0");
+            datePublicationLivre.getStyle().set("bottom", "0");
 
-            card.add(titreLivreDiv, descriptionLivre);
+            datePublicationLivre.getStyle().set("text-align", "justify");
+            datePublicationLivre.getStyle().set("margin", "5px");
+            datePublicationLivre.getStyle().set("height", "max");
+            datePublicationLivre.getStyle().set("text-align", "right");
+
+            card.add(titreLivreDiv, descriptionLivre, datePublicationLivre);
+            card.addClickListener(e -> {
+                this.getUI().ifPresent(ui -> ui.navigate("accueil/document/"+doc.getId()));
+
+            });
             container.add(card);
 
         }
