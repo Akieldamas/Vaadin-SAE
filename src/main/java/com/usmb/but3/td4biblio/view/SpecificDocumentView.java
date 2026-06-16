@@ -39,7 +39,7 @@ public class SpecificDocumentView extends VerticalLayout implements HasUrlParame
             Image gif = new Image(currentDocument.getLienGif(), "gif descriptif");
             div.add(gif);
         }   
-        String descriptionDetaillee = (currentDocument.getNbPages()!=null?"Ce livre comporte "+currentDocument.getNbPages()+" pages.":"")+" Il a été réalisé par "+currentDocument.getAuteur().getNom();
+        String descriptionDetaillee = /*(currentDocument.getNbPages()!=null?"Ce livre comporte "+currentDocument.getNbPages()+" pages.":"")+*/" Il a été réalisé par "+currentDocument.getAuteur().getNom();
         Paragraph descriptionDetailleeP = new Paragraph(descriptionDetaillee);
 
         vLayout.add(title, div,descriptionDetailleeP);
