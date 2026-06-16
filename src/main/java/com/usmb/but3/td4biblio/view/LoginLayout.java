@@ -14,10 +14,10 @@ import com.vaadin.flow.server.menu.MenuEntry;
 
 import static com.vaadin.flow.theme.lumo.LumoUtility.*;
 
-@Layout(value="/login")
-public final class LoginLayout extends AppLayout {
+@Layout(value="/register")
+public final class RegisterLayout extends AppLayout {
 
-    LoginLayout() {
+    RegisterLayout() {
     }
 
 
