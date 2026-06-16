@@ -2,6 +2,7 @@ package com.usmb.but3.td4biblio.view;
 
 
 import com.usmb.but3.td4biblio.entity.Document;
+import com.usmb.but3.td4biblio.entity.GenreDocument;
 import com.usmb.but3.td4biblio.service.DocumentService;
 import com.usmb.but3.td4biblio.service.ImportExportService;
 import com.vaadin.flow.component.button.Button;
@@ -92,6 +93,19 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
             
         grid.addColumn(d -> d.getEditeur() != null ? d.getEditeur().getNom() : "")
             .setHeader("Éditeur");
+
+        grid.addColumn(document -> {
+            StringBuilder genres = new StringBuilder();
+        
+            for (GenreDocument g : document.getGenres()) {
+                if (genres.length() > 0) {
+                    genres.append(", ");
+                }
+                genres.append(g.getNom());
+            }
+        
+            return genres.toString();
+        }).setHeader("Genre(s)");
             
         grid.addColumn(Document::getCodeIsbn).setHeader("ISBN");
         grid.addColumn(Document::getDatePublication).setHeader("Publication");
