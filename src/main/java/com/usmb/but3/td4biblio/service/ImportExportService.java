@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.opencsv.CSVWriter;
 import com.usmb.but3.td4biblio.entity.Auteur;
+import com.usmb.but3.td4biblio.entity.Bibliotheque;
 import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.entity.Editeur;
 import com.usmb.but3.td4biblio.entity.Format;
@@ -85,7 +86,7 @@ public class ImportExportService {
         return writer.toString();
     }
 
-    public Pair<Boolean, String> ImportDocumentsFromCSV(List<Map<String, String>> rows) {
+    public Pair<Boolean, String> ImportDocumentsFromCSV(List<Map<String, String>> rows, Bibliotheque bibliotheque) {
         List<Document> documentsAajouter = new ArrayList<Document>();
 
         System.out.print(rows);
@@ -101,7 +102,7 @@ public class ImportExportService {
             List<GenreDocument> genreList = new ArrayList<>();
 
             if (genresStr == null || genresStr.isEmpty()) 
-                return Pair.of(false, "Le document: " + row.get("titre" + " n'a pas de genres associés."));
+                return Pair.of(false, "Le document: " + row.get("titre") + " n'a pas de genres associés.");
             
             for (String g : genresStr.split(",")) {
                 GenreDocument genre = genreDocumentService.getGenreByNom(g.trim());
@@ -212,6 +213,8 @@ public class ImportExportService {
 
                 newDocument.setFormat(format);
 
+                newDocument.setBibliotheque(bibliotheque);
+
                 documentsAajouter.add(newDocument);
             } else {
                 return Pair.of(false, "Les dimensions ou poids n'ont pas été indiqués.");
@@ -247,8 +250,8 @@ public class ImportExportService {
             for (Document doc : documents) {
                 csvWriter.writeNext(new String[] {
                         doc.getTitre(),
-                        doc.getDescription(),
                         doc.getGenres().stream().map(GenreDocument::getNom).collect(Collectors.joining(",")),
+                        doc.getDescription(),
                         doc.getTypeDocument().getNom(),
                         doc.getLienGif(),
                         doc.getCodeEmplacement(),

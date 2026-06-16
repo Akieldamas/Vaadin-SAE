@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Scope;
 import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.service.AuteurService;
 import com.usmb.but3.td4biblio.service.ImportExportService;
+import com.usmb.but3.td4biblio.service.NotificationService;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.Text;
@@ -132,25 +133,13 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
                 Boolean result = returned.getLeft();
                 String message = returned.getRight();
         
-                UI ui = UI.getCurrent();
-                ui.access(() -> {
-                    Notification notification = new Notification();
-                    notification.setDuration(5000);
-                    notification.setPosition(Notification.Position.BOTTOM_START);
-                    notification.addThemeVariants(
-                        result ? NotificationVariant.LUMO_SUCCESS : NotificationVariant.LUMO_ERROR
-                    );
-                    Icon icon = result ? VaadinIcon.CHECK_CIRCLE.create() : VaadinIcon.EXCLAMATION_CIRCLE.create();
-                    HorizontalLayout layout = new HorizontalLayout(icon, new Text(message));
-                    layout.setAlignItems(FlexComponent.Alignment.CENTER);
-                    notification.add(layout);
-                    notification.open();
-                    if (result) 
-                    {
-                        setVisible(false);;
-                        changeHandler.onChange();
-                    }
-                });
+                if (result) {
+                    NotificationService.showSuccess(message);
+                    setVisible(false);;
+                    changeHandler.onChange();
+                }
+				else
+					NotificationService.showError(message);
         
             } catch (Exception e) {
                 e.printStackTrace();

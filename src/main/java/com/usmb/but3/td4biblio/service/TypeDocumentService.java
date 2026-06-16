@@ -34,7 +34,7 @@ public class TypeDocumentService {
         return typeDocumentRepo.save(typeDocument);
     }
 
-    public TypeDocument updaTypeDocument(TypeDocument typeDocument) {
+    public TypeDocument updateTypeDocument(TypeDocument typeDocument) {
         return typeDocumentRepo.save(typeDocument);
     }
 

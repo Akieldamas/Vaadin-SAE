@@ -13,14 +13,17 @@ import java.util.Map;
 import org.apache.commons.lang3.tuple.Pair;
 
 import com.usmb.but3.td4biblio.entity.Auteur;
+import com.usmb.but3.td4biblio.entity.Bibliotheque;
 import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.entity.Editeur;
 import com.usmb.but3.td4biblio.entity.Format;
 import com.usmb.but3.td4biblio.service.AuteurService;
+import com.usmb.but3.td4biblio.service.BibliothequeService;
 import com.usmb.but3.td4biblio.service.DocumentService;
 import com.usmb.but3.td4biblio.service.EditeurService;
 import com.usmb.but3.td4biblio.service.FormatService;
 import com.usmb.but3.td4biblio.service.ImportExportService;
+import com.usmb.but3.td4biblio.service.NotificationService;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.Text;
@@ -57,6 +60,7 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     private final EditeurService editeurService;
     private final FormatService formatService;
     private final ImportExportService importExportService;
+    private final BibliothequeService bibliothequeService;
 
     private Document document;
 
@@ -76,6 +80,7 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     ComboBox<Auteur> auteur = new ComboBox<>("Auteur");
     ComboBox<Editeur> editeur = new ComboBox<>("Éditeur");
     ComboBox<Format> format = new ComboBox<>("Format");
+    ComboBox<Bibliotheque> bibliothequeCombo = new ComboBox<>("Bibliothèque");
 
     /* Boutons d'action */
     Button save = new Button("Sauvegarder", VaadinIcon.CHECK.create());
@@ -87,17 +92,22 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     private ChangeHandler changeHandler;
 
     public DocumentEditor(DocumentService documentService, AuteurService auteurService, 
-                          EditeurService editeurService, FormatService formatService, ImportExportService importExportService) {
+                          EditeurService editeurService, FormatService formatService, ImportExportService importExportService, BibliothequeService bibliothequeService) {
         this.documentService = documentService;
         this.auteurService = auteurService;
         this.editeurService = editeurService;
         this.formatService = formatService;
         this.importExportService = importExportService;
+        this.bibliothequeService = bibliothequeService;
 
         // Configuration des ComboBox
         auteur.setItemLabelGenerator(Auteur::getDesc);
         editeur.setItemLabelGenerator(Editeur::getNom);
         format.setItemLabelGenerator(f -> f.getLongueur() + "x" + f.getLargeur() + " (" + f.getPoids() + "g)");
+        
+        bibliothequeCombo.setItems(bibliothequeService.getAllBibliotheques());
+        bibliothequeCombo.setItemLabelGenerator(Bibliotheque::getNom);
+        bibliothequeCombo.setRequiredIndicatorVisible(true);
 
         upload.setAutoUpload(true);
         upload.setAcceptedFileTypes(".csv");
@@ -109,6 +119,13 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
         upload.setWidth("auto"); // don't let it stretch
         
         upload.addSucceededListener(event -> {
+            Bibliotheque bibliotheque = bibliothequeCombo.getValue();
+
+            if (bibliotheque == null) {
+                NotificationService.showError("Bibliothèque manquante pour importer les documents.");
+                return;
+            }
+
             try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(buffer.getInputStream(), Charset.forName("Windows-1252")))) {
                 
@@ -127,30 +144,17 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
                     rows.add(row);
                 }
         
-                Pair<Boolean, String> returned = importExportService.ImportDocumentsFromCSV(rows);
+                Pair<Boolean, String> returned = importExportService.ImportDocumentsFromCSV(rows, bibliothequeCombo.getValue());
                 Boolean result = returned.getLeft();
                 String message = returned.getRight();
-        
-                UI ui = UI.getCurrent();
-                ui.access(() -> {
-                    Notification notification = new Notification();
-                    notification.setDuration(5000);
-                    notification.setPosition(Notification.Position.BOTTOM_START);
-                    notification.addThemeVariants(
-                        result ? NotificationVariant.LUMO_SUCCESS : NotificationVariant.LUMO_ERROR
-                    );
-                    Icon icon = result ? VaadinIcon.CHECK_CIRCLE.create() : VaadinIcon.EXCLAMATION_CIRCLE.create();
-                    HorizontalLayout layout = new HorizontalLayout(icon, new Text(message));
-                    layout.setAlignItems(FlexComponent.Alignment.CENTER);
-                    notification.add(layout);
-                    notification.open();
-                    if (result) 
-                    {
-                        setVisible(false);;
-                        changeHandler.onChange();
-                    }
-                });
-        
+                
+                if (result) {
+                    NotificationService.showSuccess(message);
+                    setVisible(false);;
+                    changeHandler.onChange();
+                }
+                else
+                    NotificationService.showError(message);        
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -162,7 +166,7 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
 
         HorizontalLayout row3 = new HorizontalLayout(codeIsbn, nbPages, datePublication, dateAcquisition);
 
-        HorizontalLayout row4 = new HorizontalLayout(save, cancel, delete, upload);
+        HorizontalLayout row4 = new HorizontalLayout(save, cancel, delete, bibliothequeCombo, upload);
 
         add(row1, row2, row3, row4);
         
