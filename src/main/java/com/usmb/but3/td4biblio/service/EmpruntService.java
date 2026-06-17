@@ -19,7 +19,7 @@ public class EmpruntService {
         return empruntRepo.findAll();
     }
 
-    public Emprunt getEmpruntById(Integer id) {
+    public Emprunt getEmpruntById(EmpruntId id) {
         return empruntRepo.findById(id).orElse(null);
     }
 

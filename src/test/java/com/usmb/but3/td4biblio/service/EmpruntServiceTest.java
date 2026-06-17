@@ -15,22 +15,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Seed emprunts (utilisateur_id, document_id) :
- *  Alice (3) :   doc 1 (rendu 24/01),  doc 9  (rendu 14/02),  doc 13 (EN COURS)
- *  Lucas (4) :   doc 3 (rendu 24/02),  doc 7  (rendu 12/04 prolongé), doc 17 (EN COURS)
- *  Sofia (5) :   doc 4 (rendu 02/02),  doc 15 (rendu 29/03),  doc 11 (EN COURS)
- *  Théo  (6) :   doc 6 (rendu 05/03),  doc 14 (rendu 15/04),  doc 18 (EN COURS)
- *  Camille(7):   doc 5 (rendu 24/03),  doc 12 (rendu 07/04),  doc 16 (EN COURS)
- *  Romain (8) :  doc 8 (rendu 19/02),  doc 10 (rendu 05/04 prolongé), doc 19 (rendu 28/04)
- *
- *  Total : 18 emprunts — 5 en cours, 13 terminés (date_rendu non null)
- *  Prolongations : (4,7) et (8,10)
- *
- *  La colonne fin_emprunt dans l'entité est mappée ici à finEmprunt dans le seed
- *  comme "date_fin_prevue" dans le SQL, et finProlongation à "date_rendu".
- *  ⚠ Adaptez selon votre mapping exact Entité<->BDD.
- */
 @SpringBootTest
 public class EmpruntServiceTest {
 
@@ -42,10 +26,6 @@ public class EmpruntServiceTest {
 
     @Autowired
     private UtilisateurService utilisateurService;
-
-    // =========================================================================
-    // getAllEmprunts
-    // =========================================================================
 
     @Test
     void testGetAllEmprunts_retourne18Emprunts() {
@@ -70,8 +50,7 @@ public class EmpruntServiceTest {
     // =========================================================================
 
     @Test
-    void testGetEmpruntById_Alice_doc1_existeDansLeSeed() {
-        // Alice(3) a emprunté doc 1 (1984)
+    void testGetEmpruntById_Alice_doc1() {
         EmpruntId id = new EmpruntId(3, 1);
         Emprunt e = empruntService.getEmpruntById(id);
         assertThat(e).isNotNull();

@@ -37,7 +37,6 @@ public class AuteurControllerTest {
         return "http://localhost:" + port + "/biblio/auteur" + path;
     }
 
-    /** Helper : GET une liste typée avec status + body. */
     private ResponseEntity<List<Auteur>> getAuteurs(String path) {
         return restTemplate.exchange(
                 url(path),
@@ -46,14 +45,10 @@ public class AuteurControllerTest {
                 new ParameterizedTypeReference<List<Auteur>>() {});
     }
 
-    /** Helper : GET un seul auteur avec status + body. */
     private ResponseEntity<Auteur> getAuteur(String path) {
         return restTemplate.getForEntity(url(path), Auteur.class);
     }
 
-    // =========================================================================
-    // GET /biblio/auteur/
-    // =========================================================================
 
     @Test
     void testGetAllAuteurs_retourne200() {
@@ -206,10 +201,6 @@ public class AuteurControllerTest {
         Auteur updated = getAuteur("/" + saved.getId()).getBody();
         assertThat(updated.getDateDeces()).isEqualTo(LocalDate.of(1970, 6, 15));
     }
-
-    // =========================================================================
-    // DELETE /biblio/auteur/{id}
-    // =========================================================================
 
     @Test
     @Transactional

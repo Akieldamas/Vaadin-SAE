@@ -25,13 +25,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Seed : 18 emprunts.
- *  En cours : (3,13) (4,17) (5,11) (6,18) (7,16)
- *  Prolongés : (4,7) et (8,10)
- *  Alice(3) a 3 emprunts, chacun des 6 emprunteurs en a 3.
- *  Doc 1 (1984) emprunté uniquement par Alice.
- */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class EmpruntControllerTest {
 
