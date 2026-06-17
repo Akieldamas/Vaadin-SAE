@@ -18,6 +18,8 @@ import com.usmb.but3.td4biblio.entity.TypeAuteur;
 import com.usmb.but3.td4biblio.service.AuteurService;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -220,5 +222,24 @@ public class AuteurControllerTest {
         a.setDateDeces(deces);
         a.setTypes(new ArrayList<>());
         return a;
+    }
+    @Test
+    private void auteurMethods() {
+        Auteur a1 = new Auteur();
+        a1.setId(1);
+        a1.setNom("Hugo");
+        a1.setPrenom("Victor");
+        a1.setDateNaissance(LocalDate.of(1802, 2, 26));
+
+        Auteur a2 = new Auteur();
+        a2.setId(1);
+        a2.setNom("Hugo");
+        a2.setPrenom("Victor");
+        a2.setDateNaissance(LocalDate.of(1802, 2, 26));
+
+        assertTrue(a1.equals(a2));
+        assertEquals(a1.hashCode(), a2.hashCode());
+
+        a1.getDesc();
     }
 }

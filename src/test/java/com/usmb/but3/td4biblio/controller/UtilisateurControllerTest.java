@@ -262,4 +262,22 @@
 //         u.setRoleUtilisateur(roleUtilisateurService.getRoleById(2));
 //         return u;
 //     }
+
+    // @Test
+    // private void testEqualsAndHashCode() {
+    //     Utilisateur u1 = new Utilisateur();
+    //     u1.setId(1L);
+
+    //     Utilisateur u2 = new Utilisateur();
+    //     u2.setId(1L);
+
+    //     Utilisateur u3 = new Utilisateur();
+    //     u3.setId(2L);
+
+    //     assertEquals(u1, u2);
+    //     assertNotEquals(u1, u3);
+    //     assertNotEquals(u1, null);
+
+    //     assertEquals(u1.hashCode(), u2.hashCode());
+    // }
 // }
