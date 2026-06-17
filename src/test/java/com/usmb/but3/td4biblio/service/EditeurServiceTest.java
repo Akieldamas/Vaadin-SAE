@@ -84,18 +84,18 @@ public class EditeurServiceTest {
 
     @Test
     void testGetByNomContainingIgnoreCase() {
-        List<Editeur> editeurs = editeurService.getByNomContainingIgnoreCase("gall");
+        List<Editeur> editeurs = editeurService.getEditeursByNomContainingIgnoreCase("gall");
         assertThat(editeurs).hasSize(1);
         assertThat(editeurs.get(0).getNom()).isEqualTo("Gallimard");
     }
 
     @Test
     void testGetByNomContainingIgnoreCase_inexistantRetourneVide() {
-        assertThat(editeurService.getByNomContainingIgnoreCase("ZZZINEXISTANT")).isEmpty();
+        assertThat(editeurService.getEditeursByNomContainingIgnoreCase("ZZZINEXISTANT")).isEmpty();
     }
     @Test
     void testGetEditeursByNom() {
-        List<Editeur> editeurs = editeurService.getAuteursByNomStartWithIgnoreCase("Ga");
+        List<Editeur> editeurs = editeurService.getEditeursByNomContainingIgnoreCase("Ga");
         assertThat(editeurs).isNotEmpty();
         assertThat(editeurs).allSatisfy(e ->
                 assertThat(e.getNom()).startsWithIgnoringCase("Ga"));
@@ -103,7 +103,7 @@ public class EditeurServiceTest {
 
     @Test
     void testGetEditeursByNomStartWith_So_trouveSony() {
-        List<Editeur> editeurs = editeurService.getAuteursByNomStartWithIgnoreCase("So");
+        List<Editeur> editeurs = editeurService.getEditeursByNomContainingIgnoreCase("So");
         assertThat(editeurs).isNotEmpty();
         assertThat(editeurs).anySatisfy(e -> assertThat(e.getNom()).contains("Sony"));
     }

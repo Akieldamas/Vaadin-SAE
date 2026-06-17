@@ -38,10 +38,6 @@ public class FormatServiceTest {
         assertThat(formatService.getFormatById(99999)).isNull();
     }
 
-    // =========================================================================
-    // findByDimensions
-    // =========================================================================
-
     @Test
     void testFindByDimensions_livrePoche_retourneFormat1() {
         List<Format> formats = formatService.findByDimensions(
@@ -57,7 +53,6 @@ public class FormatServiceTest {
     }
 
     @Test
-    @Transactional
     void testSaveFormat() {
         Format f = buildFormat("21.00", "14.80", "350.00");
         Format saved = formatService.saveFormat(f);
@@ -65,7 +60,6 @@ public class FormatServiceTest {
     }
 
     @Test
-    @Transactional
     void testUpdateFormat() {
         Format f = buildFormat("10.00", "7.00", "200.00");
         Format saved = formatService.saveFormat(f);
@@ -76,7 +70,6 @@ public class FormatServiceTest {
     }
 
     @Test
-    @Transactional
     void testDeleteFormatById() {
         int id = formatService.saveFormat(buildFormat("5.00", "3.00", "50.00")).getId();
         formatService.deleteFormatById(id);

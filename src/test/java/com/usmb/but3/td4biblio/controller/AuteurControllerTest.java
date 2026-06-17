@@ -41,6 +41,10 @@ public class AuteurControllerTest {
 
     private ResponseEntity<List<Auteur>> getAuteurs(String path) {
         System.out.println(url(path));
+        System.out.println(url(path));
+        // add this:
+        ResponseEntity<String> raw = restTemplate.getForEntity(url(path), String.class);
+        System.out.println("RAW JSON: " + raw.getBody());
         return restTemplate.exchange(
                 url(path),
                 HttpMethod.GET,
