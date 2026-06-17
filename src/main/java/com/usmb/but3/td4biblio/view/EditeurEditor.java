@@ -65,6 +65,7 @@ public class EditeurEditor extends VerticalLayout implements KeyNotifier {
 		setSpacing(true);
 
 		save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		cancel.addThemeVariants(ButtonVariant.LUMO_WARNING);
 		delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
 		addKeyPressListener(Key.ENTER, e -> save());
@@ -72,7 +73,7 @@ public class EditeurEditor extends VerticalLayout implements KeyNotifier {
 		// wire action buttons to save, delete and reset
 		save.addClickListener(e -> save());
 		delete.addClickListener(e -> delete());
-		cancel.addClickListener(e -> editEditeur(Editeur));
+		cancel.addClickListener(e -> setVisible(false));
 
 
 		setVisible(false);

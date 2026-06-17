@@ -83,7 +83,7 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
         addNewBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         exportBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         downloadTemplateBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
-        grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_NO_BORDER, GridVariant.LUMO_COMPACT);
+        grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
         // add button to download a template   
 
         exportBtn.addClickListener(e -> {

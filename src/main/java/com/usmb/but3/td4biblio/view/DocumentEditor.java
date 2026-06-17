@@ -35,9 +35,11 @@ import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.combobox.MultiSelectComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -99,7 +101,7 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     Button save = new Button("Sauvegarder", VaadinIcon.CHECK.create());
     Button cancel = new Button("Annuler");
     Button delete = new Button("Supprimer", VaadinIcon.TRASH.create());
-    HorizontalLayout actions = new HorizontalLayout(save, cancel, delete, uploadBtn);    
+    HorizontalLayout actions = new HorizontalLayout(save, cancel, delete, uploadBtn); 
 
     Binder<Document> binder = new Binder<>(Document.class);
     private ChangeHandler changeHandler;
@@ -136,6 +138,10 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
         upload.setAcceptedFileTypes(".csv");
 
         upload.setUploadButton(uploadBtn);
+
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		cancel.addThemeVariants(ButtonVariant.LUMO_WARNING);
+        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
         
         // Keep it compact — no drop zone text
         upload.setDropLabel(null);

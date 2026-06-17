@@ -4,7 +4,9 @@ import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.service.AuteurService;
 import com.usmb.but3.td4biblio.service.ImportExportService;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -66,6 +68,10 @@ public class AuteurView extends VerticalLayout implements BeforeEnterObserver{
 		this.addNewBtn = new Button("Ajouter un auteur", VaadinIcon.PLUS.create());
         this.exportBtn = new Button("Export CSV", VaadinIcon.DOWNLOAD.create());  
         this.downloadTemplateBtn = new Button("Télécharger la Template Import CSV", VaadinIcon.FILE.create());
+		addNewBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        exportBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        downloadTemplateBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
 
         exportBtn.addClickListener(e -> {
             String csvContent = importExportService.ExportAuteursToCSV();

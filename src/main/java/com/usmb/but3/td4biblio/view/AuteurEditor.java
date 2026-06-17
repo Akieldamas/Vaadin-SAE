@@ -106,6 +106,10 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
         upload.setAcceptedFileTypes(".csv");
 
         upload.setUploadButton(uploadBtn);
+
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        cancel.addThemeVariants(ButtonVariant.LUMO_ERROR);
+        uploadBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         
         upload.setDropLabel(null);
         upload.setWidth("auto"); // don't let it stretch
@@ -155,6 +159,7 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		setSpacing(true);
 
 		save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		cancel.addThemeVariants(ButtonVariant.LUMO_WARNING);
 		delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
 		addKeyPressListener(Key.ENTER, e -> save());
@@ -162,7 +167,7 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		// wire action buttons to save, delete and reset
 		save.addClickListener(e -> save());
 		delete.addClickListener(e -> delete());
-		cancel.addClickListener(e -> editAuteur(auteur));
+		cancel.addClickListener(e -> setVisible(false));
 		binder.forField(prenom)
 		.asRequired()
 		.bind(Auteur::getPrenom, Auteur::setPrenom);
@@ -214,7 +219,6 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		else {
 			auteur = a;
 		}
-		cancel.setVisible(persisted);
 
 		// Bind auteur properties to similarly named fields
 		// Could also use annotation or "manual binding" or programmatically
