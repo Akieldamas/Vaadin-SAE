@@ -74,4 +74,5 @@ public class EmpruntService {
     public List<Emprunt> getEmpruntsDeLUtilisateur(Integer utilisateurId) {
         return empruntRepo.findByUtilisateurId(utilisateurId);
     }
+
 }

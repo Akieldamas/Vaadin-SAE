@@ -18,12 +18,15 @@ import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 
-public class HeaderView extends HorizontalLayout {
-    public HeaderView() {
+public class HeaderAccueilView extends HorizontalLayout {
+    public HeaderAccueilView() {
         setWidthFull();  // full width of the page
         setPadding(true);
         setSpacing(true);
         HorizontalLayout layout = new HorizontalLayout();
+        HorizontalLayout center = new HorizontalLayout();
+        HorizontalLayout end = new HorizontalLayout();
+
         if(LoginView.utilisateur!=null){
             // App title / logo
             H1 title = new H1(LoginView.utilisateur.getNom()+" "+LoginView.utilisateur.getPrenom());
@@ -40,27 +43,43 @@ public class HeaderView extends HorizontalLayout {
             header.addClassNames(Display.FLEX, Padding.MEDIUM, Gap.MEDIUM, AlignItems.CENTER);
             layout.add(header);
         }
+        Button accueil = new Button("Accueil", e -> {
+            this.getUI().ifPresent(ui -> ui.navigate("/accueil"));
 
+        });
 
+        Button document = new Button("Documents", e -> {
+            this.getUI().ifPresent(ui -> ui.navigate("/accueil/document"));
 
+        });
+        center.add(accueil, document);
         // Login / Logout button
+        Button logoutButton=null;
         if(LoginView.utilisateur==null){
             Button loginButton = new Button("Login", e -> getUI().ifPresent(ui -> ui.navigate("login")));
             loginButton.getStyle().set("align", "right");
 
-            layout.addToEnd(loginButton);
+            end.addToEnd(loginButton);
             layout.setWidthFull();  // full width of the page
         } else {
-            Button logoutButton = new Button("Logout", e -> {
+            logoutButton = new Button("Logout", e -> {
                 LoginView.utilisateur=null;
                 UI.getCurrent().getPage().reload();
 
             });
+            Button application = new Button("BIBLIOVaadin", e -> {
+                this.getUI().ifPresent(ui -> ui.navigate("/auteur"));
 
-            layout.addToEnd(logoutButton);
+            });
+            end.addToEnd(logoutButton);
+            center.add(application);
             layout.setWidthFull();  // full width of the page
 
         }
+        center.setWidth("70vw");
+        center.setJustifyContentMode(JustifyContentMode.CENTER);
+        layout.addToEnd(center, end);
+
         add(layout);
     }
 }

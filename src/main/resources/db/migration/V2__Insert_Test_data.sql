@@ -29,7 +29,7 @@ INSERT INTO type_document (id, nom) VALUES
 --  BIBLIOTEQUES
 -- ------------------------------------------------------------
 INSERT INTO bibliotheque (id, nom, adresse, horaire_ouverture, horaire_fermeture) VALUES
-    ('1', 'Médiathèque', 'La Turbine Place Chorus  Cran-Gevrier', '8:00', '18:00'),
+    ('1', 'Médiathèque La Turbine', 'La Turbine Place Chorus  Cran-Gevrier', '8:00', '18:00'),
     ('2', 'Médiathèque Bonlieu', '1 Rue Jean Jaurès', '9:00', '19:00');
 
 -- ------------------------------------------------------------
@@ -92,7 +92,7 @@ INSERT INTO editeur (id, nom, adresse, lien_site_web, lien_wikipedia) VALUES
 INSERT INTO auteur (id, nom, prenom, nationalite, date_naissance, date_deces, ville_naissance, lien_wikipedia) VALUES
     (1,  'Orwell',       'George',       'Britannique',  '1903-06-25', '1950-01-21', 'Motihari',        'https://fr.wikipedia.org/wiki/George_Orwell'),
     (2,  'Camus',        'Albert',       'Française',    '1913-11-07', '1960-01-04', 'Dréan',           'https://fr.wikipedia.org/wiki/Albert_Camus'),
-    (3,  'Le Guin',      'Ursula K.',    'Américaine',   '1929-10-21', '2018-01-22', 'Berkeley',        'https://fr.wikipedia.org/wiki/Ursula_K._Le_Guin'),
+    (3,  'Le-Guin',      'Ursula-K.',    'Américaine',   '1929-10-21', '2018-01-22', 'Berkeley',        'https://fr.wikipedia.org/wiki/Ursula_K._Le_Guin'),
     (4,  'King',         'Stephen',      'Américaine',   '1947-09-21', NULL,         'Portland',        'https://fr.wikipedia.org/wiki/Stephen_King'),
     (5,  'Nolan',        'Christopher', 'Britannique',  '1970-07-30', NULL,         'Londres',         'https://fr.wikipedia.org/wiki/Christopher_Nolan'),
     (6,  'Spielberg',    'Steven',       'Américaine',   '1946-12-18', NULL,         'Cincinnati',      'https://fr.wikipedia.org/wiki/Steven_Spielberg'),
