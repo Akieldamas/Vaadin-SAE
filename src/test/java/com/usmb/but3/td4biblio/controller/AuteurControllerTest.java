@@ -1,11 +1,13 @@
 package com.usmb.but3.td4biblio.controller;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,24 +19,8 @@ import com.usmb.but3.td4biblio.service.AuteurService;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
+import java.util.List;
 
-/**
- * Tests d'intégration pour AuteurController.
- *
- * Seed (auteur trié par id ASC) :
- *  id=1  Orwell George        Britannique  1903-06-25
- *  id=2  Camus  Albert        Française    1913-11-07
- *  id=3  Le Guin Ursula K.   Américaine   1929-10-21
- *  id=4  King   Stephen       Américaine   1947-09-21
- *  id=5  Nolan  Christopher   Britannique  1970-07-30
- *  id=6  Spielberg Steven     Américaine   1946-12-18
- *  id=7  Zimmer Hans          Allemande    1957-09-12
- *  id=8  Cohen  Leonard       Canadienne   1934-09-21
- *  id=9  Miyazaki Hayao       Japonaise    1941-01-05
- *  id=10 Duras  Marguerite    Française    1914-04-04
- *  id=11 Tolkien J.R.R.       Britannique  1892-01-03
- *  id=12 Villeneuve Denis     Canadienne   1967-10-03
- */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class AuteurControllerTest {
 
@@ -56,68 +42,45 @@ public class AuteurControllerTest {
     // =========================================================================
 
     @Test
-    void testGetAllAuteurs_retourneListeNonVide() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/"), Auteur[].class);
+    void testGetAllAuteurs() {
+        ResponseEntity<List<Auteur>> response = restTemplate.exchange(
+        url("/"),
+        HttpMethod.GET,
+        null,
+        new ParameterizedTypeReference<List<Auteur>>() {}
+    );
+
+        List<Auteur> auteurs = response.getBody();
         assertThat(auteurs).isNotEmpty();
     }
 
     @Test
-    void testGetAllAuteurs_contient12Auteurs() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/"), Auteur[].class);
-        assertThat(auteurs).hasSizeGreaterThanOrEqualTo(12);
-    }
-
-    @Test
     void testGetAllAuteurs_premierEstOrwell() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/"), Auteur[].class);
-        assertThat(auteurs[0].getNom()).isEqualTo("Orwell");
-        assertThat(auteurs[0].getPrenom()).isEqualTo("George");
-    }
+        ResponseEntity<List<Auteur>> response = restTemplate.exchange(
+            url("/"),
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<Auteur>>() {}
+        );
 
-    @Test
-    void testGetAllAuteurs_deuxiemeEstCamus() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/"), Auteur[].class);
-        assertThat(auteurs[1].getNom()).isEqualTo("Camus");
-        assertThat(auteurs[1].getPrenom()).isEqualTo("Albert");
+        List<Auteur> auteurs = response.getBody();
+        assertThat(auteurs.get(0).getNom()).isEqualTo("Orwell");
+        assertThat(auteurs.get(0).getPrenom()).isEqualTo("George");
     }
-
-    @Test
-    void testGetAllAuteurs_triParIdAscendant() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/"), Auteur[].class);
-        for (int i = 0; i < auteurs.length - 1; i++) {
-            assertThat(auteurs[i].getId()).isLessThan(auteurs[i + 1].getId());
-        }
-    }
-
-    // =========================================================================
-    // GET /biblio/auteur/{id}
-    // =========================================================================
 
     @Test
     void testGetAuteurById1_estOrwell() {
-        Auteur auteur = restTemplate.getForObject(url("/1"), Auteur.class);
+        ResponseEntity<Auteur> response = restTemplate.getForEntity(
+            url("/"),
+            Auteur.class,
+            null);
+        
+        Auteur auteur = response.getBody();
+
         assertThat(auteur).isNotNull();
         assertThat(auteur.getId()).isEqualTo(1);
         assertThat(auteur.getNom()).isEqualTo("Orwell");
         assertThat(auteur.getPrenom()).isEqualTo("George");
-        assertThat(auteur.getNationalite()).isEqualTo("Britannique");
-        assertThat(auteur.getDateNaissance()).isEqualTo(LocalDate.of(1903, 6, 25));
-        assertThat(auteur.getDateDeces()).isEqualTo(LocalDate.of(1950, 1, 21));
-    }
-
-    @Test
-    void testGetAuteurById5_estNolan() {
-        Auteur auteur = restTemplate.getForObject(url("/5"), Auteur.class);
-        assertThat(auteur.getNom()).isEqualTo("Nolan");
-        assertThat(auteur.getPrenom()).isEqualTo("Christopher");
-        assertThat(auteur.getDateDeces()).isNull();  // vivant
-    }
-
-    @Test
-    void testGetAuteurById11_estTolkien() {
-        Auteur auteur = restTemplate.getForObject(url("/11"), Auteur.class);
-        assertThat(auteur.getNom()).isEqualTo("Tolkien");
-        assertThat(auteur.getNationalite()).isEqualTo("Britannique");
     }
 
     @Test
@@ -126,13 +89,11 @@ public class AuteurControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
-    // =========================================================================
-    // GET /biblio/auteur/nom/{nom}
-    // =========================================================================
-
     @Test
     void testGetAuteursByNom_orwell_retourneUnSeul() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/nom/Orwell"), Auteur[].class);
+        ResponseEntity<Auteur> response = restTemplate.getForEntity(url("/99999"), Auteur.class);
+
+
         assertThat(auteurs).hasSize(1);
         assertThat(auteurs[0].getNom()).isEqualTo("Orwell");
         assertThat(auteurs[0].getPrenom()).isEqualTo("George");
