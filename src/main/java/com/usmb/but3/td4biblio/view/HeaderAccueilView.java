@@ -52,14 +52,16 @@ public class HeaderAccueilView extends HorizontalLayout {
             this.getUI().ifPresent(ui -> ui.navigate("/accueil/document"));
 
         });
+        
         center.add(accueil, document);
         // Login / Logout button
         Button logoutButton=null;
         if(LoginView.utilisateur==null){
             Button loginButton = new Button("Login", e -> getUI().ifPresent(ui -> ui.navigate("login")));
             loginButton.getStyle().set("align", "right");
-
-            end.addToEnd(loginButton);
+            Button registerButton = new Button("S'enregistrer", e -> getUI().ifPresent(ui -> ui.navigate("register")));
+            registerButton.getStyle().set("align", "right");
+            end.addToEnd(loginButton, registerButton);
             layout.setWidthFull();  // full width of the page
         } else {
             logoutButton = new Button("Logout", e -> {

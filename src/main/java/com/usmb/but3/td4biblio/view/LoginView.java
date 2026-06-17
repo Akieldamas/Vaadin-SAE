@@ -15,11 +15,13 @@ public class LoginView extends VerticalLayout {
     public LoginView(UtilisateurRepo utilisateurRepo) {
 
         setSizeFull();
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setAlignItems(Alignment.CENTER);
+
+        add(new HeaderAccueilView());
 
         LoginForm loginForm = new LoginForm();
-
+        VerticalLayout vLayout = new VerticalLayout();
+        vLayout.setJustifyContentMode(JustifyContentMode.CENTER);
+        vLayout.setAlignItems(Alignment.CENTER);
         loginForm.addLoginListener(event -> {
             String username = event.getUsername();
             String password = event.getPassword();
@@ -31,7 +33,7 @@ public class LoginView extends VerticalLayout {
                 loginForm.setError(true);
             }
         });
-
-        add(loginForm);
+        vLayout.add(loginForm);
+        add(vLayout);
     }
 }
