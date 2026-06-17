@@ -2,14 +2,11 @@ package com.usmb.but3.td4biblio.service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.entity.TypeDocument;
-import com.usmb.but3.td4biblio.repository.AuteurRepo;
 import com.usmb.but3.td4biblio.repository.TypeDocumentRepo;
 
 import lombok.RequiredArgsConstructor;
