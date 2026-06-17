@@ -11,11 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-/**
- * Seed type_document :
- *  1 Livre  2 Film  3 Magasine  4 Journaux  5 Album
- *  6 Bande dessinée  7 Jeu vidéo  8 Série TV  9 Jeu de société
- */
 @SpringBootTest
 public class TypeDocumentServiceTest {
 

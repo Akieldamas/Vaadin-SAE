@@ -12,24 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Seed utilisateurs :
- *  id=1 mdurand  Bibliothécaire (role=1) Marie Durand    née 1985-04-12  pas d'abonnement
- *  id=2 jpires   Bibliothécaire (role=1) João  Pires     né  1978-11-30  pas d'abonnement
- *  id=3 amoreau  Emprunteur     (role=2) Alice Moreau    née 1995-07-22  fin=2026-12-31 carte EMP0000001
- *  id=4 lblanc   Emprunteur     (role=2) Lucas Blanc      né 2001-02-14  fin=2026-06-30 carte EMP0000002
- *  id=5 skowalski Emprunteur    (role=2) Sofia Kowalski   née 1990-09-03  fin=2026-03-31 carte EMP0000003
- *  id=6 tnguyenvan Emprunteur   (role=2) Théo  Nguyen Van né 1988-05-17  fin=2026-01-15 carte EMP0000004
- *  id=7 cmartinez Emprunteur    (role=2) Camille Martinez née 1999-12-01  fin=2026-01-12 carte EMP0000005
- *  id=8 rtremblay Emprunteur    (role=2) Romain Tremblay  né 1975-08-25  fin=2026-11-30 carte EMP0000006
- *
- *  Bibliothécaires (role=1) : id 1 et 2 → dateFinAbonnement NULL
- *  Emprunteurs     (role=2) : id 3 à 8  → 6 personnes
- *
- *  Abonnements expirés AVANT aujourd'hui (2024+) : aucun dans le seed (2026)
- *  → getUtilisateursByRoleWithDate retourne liste vide si run en 2024-2025
- *    et peut retourner des résultats si run après 2026
- */
 @SpringBootTest
 public class UtilisateurServiceTest {
 
