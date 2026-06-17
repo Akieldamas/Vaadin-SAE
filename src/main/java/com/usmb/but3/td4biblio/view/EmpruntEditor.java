@@ -20,19 +20,32 @@ import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
+import com.vaadin.flow.router.internal.BeforeEnterHandler;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 
 @Scope("prototype")
 @SpringComponent
 @UIScope
-public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
+public class EmpruntEditor extends VerticalLayout implements KeyNotifier, BeforeEnterObserver {
 
     private final EmpruntService empruntService;
     private final UtilisateurService utilisateurService;
     private final DocumentService documentService;
 
     private Emprunt emprunt;
+
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur == null) {
+            event.rerouteTo("login"); // redirect to login page
+        } else if (LoginView.utilisateur.getRoleUtilisateur().getId() != 1) {
+            event.rerouteTo("erreur/permission");
+
+        }
+    }
 
     /* Champs d'édition */
     ComboBox<Utilisateur> utilisateur = new ComboBox<>("Utilisateur");
@@ -48,7 +61,7 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
     Button save = new Button("Sauvegarder", VaadinIcon.CHECK.create());
     Button cancel = new Button("Annuler");
     Button delete = new Button("Supprimer", VaadinIcon.TRASH.create());
-    
+
     /* Boutons métier */
     Button prolongerBtn = new Button("Prolonger", VaadinIcon.TIME_FORWARD.create());
     Button confirmerProlongationBtn = new Button("Confirmer la prolongation", VaadinIcon.CHECK.create());
@@ -60,7 +73,8 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
     Binder<Emprunt> binder = new Binder<>(Emprunt.class);
     private ChangeHandler changeHandler;
 
-    public EmpruntEditor(EmpruntService empruntService, UtilisateurService utilisateurService, DocumentService documentService) {
+    public EmpruntEditor(EmpruntService empruntService, UtilisateurService utilisateurService,
+            DocumentService documentService) {
         this.empruntService = empruntService;
         this.utilisateurService = utilisateurService;
         this.documentService = documentService;
@@ -78,8 +92,10 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
 
         binder.bindInstanceFields(this);
 
-        binder.forField(utilisateur).asRequired("L'utilisateur est obligatoire").bind(Emprunt::getUtilisateur, Emprunt::setUtilisateur);
-        binder.forField(document).asRequired("Le document est obligatoire").bind(Emprunt::getDocument, Emprunt::setDocument);
+        binder.forField(utilisateur).asRequired("L'utilisateur est obligatoire").bind(Emprunt::getUtilisateur,
+                Emprunt::setUtilisateur);
+        binder.forField(document).asRequired("Le document est obligatoire").bind(Emprunt::getDocument,
+                Emprunt::setDocument);
 
         setSpacing(true);
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
@@ -92,18 +108,19 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
         cancel.addClickListener(e -> editEmprunt(emprunt));
-        
+
         // ETAPE 1 : Débloque la saisie de la date de fin
         prolongerBtn.addClickListener(e -> {
             if (emprunt != null) {
-                dateFinPrevue.setReadOnly(false); 
-                dateFinPrevue.setMin(emprunt.getDateFinPrevue().plusDays(1)); 
-                
+                dateFinPrevue.setReadOnly(false);
+                dateFinPrevue.setMin(emprunt.getDateFinPrevue().plusDays(1));
+
                 prolongerBtn.setVisible(false);
                 rendreBtn.setVisible(false);
-                confirmerProlongationBtn.setVisible(true); 
-                
-                Notification.show("Veuillez choisir la nouvelle date de fin, puis confirmez.", 4000, Notification.Position.MIDDLE);
+                confirmerProlongationBtn.setVisible(true);
+
+                Notification.show("Veuillez choisir la nouvelle date de fin, puis confirmez.", 4000,
+                        Notification.Position.MIDDLE);
             }
         });
 
@@ -116,13 +133,14 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
                             .addThemeVariants(NotificationVariant.LUMO_ERROR);
                     return;
                 }
-                
+
                 emprunt.setDateFinPrevue(nouvelleDate);
                 emprunt.setProlongation(true); // 🔥 On bascule le booléen à TRUE !
-                
+
                 try {
                     empruntService.saveEmprunt(emprunt);
-                    Notification.show("Prolongation enregistrée avec succès !").addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                    Notification.show("Prolongation enregistrée avec succès !")
+                            .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
                     changeHandler.onChange();
                 } catch (Exception ex) {
                     Notification.show("Erreur : " + ex.getMessage(), 5000, Notification.Position.MIDDLE)
@@ -136,7 +154,8 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
                 emprunt.setDateRendu(LocalDate.now());
                 try {
                     empruntService.saveEmprunt(emprunt);
-                    Notification.show("Retour enregistré avec succès !").addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+                    Notification.show("Retour enregistré avec succès !")
+                            .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
                     changeHandler.onChange();
                 } catch (Exception ex) {
                     Notification.show("Erreur : " + ex.getMessage(), 5000, Notification.Position.MIDDLE)
@@ -181,7 +200,7 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
         cancel.setVisible(persisted);
         utilisateur.setReadOnly(persisted);
         document.setReadOnly(persisted);
-        
+
         // On sécurise et réinitialise l'état des champs
         dateFinPrevue.setReadOnly(true);
         confirmerProlongationBtn.setVisible(false);
@@ -189,17 +208,19 @@ public class EmpruntEditor extends VerticalLayout implements KeyNotifier {
         if (persisted) {
             document.setItems(documentService.getAllDocuments());
             fieldsBottom.setVisible(true);
-            
+
             boolean isActif = e.getDateRendu() == null;
-            
+
             // 🔥 CORRECTION ICI : On vérifie proprement le booléen
             boolean dejaProlonge = Boolean.TRUE.equals(e.getProlongation());
-            
-            // Le bouton Prolonger s'affiche si l'emprunt est en cours ET n'a pas encore été prolongé
+
+            // Le bouton Prolonger s'affiche si l'emprunt est en cours ET n'a pas encore été
+            // prolongé
             prolongerBtn.setVisible(isActif && !dejaProlonge);
             rendreBtn.setVisible(isActif);
-            save.setVisible(false); // On cache le bouton "Sauvegarder" global pour forcer l'usage des boutons métier
-            
+            save.setVisible(false); // On cache le bouton "Sauvegarder" global pour forcer l'usage des boutons
+                                    // métier
+
         } else {
             document.setItems(documentService.getDocumentsDisponibles());
             fieldsBottom.setVisible(false);

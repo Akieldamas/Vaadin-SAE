@@ -14,6 +14,8 @@ import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.BeforeEnterEvent;
+import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -21,10 +23,20 @@ import com.vaadin.flow.spring.annotation.UIScope;
 @Scope("prototype")
 @SpringComponent
 @UIScope
-public class MesEmpruntsEditor extends VerticalLayout {
+public class MesEmpruntsEditor extends VerticalLayout implements BeforeEnterObserver {
 
     private final EmpruntService empruntService;
     private Emprunt emprunt;
+
+    @Override
+    public void beforeEnter(BeforeEnterEvent event) {
+        if (LoginView.utilisateur == null) {
+            event.rerouteTo("login"); // redirect to login page
+        } else if (LoginView.utilisateur.getRoleUtilisateur().getId() != 2) {
+            event.rerouteTo("erreur/permission");
+
+        }
+    }
 
     /* Champs d'affichage (tous en Read-Only pour l'utilisateur) */
     TextField document = new TextField("Document emprunté");
@@ -55,7 +67,8 @@ public class MesEmpruntsEditor extends VerticalLayout {
         dateRendu.setReadOnly(true);
 
         // Liaison des données (on passe par le titre du document)
-        binder.forField(document).bind(e -> e.getDocument() != null ? e.getDocument().getTitre() : "", (e, v) -> {});
+        binder.forField(document).bind(e -> e.getDocument() != null ? e.getDocument().getTitre() : "", (e, v) -> {
+        });
         binder.bindInstanceFields(this);
 
         setSpacing(true);
@@ -63,31 +76,34 @@ public class MesEmpruntsEditor extends VerticalLayout {
         cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
         cancel.addClickListener(e -> setVisible(false));
-        
+
         // Logique de Prolongation Unique par l'utilisateur
         prolongerBtn.addClickListener(e -> {
             if (emprunt != null) {
                 Utilisateur user = LoginView.utilisateur; // Récupération de l'utilisateur connecté
-                
+
                 // On récupère sa durée max en semaine (par défaut 2 si non renseigné)
                 int semainesAProlonger = (user.getDureeEmpruntMax() != null) ? user.getDureeEmpruntMax() : 2;
-                
+
                 // Calcul de la nouvelle date
                 LocalDate nouvelleDateFin = emprunt.getDateFinPrevue().plusWeeks(semainesAProlonger);
-                
+
                 // Application des changements
                 emprunt.setDateFinPrevue(nouvelleDateFin);
                 emprunt.setProlongation(true); // Bloque les futures prolongations
-                
+
                 try {
                     empruntService.saveEmprunt(emprunt);
-                    Notification.show("Votre emprunt a été prolongé de " + semainesAProlonger + " semaines avec succès !", 
-                            4000, Notification.Position.MIDDLE)
+                    Notification
+                            .show("Votre emprunt a été prolongé de " + semainesAProlonger + " semaines avec succès !",
+                                    4000, Notification.Position.MIDDLE)
                             .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
-                    
+
                     changeHandler.onChange(); // Recharge la grille
                 } catch (Exception ex) {
-                    Notification.show("Erreur lors de la prolongation : " + ex.getMessage(), 5000, Notification.Position.MIDDLE)
+                    Notification
+                            .show("Erreur lors de la prolongation : " + ex.getMessage(), 5000,
+                                    Notification.Position.MIDDLE)
                             .addThemeVariants(NotificationVariant.LUMO_ERROR);
                 }
             }

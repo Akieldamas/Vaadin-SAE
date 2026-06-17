@@ -18,7 +18,7 @@ public class DocumentService {
     }
 
     public Document getDocumentById(Integer id) {
-        return documentRepo.findById(id).orElse(null);
+        return documentRepo.findByIdWithGenres(id).orElse(null);
     }
 
     public Document saveDocument(Document document) {
