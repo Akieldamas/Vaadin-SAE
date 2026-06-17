@@ -43,6 +43,8 @@ public class EmpruntView extends VerticalLayout implements BeforeEnterObserver {
     public void beforeEnter(BeforeEnterEvent event) {
         if (LoginView.utilisateur == null) {
             event.rerouteTo("login");
+        } else if(LoginView.utilisateur.getRoleUtilisateur().getId()!=1){
+            event.rerouteTo("erreur/permission");
         }
     }
 

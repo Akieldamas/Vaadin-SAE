@@ -69,12 +69,16 @@ public class HeaderAccueilView extends HorizontalLayout {
                 UI.getCurrent().getPage().reload();
 
             });
-            Button application = new Button("BIBLIOVaadin", e -> {
-                this.getUI().ifPresent(ui -> ui.navigate("/auteur"));
+            if(LoginView.utilisateur.getRoleUtilisateur().getId()==1){
+                Button application = new Button("BIBLIOVaadin", e -> {
+                    this.getUI().ifPresent(ui -> ui.navigate("/auteur"));
+    
+                });
+                center.add(application);
 
-            });
+            }
+
             end.addToEnd(logoutButton);
-            center.add(application);
             layout.setWidthFull();  // full width of the page
 
         }

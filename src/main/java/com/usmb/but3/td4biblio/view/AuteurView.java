@@ -45,6 +45,9 @@ public class AuteurView extends VerticalLayout implements BeforeEnterObserver{
     public void beforeEnter(BeforeEnterEvent event) {
         if (LoginView.utilisateur==null) {
             event.rerouteTo("login"); // redirect to login page
+        } else if(LoginView.utilisateur.getRoleUtilisateur().getId()!=1){
+            event.rerouteTo("erreur/permission");
+
         }
     }
 	public AuteurView(AuteurService auteurService, AuteurEditor editor) {

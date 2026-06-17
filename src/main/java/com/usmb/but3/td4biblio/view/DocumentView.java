@@ -29,6 +29,9 @@ public class DocumentView extends VerticalLayout implements BeforeEnterObserver 
     public void beforeEnter(BeforeEnterEvent event) {
         if (LoginView.utilisateur==null) {
             event.rerouteTo("login"); // redirect to login page
+        } else if(LoginView.utilisateur.getRoleUtilisateur().getId()!=1){
+            event.rerouteTo("erreur/permission");
+
         }
     }
     public DocumentView(DocumentService documentService, DocumentEditor editor) {

@@ -36,7 +36,7 @@ public class MesEmpruntsView extends VerticalLayout implements BeforeEnterObserv
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        if (LoginView.utilisateur == null) {
+        if (LoginView.utilisateur == null ) {
             event.rerouteTo("login");
         }
     }
