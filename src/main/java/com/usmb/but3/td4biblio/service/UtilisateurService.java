@@ -69,9 +69,9 @@ public class UtilisateurService {
     public List<Utilisateur> getByNomOrNumeroCarteWithDate(String nom, String numeroCarte) {
         return utilisateurRepo.findByNomContainingIgnoreCaseAndNumeroCarteContainingIgnoreCaseAndRoleUtilisateurIdAndDateFinAbonnementBefore(nom, numeroCarte, 2, LocalDate.now());
      }
-    public Utilisateur getUtilisateurByLoginAndMotDePasse(String login, String motDePasse) {
+    public Utilisateur getUtilisateurByLogin(String login) {
         // Permet de filtrer par ID de rôle pour la vue
-        return utilisateurRepo.getUtilisateurByLoginAndMotDePasse(login, motDePasse);
+        return utilisateurRepo.getUtilisateurByLogin(login);
     }
 
     public List<Utilisateur> getUtilisateursAutorises() {
