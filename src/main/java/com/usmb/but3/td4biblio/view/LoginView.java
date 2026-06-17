@@ -1,5 +1,7 @@
 package com.usmb.but3.td4biblio.view;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 import com.vaadin.flow.component.login.LoginForm;
@@ -23,9 +25,13 @@ public class LoginView extends VerticalLayout {
         vLayout.setJustifyContentMode(JustifyContentMode.CENTER);
         vLayout.setAlignItems(Alignment.CENTER);
         loginForm.addLoginListener(event -> {
+            
             String username = event.getUsername();
             String password = event.getPassword();
-            utilisateur = utilisateurRepo.getUtilisateurByLoginAndMotDePasse(username, password);
+            Utilisateur utilisateurTest = utilisateurRepo.getUtilisateurByLogin(username);
+            if(BCrypt.checkpw(password, utilisateurTest.getMotDePasse())){
+                utilisateur=utilisateurTest;
+            }
             // Simple demo authentication
             if (utilisateur!=null) {
                 this.getUI().ifPresent(ui -> ui.navigate("accueil"));

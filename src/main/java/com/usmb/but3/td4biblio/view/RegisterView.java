@@ -25,7 +25,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
+import org.mindrot.jbcrypt.BCrypt;
 @PageTitle("Register")
 @Route(value = "register")
 public class RegisterView extends VerticalLayout {
@@ -39,8 +39,11 @@ public class RegisterView extends VerticalLayout {
     private PasswordField password2 = new PasswordField("Confirm password");
 	Binder<Utilisateur> binder = new Binder<>(Utilisateur.class);
     private Utilisateur utilisateur = new Utilisateur();
-    public UtilisateurService utilisateurRepo;
-    public RegisterView(UtilisateurService utilisateurRepo) {
+    public UtilisateurService utilisateurService;
+    public UtilisateurRepo utilisateurRepo;
+
+    public RegisterView(UtilisateurService utilisateurService, UtilisateurRepo utilisateurRepo) {
+        this.utilisateurService=utilisateurService;
         this.utilisateurRepo=utilisateurRepo;
         add(new HeaderAccueilView());
         add(initContent());
@@ -123,13 +126,20 @@ public class RegisterView extends VerticalLayout {
             Notification.show("Enter a password");
         } else if (!password1.equals(password2)) {
             Notification.show("Passwords don't match");
+        } else if( utilisateurRepo.getUtilisateurByLogin(login) != null) {
+            Notification.show("L'utilisateur existe déjà !");
+
+        } else if(password1.length()<8){
+            Notification.show("La taille du mot de passe doit être supérieur ou égal à 8 caractères.");
+
         } else {
             utilisateur.setNumeroCarte(generateCardNumber());
             utilisateur.setMaxEmprunts(10);
             utilisateur.setDureeEmpruntMax(5);
             utilisateur.setDateFinAbonnement(LocalDate.now().plusWeeks(5));
             utilisateur.setRoleUtilisateur(new RoleUtilisateur(2,"Emprunteur"));
-            utilisateurRepo.saveUtilisateur(utilisateur);
+            utilisateur.setMotDePasse(BCrypt.hashpw(utilisateur.getMotDePasse(), BCrypt.gensalt()));
+            utilisateurService.saveUtilisateur(utilisateur);
             Notification.show("Compte créé avec succès.");
         }
     }
