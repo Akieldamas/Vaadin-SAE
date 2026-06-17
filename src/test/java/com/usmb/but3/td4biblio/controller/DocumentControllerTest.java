@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,35 +21,37 @@ import com.usmb.but3.td4biblio.service.FormatService;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
- * Tests d'intégration pour DocumentController.
- *
- * Extrait du seed (documents triés par id ASC) :
- *  id=1  '1984'                      auteur=1 (Orwell)    format=1 editeur=3  type=1 Livre    bib=1
- *  id=2  'La Ferme des animaux'      auteur=1 (Orwell)    format=1 editeur=3  type=1 Livre    bib=1
- *  id=3  'L'Étranger'               auteur=2 (Camus)     format=1 editeur=1  type=1 Livre    bib=1
- *  id=4  'La Peste'                  auteur=2 (Camus)     format=2 editeur=1  type=1 Livre    bib=1
- *  id=5  'La Main gauche de la nuit' auteur=3 (Le Guin)   format=1 editeur=1  type=1 Livre    bib=2
- *  id=6  'Ça'                        auteur=4 (King)      format=2 editeur=3  type=1 Livre    bib=2
- *  id=7  'Le Seigneur des Anneaux'   auteur=11 (Tolkien)  format=2 editeur=2  type=1 Livre    bib=2
- *  id=8  'L'Amant'                   auteur=10 (Duras)    format=1 editeur=2  type=1 Livre    bib=2
- *  id=9  'Songs of Leonard Cohen'    auteur=8  (Cohen)    format=3 editeur=4  type=5 Album    bib=1
- *  id=10 'I'm Your Man'              auteur=8  (Cohen)    format=3 editeur=4  type=5 Album    bib=1
- *  id=11 'Interstellar — BO'         auteur=7  (Zimmer)   format=3 editeur=4  type=5 Album    bib=2
- *  id=12 'Dune — BO'                 auteur=7  (Zimmer)   format=3 editeur=4  type=5 Album    bib=2
- *  id=13 'Inception'                 auteur=5  (Nolan)    format=4 editeur=5  type=2 Film     bib=1
- *  id=14 'E.T.'                      auteur=6  (Spielberg)format=4 editeur=6  type=2 Film     bib=1
- *  id=15 'Le Voyage de Chihiro'      auteur=9  (Miyazaki) format=4 editeur=6  type=2 Film     bib=1
- *  id=16 'Dune (2021)'               auteur=12 (Villeneuve)format=4 editeur=5 type=2 Film     bib=1
- *  id=17 'Interstellar — Blu-ray'    auteur=5  (Nolan)    format=5 editeur=5  type=2 Film     bib=2
- *  ...
- *  ISBN '1984' : 9782070368228
- *
- *  Emprunts en cours (document_id non rendu) :
- *    doc 13 (Inception), doc 17 (Interstellar BR), doc 11 (BO Interstellar CD),
- *    doc 18 (Château BR), doc 16 (Dune DVD), doc 15 (Chihiro — attendez, rendu le 29/03)
- *  Nota : doc 15 Chihiro rendu, doc 16 Dune non rendu → disponibles ≠ empruntés
+ * Seed (extrait, triés par id ASC) :
+ *  1  '1984'                   Orwell(1)      Livre  isbn=9782070368228 emplacement=A1-001 pub=1949-06-08
+ *  2  'La Ferme des animaux'   Orwell(1)      Livre
+ *  3  'L'Étranger'             Camus(2)       Livre  editeur=Gallimard(1)
+ *  4  'La Peste'               Camus(2)       Livre  format=GrandFormat(2)
+ *  5  'La Main gauche…'        Le Guin(3)     Livre
+ *  6  'Ça'                     King(4)        Livre
+ *  7  'Le Seigneur des…'       Tolkien(11)    Livre
+ *  8  'L'Amant'                Duras(10)      Livre
+ *  9  'Songs of Leonard Cohen' Cohen(8)       Album  type=5
+ *  10 'I'm Your Man'           Cohen(8)       Album
+ *  11 'BO Interstellar'        Zimmer(7)      Album  ← en cours d'emprunt
+ *  12 'BO Dune'                Zimmer(7)      Album
+ *  13 'Inception'              Nolan(5)       Film   pub=2010-07-16  ← en cours d'emprunt
+ *  14 'E.T.'                   Spielberg(6)   Film
+ *  15 'Le Voyage de Chihiro'   Miyazaki(9)    Film
+ *  16 'Dune (2021)'            Villeneuve(12) Film   ← en cours d'emprunt
+ *  17 'Interstellar — Blu-ray' Nolan(5)       Film   ← en cours d'emprunt
+ *  18 'Le Château Ambulant'    Miyazaki(9)    Film   ← en cours d'emprunt
+ *  19 'Shining — Blu-ray'      King(4)        Film
+ *  20 'National Geographic…'   Orwell(1)      Magasine
+ *  21 'Le Monde…'              Camus(2)       Journaux
+ *  22 'Astérix le Gaulois'     King(4)        BD
+ *  23 'Zelda BOTW'             Nolan(5)       Jeu vidéo
+ *  24 'Breaking Bad S1'        Spielberg(6)   Série TV
+ *  25 'Catan'                  Tolkien(11)    Jeu de société
+ *  26 'Tenet'                  Nolan(5)       Film
+ *  27 'The Batman'             Nolan(5)       Film
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class DocumentControllerTest {
@@ -56,23 +59,28 @@ public class DocumentControllerTest {
     @LocalServerPort
     private int port;
 
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Autowired
-    private DocumentService documentService;
-
-    @Autowired
-    private AuteurService auteurService;
-
-    @Autowired
-    private FormatService formatService;
-
-    @Autowired
-    private EditeurService editeurService;
+    @Autowired private TestRestTemplate restTemplate;
+    @Autowired private DocumentService documentService;
+    @Autowired private AuteurService auteurService;
+    @Autowired private FormatService formatService;
+    @Autowired private EditeurService editeurService;
 
     private String url(String path) {
         return "http://localhost:" + port + "/biblio/document" + path;
+    }
+
+    /** Helper : GET une liste typée avec status + body. */
+    private ResponseEntity<List<Document>> getDocuments(String path) {
+        return restTemplate.exchange(
+                url(path),
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Document>>() {});
+    }
+
+    /** Helper : GET un seul document avec status + body. */
+    private ResponseEntity<Document> getDocument(String path) {
+        return restTemplate.getForEntity(url(path), Document.class);
     }
 
     // =========================================================================
@@ -80,36 +88,36 @@ public class DocumentControllerTest {
     // =========================================================================
 
     @Test
-    void testGetAllDocuments_retourneListeNonVide() {
-        Document[] docs = restTemplate.getForObject(url("/"), Document[].class);
-        assertThat(docs).isNotEmpty();
+    void testGetAllDocuments_retourne200() {
+        ResponseEntity<List<Document>> response = getDocuments("/");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
     void testGetAllDocuments_contientAuMoins27Documents() {
-        Document[] docs = restTemplate.getForObject(url("/"), Document[].class);
+        List<Document> docs = getDocuments("/").getBody();
         assertThat(docs).hasSizeGreaterThanOrEqualTo(27);
     }
 
     @Test
-    void testGetAllDocuments_premierDocumentEst1984() {
-        Document[] docs = restTemplate.getForObject(url("/"), Document[].class);
-        assertThat(docs[0].getTitre()).isEqualTo("1984");
-        assertThat(docs[0].getId()).isEqualTo(1);
+    void testGetAllDocuments_premierEst1984() {
+        List<Document> docs = getDocuments("/").getBody();
+        assertThat(docs.get(0).getId()).isEqualTo(1);
+        assertThat(docs.get(0).getTitre()).isEqualTo("1984");
     }
 
     @Test
     void testGetAllDocuments_auteurDuPremierEstOrwell() {
-        Document[] docs = restTemplate.getForObject(url("/"), Document[].class);
-        assertThat(docs[0].getAuteur().getNom()).isEqualTo("Orwell");
-        assertThat(docs[0].getAuteur().getId()).isEqualTo(1);
+        List<Document> docs = getDocuments("/").getBody();
+        assertThat(docs.get(0).getAuteur().getNom()).isEqualTo("Orwell");
+        assertThat(docs.get(0).getAuteur().getId()).isEqualTo(1);
     }
 
     @Test
     void testGetAllDocuments_triParIdAscendant() {
-        Document[] docs = restTemplate.getForObject(url("/"), Document[].class);
-        for (int i = 0; i < docs.length - 1; i++) {
-            assertThat(docs[i].getId()).isLessThan(docs[i + 1].getId());
+        List<Document> docs = getDocuments("/").getBody();
+        for (int i = 0; i < docs.size() - 1; i++) {
+            assertThat(docs.get(i).getId()).isLessThan(docs.get(i + 1).getId());
         }
     }
 
@@ -118,9 +126,14 @@ public class DocumentControllerTest {
     // =========================================================================
 
     @Test
+    void testGetDocumentById1_retourne200() {
+        ResponseEntity<Document> response = getDocument("/1");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
     void testGetDocumentById1_est1984() {
-        Document doc = restTemplate.getForObject(url("/1"), Document.class);
-        assertThat(doc).isNotNull();
+        Document doc = getDocument("/1").getBody();
         assertThat(doc.getId()).isEqualTo(1);
         assertThat(doc.getTitre()).isEqualTo("1984");
         assertThat(doc.getCodeIsbn()).isEqualTo("9782070368228");
@@ -133,32 +146,34 @@ public class DocumentControllerTest {
 
     @Test
     void testGetDocumentById3_estEtranger() {
-        Document doc = restTemplate.getForObject(url("/3"), Document.class);
+        Document doc = getDocument("/3").getBody();
         assertThat(doc.getTitre()).isEqualTo("L'Étranger");
         assertThat(doc.getAuteur().getNom()).isEqualTo("Camus");
         assertThat(doc.getEditeur().getNom()).isEqualTo("Gallimard");
-    }
-
-    @Test
-    void testGetDocumentById13_estInception() {
-        Document doc = restTemplate.getForObject(url("/13"), Document.class);
-        assertThat(doc.getTitre()).isEqualTo("Inception");
-        assertThat(doc.getAuteur().getNom()).isEqualTo("Nolan");
-        assertThat(doc.getTypeDocument().getNom()).isEqualTo("Film");
-        assertThat(doc.getCodeIsbn()).isNull();
+        assertThat(doc.getCodeEmplacement()).isEqualTo("A1-003");
     }
 
     @Test
     void testGetDocumentById9_estSongsOfCohen() {
-        Document doc = restTemplate.getForObject(url("/9"), Document.class);
+        Document doc = getDocument("/9").getBody();
         assertThat(doc.getTitre()).isEqualTo("Songs of Leonard Cohen");
         assertThat(doc.getAuteur().getNom()).isEqualTo("Cohen");
         assertThat(doc.getTypeDocument().getNom()).isEqualTo("Album");
+        assertThat(doc.getCodeIsbn()).isNull();
+    }
+
+    @Test
+    void testGetDocumentById13_estInception() {
+        Document doc = getDocument("/13").getBody();
+        assertThat(doc.getTitre()).isEqualTo("Inception");
+        assertThat(doc.getTypeDocument().getNom()).isEqualTo("Film");
+        assertThat(doc.getAuteur().getNom()).isEqualTo("Nolan");
+        assertThat(doc.getDatePublication()).isEqualTo(LocalDate.of(2010, 7, 16));
     }
 
     @Test
     void testGetDocumentById_idInexistantRetourne404() {
-        ResponseEntity<Document> response = restTemplate.getForEntity(url("/99999"), Document.class);
+        ResponseEntity<Document> response = getDocument("/99999");
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
@@ -167,48 +182,44 @@ public class DocumentControllerTest {
     // =========================================================================
 
     @Test
-    void testGetDocumentsByAuteurId1_retourneOrwell() {
-        // Orwell (id=1) a 2 documents : 1984 et La Ferme des animaux
-        Document[] docs = restTemplate.getForObject(url("/auteur/1"), Document[].class);
-        assertThat(docs).hasSize(2);
-        assertThat(docs).allSatisfy(d -> assertThat(d.getAuteur().getNom()).isEqualTo("Orwell"));
+    void testGetDocumentsByAuteurId1_retourne200() {
+        ResponseEntity<List<Document>> response = getDocuments("/auteur/1");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
-    void testGetDocumentsByAuteurId1_titulairesSontCorrects() {
-        Document[] docs = restTemplate.getForObject(url("/auteur/1"), Document[].class);
+    void testGetDocumentsByAuteurId1_retourne2DocsOrwell() {
+        List<Document> docs = getDocuments("/auteur/1").getBody();
+        assertThat(docs).hasSize(2);
         assertThat(docs).extracting(Document::getTitre)
                 .containsExactlyInAnyOrder("1984", "La Ferme des animaux");
     }
 
     @Test
-    void testGetDocumentsByAuteurId2_retourneCamus() {
-        // Camus (id=2) : L'Étranger + La Peste
-        Document[] docs = restTemplate.getForObject(url("/auteur/2"), Document[].class);
+    void testGetDocumentsByAuteurId2_retourne2DocsCamus() {
+        List<Document> docs = getDocuments("/auteur/2").getBody();
         assertThat(docs).hasSize(2);
         assertThat(docs).extracting(Document::getTitre)
                 .containsExactlyInAnyOrder("L'Étranger", "La Peste");
     }
 
     @Test
-    void testGetDocumentsByAuteurId8_retourneCohen() {
-        // Cohen (id=8) : Songs of Leonard Cohen + I'm Your Man
-        Document[] docs = restTemplate.getForObject(url("/auteur/8"), Document[].class);
-        assertThat(docs).hasSize(2);
-        assertThat(docs).allSatisfy(d -> assertThat(d.getAuteur().getNom()).isEqualTo("Cohen"));
-    }
-
-    @Test
-    void testGetDocumentsByAuteurId5_retourneNolan() {
-        // Nolan (id=5) : Inception, Interstellar Blu-ray, Tenet, The Batman → 4 docs
-        Document[] docs = restTemplate.getForObject(url("/auteur/5"), Document[].class);
+    void testGetDocumentsByAuteurId5_retourneAuMoins4Nolan() {
+        List<Document> docs = getDocuments("/auteur/5").getBody();
         assertThat(docs).hasSizeGreaterThanOrEqualTo(4);
         assertThat(docs).allSatisfy(d -> assertThat(d.getAuteur().getId()).isEqualTo(5));
     }
 
     @Test
-    void testGetDocumentsByAuteurId_auteurInexistantRetourneVide() {
-        Document[] docs = restTemplate.getForObject(url("/auteur/99999"), Document[].class);
+    void testGetDocumentsByAuteurId8_retourne2DocsCohen() {
+        List<Document> docs = getDocuments("/auteur/8").getBody();
+        assertThat(docs).hasSize(2);
+        assertThat(docs).allSatisfy(d -> assertThat(d.getAuteur().getNom()).isEqualTo("Cohen"));
+    }
+
+    @Test
+    void testGetDocumentsByAuteurId_auteurInexistantRetourneListeVide() {
+        List<Document> docs = getDocuments("/auteur/99999").getBody();
         assertThat(docs).isEmpty();
     }
 
@@ -217,40 +228,40 @@ public class DocumentControllerTest {
     // =========================================================================
 
     @Test
-    void testSearchByTitre_1984_retourne1984() {
-        Document[] docs = restTemplate.getForObject(url("/search?titre=1984"), Document[].class);
+    void testSearchByTitre_1984_retourne200EtUnDoc() {
+        ResponseEntity<List<Document>> response = getDocuments("/search?titre=1984");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        List<Document> docs = response.getBody();
         assertThat(docs).hasSize(1);
-        assertThat(docs[0].getTitre()).isEqualTo("1984");
+        assertThat(docs.get(0).getTitre()).isEqualTo("1984");
     }
 
     @Test
     void testSearchByTitre_Interstellar_retourneDeuxDocs() {
-        // 'Interstellar — Blu-ray' et 'Interstellar — Bande originale'
-        Document[] docs = restTemplate.getForObject(url("/search?titre=Interstellar"), Document[].class);
+        List<Document> docs = getDocuments("/search?titre=Interstellar").getBody();
         assertThat(docs).hasSizeGreaterThanOrEqualTo(2);
         assertThat(docs).allSatisfy(d ->
                 assertThat(d.getTitre()).containsIgnoringCase("Interstellar"));
     }
 
     @Test
-    void testSearchByTitre_insensibleCasse_MajMinuscule() {
-        Document[] upper = restTemplate.getForObject(url("/search?titre=DUNE"), Document[].class);
-        Document[] lower = restTemplate.getForObject(url("/search?titre=dune"), Document[].class);
-        assertThat(upper).hasSameSizeAs(lower);
-        assertThat(upper).hasSizeGreaterThanOrEqualTo(2); // Dune DVD + BO Dune
+    void testSearchByTitre_insensibleCasse() {
+        List<Document> lower = getDocuments("/search?titre=dune").getBody();
+        List<Document> upper = getDocuments("/search?titre=DUNE").getBody();
+        assertThat(lower).hasSameSizeAs(upper);
+        assertThat(lower).hasSizeGreaterThanOrEqualTo(2);
     }
 
     @Test
-    void testSearchByTitre_Cohen_retourneAlbumsCohen() {
-        Document[] docs = restTemplate.getForObject(url("/search?titre=Cohen"), Document[].class);
+    void testSearchByTitre_Cohen_retourneUnAlbum() {
+        List<Document> docs = getDocuments("/search?titre=Cohen").getBody();
         assertThat(docs).hasSize(1);
-        assertThat(docs[0].getTitre()).isEqualTo("Songs of Leonard Cohen");
+        assertThat(docs.get(0).getTitre()).isEqualTo("Songs of Leonard Cohen");
     }
 
     @Test
-    void testSearchByTitre_titreInexistantRetourneVide() {
-        Document[] docs = restTemplate.getForObject(
-                url("/search?titre=ZZZINEXISTANT999"), Document[].class);
+    void testSearchByTitre_titreInexistantRetourneListeVide() {
+        List<Document> docs = getDocuments("/search?titre=ZZZINEXISTANT999").getBody();
         assertThat(docs).isEmpty();
     }
 
@@ -260,35 +271,33 @@ public class DocumentControllerTest {
 
     @Test
     @Transactional
-    void testSaveDocument_idGenere() {
-        Document doc = buildDocument("TitreSave");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
-        assertThat(saved.getId()).isNotNull().isGreaterThan(0);
+    void testSaveDocument_retourne200EtIdGenere() {
+        ResponseEntity<Document> response = restTemplate.postForEntity(
+                url(""), buildDocument("TitreTest"), Document.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody().getId()).isNotNull().isGreaterThan(0);
     }
 
     @Test
     @Transactional
-    void testSaveDocument_titreCorrect() {
-        Document doc = buildDocument("MonNouveauLivre");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
+    void testSaveDocument_champsCorrects() {
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("MonNouveauLivre"), Document.class).getBody();
+
         assertThat(saved.getTitre()).isEqualTo("MonNouveauLivre");
-    }
-
-    @Test
-    @Transactional
-    void testSaveDocument_auteurOrwell() {
-        Document doc = buildDocument("LivreOrwell");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
         assertThat(saved.getAuteur().getId()).isEqualTo(1);
         assertThat(saved.getAuteur().getNom()).isEqualTo("Orwell");
+        assertThat(saved.getEditeur().getNom()).isEqualTo("Gallimard");
     }
 
     @Test
     @Transactional
-    void testSaveDocument_retrouvableParId() {
-        Document doc = buildDocument("LivreRetrouvable");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
-        Document found = restTemplate.getForObject(url("/" + saved.getId()), Document.class);
+    void testSaveDocument_retrouvableParGetId() {
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("LivreRetrouvable"), Document.class).getBody();
+
+        Document found = getDocument("/" + saved.getId()).getBody();
         assertThat(found.getTitre()).isEqualTo("LivreRetrouvable");
     }
 
@@ -299,40 +308,40 @@ public class DocumentControllerTest {
     @Test
     @Transactional
     void testUpdateDocument_titreMisAJour() {
-        Document doc = buildDocument("TitreAncien");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("TitreAncien"), Document.class).getBody();
 
         saved.setTitre("TitreNouveau");
         restTemplate.put(url("/" + saved.getId()), saved);
 
-        Document updated = restTemplate.getForObject(url("/" + saved.getId()), Document.class);
+        Document updated = getDocument("/" + saved.getId()).getBody();
         assertThat(updated.getTitre()).isEqualTo("TitreNouveau");
     }
 
     @Test
     @Transactional
     void testUpdateDocument_isbnMisAJour() {
-        Document doc = buildDocument("LivreISBN");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("LivreISBN"), Document.class).getBody();
 
         saved.setCodeIsbn("9999999999999");
         restTemplate.put(url("/" + saved.getId()), saved);
 
-        Document updated = restTemplate.getForObject(url("/" + saved.getId()), Document.class);
+        Document updated = getDocument("/" + saved.getId()).getBody();
         assertThat(updated.getCodeIsbn()).isEqualTo("9999999999999");
     }
 
     @Test
     @Transactional
     void testUpdateDocument_idInchangeApresUpdate() {
-        Document doc = buildDocument("TitreStable");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("TitreStable"), Document.class).getBody();
         Integer originalId = saved.getId();
 
         saved.setTitre("TitreStableModifie");
         restTemplate.put(url("/" + saved.getId()), saved);
 
-        Document updated = restTemplate.getForObject(url("/" + originalId), Document.class);
+        Document updated = getDocument("/" + originalId).getBody();
         assertThat(updated.getId()).isEqualTo(originalId);
     }
 
@@ -342,9 +351,21 @@ public class DocumentControllerTest {
 
     @Test
     @Transactional
-    void testDeleteDocumentById_documentPlusExistant() {
-        Document doc = buildDocument("TitreDelete");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
+    void testDeleteDocumentById_retourne200() {
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("TitreDelete200"), Document.class).getBody();
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                url("/" + saved.getId()), HttpMethod.DELETE, null, String.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    @Transactional
+    void testDeleteDocumentById_documentPlusExistantViaService() {
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("TitreDelete"), Document.class).getBody();
 
         restTemplate.delete(url("/" + saved.getId()));
 
@@ -353,25 +374,13 @@ public class DocumentControllerTest {
 
     @Test
     @Transactional
-    void testDeleteDocumentById_retourne200() {
-        Document doc = buildDocument("TitreDelete200");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
-
-        ResponseEntity<String> response = restTemplate.exchange(
-                url("/" + saved.getId()), HttpMethod.DELETE, null, String.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-    }
-
-    @Test
-    @Transactional
-    void testDeleteDocumentById_retourne404Apres() {
-        Document doc = buildDocument("TitreDelete404");
-        Document saved = restTemplate.postForObject(url(""), doc, Document.class);
+    void testDeleteDocumentById_retourne404ApresSuppression() {
+        Document saved = restTemplate.postForEntity(
+                url(""), buildDocument("TitreDelete404"), Document.class).getBody();
 
         restTemplate.delete(url("/" + saved.getId()));
 
-        ResponseEntity<Document> response = restTemplate.getForEntity(
-                url("/" + saved.getId()), Document.class);
+        ResponseEntity<Document> response = getDocument("/" + saved.getId());
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
@@ -380,15 +389,15 @@ public class DocumentControllerTest {
     // =========================================================================
 
     /**
-     * Construit un Document minimal valide avec Orwell (id=1), format poche (id=1),
-     * éditeur Gallimard (id=1). Ces trois valeurs sont garanties dans le seed.
+     * Document minimal valide : Orwell(1), format poche(1), Gallimard(1).
+     * Ces trois IDs sont garantis dans le seed.
      */
     private Document buildDocument(String titre) {
         Document doc = new Document();
         doc.setTitre(titre);
-        doc.setAuteur(auteurService.getAuteurById(1));       // Orwell
-        doc.setFormat(formatService.getFormatById(1));       // Livre poche
-        doc.setEditeur(editeurService.getEditeurById(1));    // Gallimard
+        doc.setAuteur(auteurService.getAuteurById(1));
+        doc.setFormat(formatService.getFormatById(1));
+        doc.setEditeur(editeurService.getEditeurById(1));
         return doc;
     }
 }
