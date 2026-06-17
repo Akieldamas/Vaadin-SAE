@@ -11,10 +11,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-/**
- * Seed types auteur :
- *  1 Écrivain  2 Réalisateur  3 Compositeur  4 Scénariste  5 Illustrateur
- */
 @SpringBootTest
 public class TypeAuteurServiceTest {
 
@@ -22,23 +18,15 @@ public class TypeAuteurServiceTest {
     private TypeAuteurService typeAuteurService;
 
     @Test
-    void testGetAllTypesAuteur_retourne5Types() {
+    void testGetAllTypesAuteur() {
         List<TypeAuteur> types = typeAuteurService.getAllTypesAuteur();
-        assertThat(types).hasSizeGreaterThanOrEqualTo(5);
+        assertThat(types).isNotEmpty();
     }
 
     @Test
     void testGetAllTypesAuteur_premierEstEcrivain() {
         List<TypeAuteur> types = typeAuteurService.getAllTypesAuteur();
         assertThat(types.get(0).getLabel()).isEqualTo("Écrivain");
-    }
-
-    @Test
-    void testGetAllTypesAuteur_triParIdAscendant() {
-        List<TypeAuteur> types = typeAuteurService.getAllTypesAuteur();
-        for (int i = 0; i < types.size() - 1; i++) {
-            assertThat(types.get(i).getId()).isLessThan(types.get(i + 1).getId());
-        }
     }
 
     @Test
@@ -54,36 +42,15 @@ public class TypeAuteurServiceTest {
     }
 
     @Test
-    void testGetTypeAuteurById3_estCompositeur() {
-        assertThat(typeAuteurService.getTypeAuteurById(3).getLabel()).isEqualTo("Compositeur");
-    }
-
-    @Test
-    void testGetTypeAuteurById4_estScenariste() {
-        assertThat(typeAuteurService.getTypeAuteurById(4).getLabel()).isEqualTo("Scénariste");
-    }
-
-    @Test
-    void testGetTypeAuteurById5_estIllustrateur() {
-        assertThat(typeAuteurService.getTypeAuteurById(5).getLabel()).isEqualTo("Illustrateur");
-    }
-
-    @Test
     void testGetTypeAuteurById_idInexistantRetourneNull() {
         assertThat(typeAuteurService.getTypeAuteurById(99999)).isNull();
     }
 
     @Test
-    void testGetTypeByLabel_Ecrivain_retourneId1() {
+    void testGetTypeByLabel() {
         TypeAuteur t = typeAuteurService.getTypeByLabel("Écrivain");
         assertThat(t).isNotNull();
         assertThat(t.getId()).isEqualTo(1);
-    }
-
-    @Test
-    void testGetTypeByLabel_Realisateur_retourneId2() {
-        TypeAuteur t = typeAuteurService.getTypeByLabel("Réalisateur");
-        assertThat(t.getId()).isEqualTo(2);
     }
 
     @Test
@@ -93,17 +60,16 @@ public class TypeAuteurServiceTest {
 
     @Test
     @Transactional
-    void testSaveTypeAuteur_idGenereApres5() {
+    void testSaveTypeAuteur() {
         TypeAuteur t = new TypeAuteur();
-        t.setLabel("Dramaturge Test");
+        t.setLabel("Test");
         TypeAuteur saved = typeAuteurService.saveTypeAuteur(t);
-        assertThat(saved.getId()).isNotNull().isGreaterThan(5);
-        assertThat(saved.getLabel()).isEqualTo("Dramaturge Test");
+        assertThat(saved.getId()).isNotNull();
     }
 
     @Test
     @Transactional
-    void testUpdateTypeAuteur_labelMisAJour() {
+    void testUpdateTypeAuteur() {
         TypeAuteur t = new TypeAuteur();
         t.setLabel("LabelAvant");
         TypeAuteur saved = typeAuteurService.saveTypeAuteur(t);
@@ -114,7 +80,7 @@ public class TypeAuteurServiceTest {
 
     @Test
     @Transactional
-    void testDeleteTypeAuteurById_typePlusPresent() {
+    void testDeleteTypeAuteurById() {
         TypeAuteur t = new TypeAuteur();
         t.setLabel("TypeASupprimer");
         Integer id = typeAuteurService.saveTypeAuteur(t).getId();

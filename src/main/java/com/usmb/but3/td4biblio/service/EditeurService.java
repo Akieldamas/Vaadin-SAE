@@ -39,7 +39,7 @@ public class EditeurService {
         return editeurRepo.findByNom(nom);
     }
 
-        public List<Editeur> getAuteursByNomStartWithIgnoreCase(String filter) {
+    public List<Editeur> getAuteursByNomStartWithIgnoreCase(String filter) {
         return editeurRepo.findByNomStartsWithIgnoreCase(filter);
     }  
 

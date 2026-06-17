@@ -1,5 +1,6 @@
 package com.usmb.but3.td4biblio.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,8 @@ public class FormatService {
 
     public void deleteFormatById(Integer id) {
         formatRepo.deleteById(id);
+    }
+    public List<Format> findByDimensions(BigDecimal longueur, BigDecimal largeur) {
+        return formatRepo.findByLongueurAndLargeur(longueur, largeur);
     }
 }

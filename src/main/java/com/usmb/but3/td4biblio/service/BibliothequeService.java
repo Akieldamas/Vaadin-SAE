@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 
 public class BibliothequeService {
-    private final BibliothequeRepo bibliothequeRepo;
+    private final BibliothequeRepo bibliothequeRepo;    
 
     public List<Bibliotheque> getAllBibliotheques() {
         //return auteurRepo.findAll();

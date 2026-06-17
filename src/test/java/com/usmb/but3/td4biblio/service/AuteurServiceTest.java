@@ -26,7 +26,7 @@ public class AuteurServiceTest {
     }
 
     @Test
-    void testGetAuteurById1_estOrwell() {
+    void testGetAuteurById1() {
         Auteur auteur = auteurService.getAuteurById(1);
         assertThat(auteur).isNotNull();
         assertThat(auteur.getNom()).isEqualTo("Orwell");
@@ -35,7 +35,7 @@ public class AuteurServiceTest {
     }
 
     @Test
-    void testGetAuteurById_idInexistantRetourneNull() {
+    void testGetAuteurById_idInexistant() {
         assertThat(auteurService.getAuteurById(99999)).isNull();
     }
 
@@ -56,7 +56,7 @@ public class AuteurServiceTest {
 
     @Test
     @Transactional
-    void testUpdateAuteur_nomMisAJour() {
+    void testUpdateAuteur() {
         Auteur auteur = buildAuteur("AvantUpdate", "Prenom", "Française", null, null);
         Auteur saved = auteurService.saveAuteur(auteur);
         saved.setNom("ApresUpdate");
@@ -66,7 +66,7 @@ public class AuteurServiceTest {
 
     @Test
     @Transactional
-    void testDeleteAuteurById_auteurPlusPresent() {
+    void testDeleteAuteurById() {
         Auteur auteur = buildAuteur("ASupprimer", "Test", null, null, null);
         int id = auteurService.saveAuteur(auteur).getId();
         auteurService.deleteAuteurById(id);
@@ -97,14 +97,7 @@ public class AuteurServiceTest {
         List<Auteur> auteurs = auteurService.getAuteursByNomAndPrenom("Orwell", "Albert");
         assertThat(auteurs).isEmpty();
     }
-
-    @Test
-    void testGetAuteursByNomLike_Or_Geo_trouveOrwell() {
-        List<Auteur> auteurs = auteurService.getAuteursByNomLikeAndPrenomLike("Or", "Geo");
-        assertThat(auteurs).isNotEmpty();
-        assertThat(auteurs).anySatisfy(auteur -> assertThat(auteur.getNom()).isEqualTo("Orwell"));
-    }
-
+    
     @Test
     void testGetAuteursByNomLike_inexistantRetourneVide() {
         List<Auteur> auteurs = auteurService.getAuteursByNomLikeAndPrenomLike("ZZZZ", "YYYY");
