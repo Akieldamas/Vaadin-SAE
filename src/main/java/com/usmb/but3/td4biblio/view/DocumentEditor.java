@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -202,11 +203,19 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
         binder.forField(genres)
         .asRequired("Genre(s) obligatoires")
         .bind(
-            doc -> new HashSet<>(doc.getGenres()),
+            doc -> doc.getGenres() != null
+                    ? new HashSet<>(doc.getGenres())
+                    : Set.of(),
             (doc, value) -> doc.setGenres(new ArrayList<>(value))
         );
         binder.forField(typeDocument).asRequired("Type de document obligatoire").bind(Document::getTypeDocument, Document::setTypeDocument);
         binder.forField(bibliothequeCombo).asRequired("Bibliothèque à choisir obligatoire").bind(Document::getBibliotheque, Document::setBibliotheque);
+        binder.forField(codeIsbn)
+        .withValidator(
+            isbn -> isbn == null || isbn.length() <= 13,
+            "Le code ISBN ne doit pas dépasser 13 caractères"
+        )
+        .bind(Document::getCodeIsbn, Document::setCodeIsbn);
         
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
@@ -217,9 +226,21 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
     }
 
     void save() {
-        if (binder.validate().isOk()) {
-            documentService.saveDocument(document);
-            changeHandler.onChange();
+        var validationResult = binder.validate();
+    
+        if (validationResult.isOk()) {
+            try {
+                documentService.saveDocument(document);
+    
+                NotificationService.showSuccess("Document enregistré avec succès.");
+    
+                changeHandler.onChange();
+    
+            } catch (Exception e) {
+                NotificationService.showError("Erreur lors de l'enregistrement : " + e.getMessage());
+            }
+        } else {
+            NotificationService.showError("Veuillez corriger les erreurs du formulaire.");
         }
     }
 
@@ -249,6 +270,9 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier {
         genres.setItems(genreDocumentService.getAllGenres());
 
         cancel.setVisible(true);
+        if (document.getGenres() == null) {
+            document.setGenres(new ArrayList<>());
+        }
         binder.setBean(document);
         setVisible(true);
         titre.focus();
