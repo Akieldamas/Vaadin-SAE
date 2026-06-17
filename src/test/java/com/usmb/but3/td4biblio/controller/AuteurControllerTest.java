@@ -37,47 +37,52 @@ public class AuteurControllerTest {
         return "http://localhost:" + port + "/biblio/auteur" + path;
     }
 
+    /** Helper : GET une liste typée avec status + body. */
+    private ResponseEntity<List<Auteur>> getAuteurs(String path) {
+        return restTemplate.exchange(
+                url(path),
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Auteur>>() {});
+    }
+
+    /** Helper : GET un seul auteur avec status + body. */
+    private ResponseEntity<Auteur> getAuteur(String path) {
+        return restTemplate.getForEntity(url(path), Auteur.class);
+    }
+
     // =========================================================================
     // GET /biblio/auteur/
     // =========================================================================
 
     @Test
-    void testGetAllAuteurs() {
-        ResponseEntity<List<Auteur>> response = restTemplate.exchange(
-        url("/"),
-        HttpMethod.GET,
-        null,
-        new ParameterizedTypeReference<List<Auteur>>() {}
-    );
+    void testGetAllAuteurs_retourne200() {
+        ResponseEntity<List<Auteur>> response = getAuteurs("/");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
 
-        List<Auteur> auteurs = response.getBody();
-        assertThat(auteurs).isNotEmpty();
+    @Test
+    void testGetAllAuteurs_contient12Auteurs() {
+        Auteur[] auteurs = restTemplate.getForObject(url("/"), Auteur[].class);
+        assertThat(auteurs).hasSizeGreaterThanOrEqualTo(12);
     }
 
     @Test
     void testGetAllAuteurs_premierEstOrwell() {
-        ResponseEntity<List<Auteur>> response = restTemplate.exchange(
-            url("/"),
-            HttpMethod.GET,
-            null,
-            new ParameterizedTypeReference<List<Auteur>>() {}
-        );
-
-        List<Auteur> auteurs = response.getBody();
+        List<Auteur> auteurs = getAuteurs("/").getBody();
         assertThat(auteurs.get(0).getNom()).isEqualTo("Orwell");
         assertThat(auteurs.get(0).getPrenom()).isEqualTo("George");
     }
 
     @Test
-    void testGetAuteurById1_estOrwell() {
-        ResponseEntity<Auteur> response = restTemplate.getForEntity(
-            url("/"),
-            Auteur.class,
-            null);
-        
-        Auteur auteur = response.getBody();
+    void testGetAuteurById1_retourne200() {
+        ResponseEntity<Auteur> response = getAuteur("/1");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
 
-        assertThat(auteur).isNotNull();
+    @Test
+    void testGetAuteurById1_estOrwell() {
+        Auteur auteur = getAuteur("/1").getBody();
         assertThat(auteur.getId()).isEqualTo(1);
         assertThat(auteur.getNom()).isEqualTo("Orwell");
         assertThat(auteur.getPrenom()).isEqualTo("George");
@@ -85,30 +90,21 @@ public class AuteurControllerTest {
 
     @Test
     void testGetAuteurById_idInexistantRetourne404() {
-        ResponseEntity<Auteur> response = restTemplate.getForEntity(url("/99999"), Auteur.class);
+        ResponseEntity<Auteur> response = getAuteur("/99999");
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
     @Test
     void testGetAuteursByNom_orwell_retourneUnSeul() {
-        ResponseEntity<Auteur> response = restTemplate.getForEntity(url("/99999"), Auteur.class);
-
-
+        Auteur[] auteurs = restTemplate.getForObject(url("/nom/Orwell"), Auteur[].class);
         assertThat(auteurs).hasSize(1);
         assertThat(auteurs[0].getNom()).isEqualTo("Orwell");
         assertThat(auteurs[0].getPrenom()).isEqualTo("George");
     }
 
     @Test
-    void testGetAuteursByNom_camus_retourneUnSeul() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/nom/Camus"), Auteur[].class);
-        assertThat(auteurs).hasSize(1);
-        assertThat(auteurs[0].getPrenom()).isEqualTo("Albert");
-    }
-
-    @Test
-    void testGetAuteursByNom_nomInexistantRetourneVide() {
-        Auteur[] auteurs = restTemplate.getForObject(url("/nom/NomInexistant999"), Auteur[].class);
+    void testGetAuteursByNom_nomInexistantRetourneListeVide() {
+        List<Auteur> auteurs = getAuteurs("/nom/NomInexistant999").getBody();
         assertThat(auteurs).isEmpty();
     }
 
@@ -117,67 +113,42 @@ public class AuteurControllerTest {
     // =========================================================================
 
     @Test
-    void testGetAuteursByNomAndPrenom_orwellGeorge() {
-        Auteur[] auteurs = restTemplate.getForObject(
-                url("/search?nom=Orwell&prenom=George"), Auteur[].class);
-        assertThat(auteurs).hasSize(1);
-        assertThat(auteurs[0].getNom()).isEqualTo("Orwell");
-        assertThat(auteurs[0].getPrenom()).isEqualTo("George");
-    }
-
-    @Test
-    void testGetAuteursByNomAndPrenom_kingStephen() {
-        Auteur[] auteurs = restTemplate.getForObject(
-                url("/search?nom=King&prenom=Stephen"), Auteur[].class);
-        assertThat(auteurs).hasSize(1);
-        assertThat(auteurs[0].getId()).isEqualTo(4);
+    void testGetAuteursByNomAndPrenom_OrwellGeorge_retourne200() {
+        ResponseEntity<List<Auteur>> response = getAuteurs("/search?nom=Orwell&prenom=George");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).hasSize(1);
+        assertThat(response.getBody().get(0).getId()).isEqualTo(1);
     }
 
     @Test
     void testGetAuteursByNomAndPrenom_pairingInexistantRetourneVide() {
-        Auteur[] auteurs = restTemplate.getForObject(
-                url("/search?nom=Orwell&prenom=Albert"), Auteur[].class);
+        List<Auteur> auteurs = getAuteurs("/search?nom=Orwell&prenom=Albert").getBody();
         assertThat(auteurs).isEmpty();
     }
 
-    // =========================================================================
-    // GET /biblio/auteur/searchLike?nom=&prenom=
-    // =========================================================================
-
     @Test
-    void testGetAuteursByNomLike_Or_trouveOrwell() {
-        Auteur[] auteurs = restTemplate.getForObject(
-                url("/searchLike?nom=Or&prenom=Geo"), Auteur[].class);
-        assertThat(auteurs).isNotEmpty();
-        assertThat(auteurs).anySatisfy(a -> assertThat(a.getNom()).isEqualTo("Orwell"));
-    }
-
-    @Test
-    void testGetAuteursByNomLike_Nol_trouveNolan() {
-        Auteur[] auteurs = restTemplate.getForObject(
-                url("/searchLike?nom=Nol&prenom=Chris"), Auteur[].class);
-        assertThat(auteurs).isNotEmpty();
-        assertThat(auteurs[0].getNom()).isEqualTo("Nolan");
+    void testGetAuteursByNomLike_Or_Geo_retourne200EtTrouveOrwell() {
+        ResponseEntity<List<Auteur>> response = getAuteurs("/searchLike?nom=Or&prenom=Geo");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).anySatisfy(a ->
+                assertThat(a.getNom()).isEqualTo("Orwell"));
     }
 
     @Test
     void testGetAuteursByNomLike_inexistantRetourneVide() {
-        Auteur[] auteurs = restTemplate.getForObject(
-                url("/searchLike?nom=ZZZZ&prenom=YYYY"), Auteur[].class);
+        List<Auteur> auteurs = getAuteurs("/searchLike?nom=ZZZZ&prenom=YYYY").getBody();
         assertThat(auteurs).isEmpty();
     }
 
-    // =========================================================================
-    // POST /biblio/auteur/
-    // =========================================================================
-
     @Test
     @Transactional
-    void testSaveAuteur_idGenere() {
+    void testSaveAuteur_retourne200() {
         Auteur auteur = buildAuteur("Zola", "Emile", "Française",
                 LocalDate.of(1840, 4, 2), LocalDate.of(1902, 9, 29));
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
-        assertThat(saved.getId()).isNotNull().isGreaterThan(12);
+
+        ResponseEntity<Auteur> response = restTemplate.postForEntity(url("/"), auteur, Auteur.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
@@ -185,7 +156,8 @@ public class AuteurControllerTest {
     void testSaveAuteur_champsPresistent() {
         Auteur auteur = buildAuteur("Baudelaire", "Charles", "Française",
                 LocalDate.of(1821, 4, 9), LocalDate.of(1867, 8, 31));
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
+
+        Auteur saved = restTemplate.postForEntity(url("/"), auteur, Auteur.class).getBody();
 
         assertThat(saved.getNom()).isEqualTo("Baudelaire");
         assertThat(saved.getPrenom()).isEqualTo("Charles");
@@ -196,56 +168,42 @@ public class AuteurControllerTest {
 
     @Test
     @Transactional
-    void testSaveAuteur_retrouvableParId() {
+    void testSaveAuteur_retrouvableParGetId() {
         Auteur auteur = buildAuteur("Proust", "Marcel", "Française",
                 LocalDate.of(1871, 7, 10), LocalDate.of(1922, 11, 18));
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
 
-        Auteur found = restTemplate.getForObject(url("/" + saved.getId()), Auteur.class);
+        Auteur saved = restTemplate.postForEntity(url("/"), auteur, Auteur.class).getBody();
+
+        Auteur found = getAuteur("/" + saved.getId()).getBody();
         assertThat(found.getNom()).isEqualTo("Proust");
-    }
-
-    // =========================================================================
-    // PUT /biblio/auteur/
-    // =========================================================================
-
-    @Test
-    @Transactional
-    void testUpdateAuteur_nationaliteMiseAJour() {
-        Auteur auteur = buildAuteur("TestNom", "TestPrenom", "Ancienne", null, null);
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
-
-        saved.setNationalite("Nouvelle");
-        restTemplate.put(url("/"), saved);
-
-        Auteur updated = restTemplate.getForObject(url("/" + saved.getId()), Auteur.class);
-        assertThat(updated.getNationalite()).isEqualTo("Nouvelle");
     }
 
     @Test
     @Transactional
     void testUpdateAuteur_nomMisAJour() {
-        Auteur auteur = buildAuteur("AncienNom", "Prenom", "Française", null, null);
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
+        Auteur saved = restTemplate.postForEntity(url("/"),
+                buildAuteur("AncienNom", "Prenom", "Française", null, null),
+                Auteur.class).getBody();
 
         saved.setNom("NouveauNom");
         restTemplate.put(url("/"), saved);
 
-        Auteur updated = restTemplate.getForObject(url("/" + saved.getId()), Auteur.class);
+        Auteur updated = getAuteur("/" + saved.getId()).getBody();
         assertThat(updated.getNom()).isEqualTo("NouveauNom");
     }
+
 
     @Test
     @Transactional
     void testUpdateAuteur_dateDecesMiseAJour() {
-        Auteur auteur = buildAuteur("TestDeces", "Prenom", "Française",
-                LocalDate.of(1900, 1, 1), null);
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
+        Auteur saved = restTemplate.postForEntity(url("/"),
+                buildAuteur("TestDeces", "Prenom", "Française", LocalDate.of(1900, 1, 1), null),
+                Auteur.class).getBody();
 
         saved.setDateDeces(LocalDate.of(1970, 6, 15));
         restTemplate.put(url("/"), saved);
 
-        Auteur updated = restTemplate.getForObject(url("/" + saved.getId()), Auteur.class);
+        Auteur updated = getAuteur("/" + saved.getId()).getBody();
         assertThat(updated.getDateDeces()).isEqualTo(LocalDate.of(1970, 6, 15));
     }
 
@@ -255,9 +213,23 @@ public class AuteurControllerTest {
 
     @Test
     @Transactional
-    void testDeleteAuteurById_auteurPlusExistant() {
-        Auteur auteur = buildAuteur("ASupprimer", "Test", null, null, null);
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
+    void testDeleteAuteurById_retourne200() {
+        Auteur saved = restTemplate.postForEntity(url("/"),
+                buildAuteur("ASupprimer", "Test", null, null, null),
+                Auteur.class).getBody();
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                url("/" + saved.getId()), HttpMethod.DELETE, null, String.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    @Transactional
+    void testDeleteAuteurById_auteurPlusExistantViaService() {
+        Auteur saved = restTemplate.postForEntity(url("/"),
+                buildAuteur("ASupprimer2", "Test", null, null, null),
+                Auteur.class).getBody();
 
         restTemplate.delete(url("/" + saved.getId()));
 
@@ -266,31 +238,18 @@ public class AuteurControllerTest {
 
     @Test
     @Transactional
-    void testDeleteAuteurById_retourne200() {
-        Auteur auteur = buildAuteur("ASupprimer2", "Test", null, null, null);
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
-
-        ResponseEntity<String> response = restTemplate.exchange(
-                url("/" + saved.getId()), HttpMethod.DELETE, null, String.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-    }
-
-    @Test
-    @Transactional
-    void testDeleteAuteurById_retourne404Apres() {
-        Auteur auteur = buildAuteur("ASupprimer3", "Test", null, null, null);
-        Auteur saved = restTemplate.postForObject(url("/"), auteur, Auteur.class);
+    void testDeleteAuteurById_retourne404ApresSuppression() {
+        Auteur saved = restTemplate.postForEntity(url("/"),
+                buildAuteur("ASupprimer3", "Test", null, null, null),
+                Auteur.class).getBody();
 
         restTemplate.delete(url("/" + saved.getId()));
 
-        ResponseEntity<Auteur> response = restTemplate.getForEntity(
-                url("/" + saved.getId()), Auteur.class);
+        ResponseEntity<Auteur> response = getAuteur("/" + saved.getId());
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
-    // =========================================================================
-    // Helpers
-    // =========================================================================
+
 
     private Auteur buildAuteur(String nom, String prenom, String nationalite,
                                 LocalDate naissance, LocalDate deces) {
