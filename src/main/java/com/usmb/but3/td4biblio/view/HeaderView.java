@@ -59,8 +59,9 @@ public class HeaderView extends HorizontalLayout {
                 UI.getCurrent().getPage().reload();
 
             });
+            Button accueilButton = new Button("Accueil", e -> getUI().ifPresent(ui -> ui.navigate("accueil")));
 
-            layout.addToEnd(logoutButton);
+            layout.addToEnd(accueilButton, logoutButton);
             layout.setWidthFull();  // full width of the page
 
         }
