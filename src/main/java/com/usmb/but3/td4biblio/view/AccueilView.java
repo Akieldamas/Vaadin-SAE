@@ -1,7 +1,10 @@
 package com.usmb.but3.td4biblio.view;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+import com.usmb.but3.td4biblio.components.Popup;
 import com.usmb.but3.td4biblio.entity.Utilisateur;
 import com.usmb.but3.td4biblio.repository.UtilisateurRepo;
 import com.vaadin.flow.component.button.Button;
@@ -32,7 +35,9 @@ public class AccueilView extends VerticalLayout {
         HeaderAccueilView header = new HeaderAccueilView();
         header.getStyle().set("border-bottom", "2px solid var(--lumo-primary-color)");
         add(header);
-
+        if(LoginView.utilisateur!=null && ChronoUnit.DAYS.between(LocalDate.now(), LoginView.utilisateur.getDateFinAbonnement())<=14){
+            add(new Popup((int)(ChronoUnit.DAYS.between(LocalDate.now(), LoginView.utilisateur.getDateFinAbonnement()))));
+        }
         // --- CONTENU PRINCIPAL ---
         VerticalLayout mainContent = new VerticalLayout();
         mainContent.setWidth("100%");
