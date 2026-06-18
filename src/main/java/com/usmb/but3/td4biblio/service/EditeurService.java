@@ -34,11 +34,16 @@ public class EditeurService {
     public void deleteEditeurById(Integer id) {
         editeurRepo.deleteById(id);
     }
-        public List<Editeur> getAuteursByNomStartWithIgnoreCase(String filter) {
+
+    public Editeur getByNom(String nom) {
+        return editeurRepo.findByNom(nom);
+    }
+
+    public List<Editeur> getByNomContainingIgnoreCase(String filter) {
         return editeurRepo.findByNomStartsWithIgnoreCase(filter);
     }  
 
-    public List<Editeur> getByNomContainingIgnoreCase(String filter) {
+    public List<Editeur> getEditeursByNomContainingIgnoreCase(String filter) {
        return editeurRepo.findByNomContainingIgnoreCase(filter);
     }
 }

@@ -35,10 +35,12 @@ public class AuteurController {
      * URL: localhost:8080/biblio/auteur/{id}
      */
     @GetMapping("/{id}")
-
-    //public ResponseEntity<Auteur> getAuteurById(@PathVariable() Integer id) { // Corrected to use @PathVariable("id") for clarity
     public ResponseEntity<Auteur> getAuteurById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok().body(auteurService.getAuteurById(id));
+        Auteur auteur = auteurService.getAuteurById(id);
+        if (auteur == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(auteur);
     }
 
     /**
@@ -91,8 +93,13 @@ public class AuteurController {
      * URL: localhost:8080/biblio/auteur/{id}
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAuteurById(@PathVariable Integer id) {
-        auteurService.deleteAuteurById(id);
-        return ResponseEntity.ok().body("Deleted auteur successfully");
+    public ResponseEntity<String> deleteAuteurById(@PathVariable("id") Integer id) {
+        try {
+            auteurService.deleteAuteurById(id);
+            return ResponseEntity.ok().body("Deleted auteur successfully");
+        } catch (Exception e) {
+            e.printStackTrace(); // check your logs for the exact exception
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
     }
 }

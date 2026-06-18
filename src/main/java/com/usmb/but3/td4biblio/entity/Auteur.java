@@ -2,6 +2,7 @@ package com.usmb.but3.td4biblio.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,6 +16,12 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 /**
  *  * Une classe entité qui représente une table de la base de données
  *  
@@ -24,6 +31,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "auteur")
 
 public class Auteur {
@@ -37,9 +45,13 @@ public class Auteur {
     private String nationalite;
 
     @Column(name = "date_naissance")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate dateNaissance;
 
     @Column(name = "date_deces")
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate dateDeces;
 
     @Column(name = "ville_naissance")
@@ -49,7 +61,7 @@ public class Auteur {
     private String lienWikipedia;
 
     // Relation N-N avec TypeAuteur via la table de liaison
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "auteur_type_auteur", joinColumns = @JoinColumn(name = "auteur_id"), inverseJoinColumns = @JoinColumn(name = "type_auteur_id"))
     private List<TypeAuteur> types;
 
