@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '4.0.0'
+	id 'org.springframework.boot' version '4.0.2'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'com.vaadin' version '25.0.0' //'24.4.4' //MS added
 }
@@ -34,7 +34,10 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-flyway-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.flywaydb:flyway-core'
 	implementation 'org.flywaydb:flyway-database-postgresql'
 	compileOnly 'org.projectlombok:lombok'
@@ -50,6 +53,9 @@ dependencies {
 	// MS added for Vaadin
 	implementation 'com.vaadin:vaadin-spring-boot-starter'
 	implementation 'com.vaadin:vaadin-dev'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+	implementation 'org.mindrot:jbcrypt:0.4'
+	implementation 'com.opencsv:opencsv:5.9'
 }
 
 dependencyManagement {  // MS added for Vaadin BOM
