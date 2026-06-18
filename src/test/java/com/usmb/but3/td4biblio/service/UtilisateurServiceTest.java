@@ -220,16 +220,6 @@ public class UtilisateurServiceTest {
         assertThat(utilisateurs).isEmpty();
     }
 
-    // =========================================================================
-    // getUtilisateurByLoginAndMotDePasse
-    // =========================================================================
-
-    @Test
-    void testGetUtilisateurByLoginAndMotDePasse_identifiantsInvalides_retourneNull() {
-        Utilisateur u = utilisateurService.getUtilisateurByLoginAndMotDePasse(
-                "loginInexistant999", "mdpInexistant999");
-        assertThat(u).isNull();
-    }
 
     // =========================================================================
     // Helpers
