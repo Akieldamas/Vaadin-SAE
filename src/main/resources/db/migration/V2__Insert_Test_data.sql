@@ -271,8 +271,8 @@ INSERT INTO utilisateur (
 (6, 'tnguyenvan','1988-05-17', 'Théo',     'Nguyen Van','88 rue Royale, 74000 Annecy',         'theo.nguyen@email.com',           '1988-05-17', '2026-01-15', 'EMP0000004', 10, 5, 2),
 (7, 'cmartinez', '1999-12-01', 'Camille',  'Martinez',  '15 rue du Pâquier, 74000 Annecy',     'camille.martinez@email.com',      '1999-12-01', '2026-01-12', 'EMP0000005', 10, 5, 2),
 (8, 'rtremblay', '1975-08-25', 'Romain',   'Tremblay',  '6 allée des Sapins, 74370 Metz-Tessy','romain.tremblay@email.com',       '1975-08-25', '2026-11-30', 'EMP0000006', 10, 5, 2),
-(9, 'admin',   '$2a$10$Yr3lcHklyOVAFceTDGxM6udhMTRTI0QtDgMw.iXt4c97k3dwWLuw6', 'admin',     'admin',     '',   'admin@biblio-annecy.fr',     '1978-11-30', NULL,         NULL,         10, 5, 1),
-(10, 'user',   '$2a$10$DiUsurU8Tf1/bWiogvXpGevXryAeJjLpa5i3/a66xsWz.kv8122wi', 'user',     'user',     '',   'user@biblio-annecy.fr',     '1978-11-30', NULL,         NULL,         10, 5, 1);
+(9, 'admin',   '$2a$10$Yr3lcHklyOVAFceTDGxM6udhMTRTI0QtDgMw.iXt4c97k3dwWLuw6', 'admin',     'admin',     '',   'admin@biblio-annecy.fr',     '1978-11-30', NULL, NULL, 10, 5, 1),
+(10, 'user',   '$2a$10$DiUsurU8Tf1/bWiogvXpGevXryAeJjLpa5i3/a66xsWz.kv8122wi', 'user',     'user',     '',   'user@biblio-annecy.fr',     '1978-11-30', '2026-06-22', 'EMP0000007', 10, 5, 1);
 
 -- ------------------------------------------------------------
 --  EMPRUNTS
