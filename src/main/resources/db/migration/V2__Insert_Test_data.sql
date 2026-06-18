@@ -281,29 +281,6 @@ INSERT INTO utilisateur (
 --  Quelques emprunts terminés, quelques en cours, un prolongé.
 -- ------------------------------------------------------------
 INSERT INTO emprunt (utilisateur_id, document_id, debut_emprunt, date_fin_prevue, date_rendu, prolongation) VALUES
-    -- Alice : emprunts terminés (date_rendu présente, pas prolongation)
-    (3, 1,  '2024-01-10', '2024-01-24', '2024-01-24', FALSE), -- 1984 (rendu)
-    (3, 9,  '2024-02-01', '2024-02-15', '2024-02-14', FALSE), -- Songs of Cohen (rendu)
-
-    -- Alice : emprunt en cours (date_rendu est NULL)
-    (3, 13, '2024-04-20', '2024-05-04', '2024-05-04',         FALSE), -- Inception DVD (en cours)
-
-    -- Lucas : emprunts terminés + un prolongé
-    (4, 3,  '2024-02-10', '2024-02-24', '2024-02-24', FALSE), -- L'Étranger (rendu)
-    (4, 7,  '2024-03-01', '2024-04-12', '2024-04-12', TRUE), -- SDA prolongé (rendu, la date finale inclut la prolongation)
-
-    -- Lucas : emprunt en cours
-    (4, 17, '2024-04-25', '2024-05-09', '2024-05-09',         FALSE), -- Interstellar Blu-ray (en cours)
-
-    -- Sofia : emprunts variés
-    (5, 4,  '2024-01-20', '2024-02-03', '2024-02-02', FALSE), -- La Peste (rendu)
-    (5, 15, '2024-03-15', '2024-03-29', '2024-03-29', FALSE), -- Chihiro DVD (rendu)
-    (5, 11, '2024-04-28', '2024-05-12', NULL,         FALSE), -- BO Interstellar CD (en cours)
-
-    -- Théo
-    (6, 6,  '2024-02-20', '2024-03-06', '2024-03-05', FALSE), -- Ça (rendu)
-    (6, 14, '2024-04-01', '2024-04-15', '2024-04-15', FALSE), -- E.T. DVD (rendu)
-    (6, 18, '2024-04-30', '2024-05-14', '2024-05-14',         FALSE), -- Château ambulant BR (en cours)
 
     -- Camille
     (7, 5,  '2024-03-10', '2024-03-24', '2024-03-24', FALSE), -- Main gauche nuit (rendu)
