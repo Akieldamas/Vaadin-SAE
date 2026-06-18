@@ -35,7 +35,7 @@ public class AccueilView extends VerticalLayout {
         HeaderAccueilView header = new HeaderAccueilView();
         header.getStyle().set("border-bottom", "2px solid var(--lumo-primary-color)");
         add(header);
-        if(LoginView.utilisateur!=null && ChronoUnit.DAYS.between(LocalDate.now(), LoginView.utilisateur.getDateFinAbonnement())<=14){
+        if(LoginView.utilisateur!=null &&  LoginView.utilisateur.getDateFinAbonnement()!=null &&  ChronoUnit.DAYS.between(LocalDate.now(), LoginView.utilisateur.getDateFinAbonnement())<=14){
             if(ChronoUnit.DAYS.between(LocalDate.now(), LoginView.utilisateur.getDateFinAbonnement())>=0){
                 add(new Popup("Expiration abonnement !", "Attention !! Il vous reste "+(int)(ChronoUnit.DAYS.between(LocalDate.now(), LoginView.utilisateur.getDateFinAbonnement()))+" jours avant l'expiration de votre compte..."));
             } else {
