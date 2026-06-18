@@ -92,7 +92,7 @@ INSERT INTO editeur (id, nom, adresse, lien_site_web, lien_wikipedia) VALUES
 INSERT INTO auteur (id, nom, prenom, nationalite, date_naissance, date_deces, ville_naissance, lien_wikipedia) VALUES
     (1,  'Orwell',       'George',       'Britannique',      '1903-06-25', '1950-01-21', 'Motihari',             'https://fr.wikipedia.org/wiki/George_Orwell'),
     (2,  'Camus',        'Albert',       'Française',        '1913-11-07', '1960-01-04', 'Dréan',                'https://fr.wikipedia.org/wiki/Albert_Camus'),
-    (3,  'Le Guin',      'Ursula K.',    'Américaine',       '1929-10-21', '2018-01-22', 'Berkeley',             'https://fr.wikipedia.org/wiki/Ursula_K._Le_Guin'),
+    (3,  'Le-Guin',      'Ursula',    'Américaine',       '1929-10-21', '2018-01-22', 'Berkeley',             'https://fr.wikipedia.org/wiki/Ursula_K._Le_Guin'),
     (4,  'King',         'Stephen',      'Américaine',       '1947-09-21', NULL,         'Portland',             'https://fr.wikipedia.org/wiki/Stephen_King'),
     (5,  'Nolan',        'Christopher',  'Britannique',      '1970-07-30', NULL,         'Londres',              'https://fr.wikipedia.org/wiki/Christopher_Nolan'),
     (6,  'Spielberg',    'Steven',       'Américaine',       '1946-12-18', NULL,         'Cincinnati',           'https://fr.wikipedia.org/wiki/Steven_Spielberg'),
@@ -104,15 +104,15 @@ INSERT INTO auteur (id, nom, prenom, nationalite, date_naissance, date_deces, vi
     (12, 'Villeneuve',   'Denis',        'Canadienne',       '1967-10-03', NULL,         'Gentilly',             'https://fr.wikipedia.org/wiki/Denis_Villeneuve'),
     (13, 'Hugo',         'Victor',       'Française',        '1802-02-26', '1885-05-22', 'Besançon',             'https://fr.wikipedia.org/wiki/Victor_Hugo'),
     (14, 'Dostoïevski',  'Fiodor',       'Russe',            '1821-11-11', '1881-02-09', 'Moscou',               'https://fr.wikipedia.org/wiki/Dostoïevski'),
-    (15, 'García Márquez','Gabriel',     'Colombienne',      '1927-03-06', '2014-04-17', 'Aracataca',            'https://fr.wikipedia.org/wiki/Gabriel_García_Márquez'),
+    (15, 'García-Márquez','Gabriel',     'Colombienne',      '1927-03-06', '2014-04-17', 'Aracataca',            'https://fr.wikipedia.org/wiki/Gabriel_García_Márquez'),
     (16, 'Flaubert',     'Gustave',      'Française',        '1821-12-12', '1880-05-08', 'Rouen',                'https://fr.wikipedia.org/wiki/Gustave_Flaubert'),
     (17, 'Proust',       'Marcel',       'Française',        '1871-07-10', '1922-11-18', 'Auteuil',              'https://fr.wikipedia.org/wiki/Marcel_Proust'),
     (18, 'Woolf',        'Virginia',     'Britannique',      '1882-01-25', '1941-03-28', 'Londres',              'https://fr.wikipedia.org/wiki/Virginia_Woolf'),
-    (19, 'Borges',       'Jorge Luis',   'Argentine',        '1899-08-24', '1986-06-14', 'Buenos Aires',         'https://fr.wikipedia.org/wiki/Jorge_Luis_Borges'),
+    (19, 'Borges',       'Jorge-Luis',   'Argentine',        '1899-08-24', '1986-06-14', 'Buenos Aires',         'https://fr.wikipedia.org/wiki/Jorge_Luis_Borges'),
     (20, 'Houellebecq',  'Michel',       'Française',        '1956-02-26', NULL,         'Saint-Pierre',         'https://fr.wikipedia.org/wiki/Michel_Houellebecq'),
     (21, 'Modiano',      'Patrick',      'Française',        '1945-07-30', NULL,         'Boulogne-Billancourt', 'https://fr.wikipedia.org/wiki/Patrick_Modiano'),
     (22, 'Nothomb',      'Amélie',       'Belge',            '1966-08-13', NULL,         'Etterbeek',            'https://fr.wikipedia.org/wiki/Amélie_Nothomb'),
-    (23, 'Kerangal',     'Maylis de',    'Française',        '1967-06-21', NULL,         'Toulon',               'https://fr.wikipedia.org/wiki/Maylis_de_Kerangal'),
+    (23, 'Kerangal',     'Maylis-de',    'Française',        '1967-06-21', NULL,         'Toulon',               'https://fr.wikipedia.org/wiki/Maylis_de_Kerangal'),
     (24, 'Kubrick',      'Stanley',      'Américaine',       '1928-07-26', '1999-03-07', 'New York',             'https://fr.wikipedia.org/wiki/Stanley_Kubrick'),
     (25, 'Kurosawa',     'Akira',        'Japonaise',        '1910-03-23', '1998-09-06', 'Tokyo',                'https://fr.wikipedia.org/wiki/Akira_Kurosawa'),
     (26, 'Godard',       'Jean-Luc',     'Franco-Suisse',    '1930-12-03', '2022-09-13', 'Paris',                'https://fr.wikipedia.org/wiki/Jean-Luc_Godard'),
@@ -122,8 +122,8 @@ INSERT INTO auteur (id, nom, prenom, nationalite, date_naissance, date_deces, vi
     (30, 'Glass',        'Philip',       'Américaine',       '1937-01-31', NULL,         'Baltimore',            'https://fr.wikipedia.org/wiki/Philip_Glass'),
     (31, 'Goscinny',     'René',         'Française',        '1926-08-14', '1977-11-05', 'Paris',                'https://fr.wikipedia.org/wiki/René_Goscinny'),
     (32, 'Uderzo',       'Albert',       'Française',        '1927-04-25', '2020-03-24', 'Fismes',               'https://fr.wikipedia.org/wiki/Albert_Uderzo'),
-    (33, 'Hergé',        'Georges Remi', 'Belge',            '1907-05-22', '1983-03-03', 'Etterbeek',            'https://fr.wikipedia.org/wiki/Hergé'),
-    (34, 'Moebius',      'Jean Giraud',  'Française',        '1938-05-08', '2012-03-10', 'Nogent-sur-Marne',     'https://fr.wikipedia.org/wiki/Jean_Giraud'),
+    (33, 'Hergé',        'Georges-Remi', 'Belge',            '1907-05-22', '1983-03-03', 'Etterbeek',            'https://fr.wikipedia.org/wiki/Hergé'),
+    (34, 'Moebius',      'Jean-Giraud',  'Française',        '1938-05-08', '2012-03-10', 'Nogent-sur-Marne',     'https://fr.wikipedia.org/wiki/Jean_Giraud'),
     (35, 'Hessel',       'Stéphane',     'Franco-Allemande', '1917-10-20', '2013-02-27', 'Berlin',               'https://fr.wikipedia.org/wiki/Stéphane_Hessel'),
     (36, 'Todd',         'Emmanuel',     'Française',        '1951-05-16', NULL,         'Saint-Germain',        'https://fr.wikipedia.org/wiki/Emmanuel_Todd'),
     (37, 'Hemingway',    'Ernest',       'Américaine',       '1899-07-21', '1961-07-02', 'Oak Park',             'https://fr.wikipedia.org/wiki/Ernest_Hemingway'),
@@ -286,14 +286,14 @@ INSERT INTO emprunt (utilisateur_id, document_id, debut_emprunt, date_fin_prevue
     (3, 9,  '2024-02-01', '2024-02-15', '2024-02-14', FALSE), -- Songs of Cohen (rendu)
 
     -- Alice : emprunt en cours (date_rendu est NULL)
-    (3, 13, '2024-04-20', '2024-05-04', NULL,         FALSE), -- Inception DVD (en cours)
+    (3, 13, '2024-04-20', '2024-05-04', '2024-05-04',         FALSE), -- Inception DVD (en cours)
 
     -- Lucas : emprunts terminés + un prolongé
     (4, 3,  '2024-02-10', '2024-02-24', '2024-02-24', FALSE), -- L'Étranger (rendu)
     (4, 7,  '2024-03-01', '2024-04-12', '2024-04-12', TRUE), -- SDA prolongé (rendu, la date finale inclut la prolongation)
 
     -- Lucas : emprunt en cours
-    (4, 17, '2024-04-25', '2024-05-09', NULL,         FALSE), -- Interstellar Blu-ray (en cours)
+    (4, 17, '2024-04-25', '2024-05-09', '2024-05-09',         FALSE), -- Interstellar Blu-ray (en cours)
 
     -- Sofia : emprunts variés
     (5, 4,  '2024-01-20', '2024-02-03', '2024-02-02', FALSE), -- La Peste (rendu)
@@ -303,17 +303,21 @@ INSERT INTO emprunt (utilisateur_id, document_id, debut_emprunt, date_fin_prevue
     -- Théo
     (6, 6,  '2024-02-20', '2024-03-06', '2024-03-05', FALSE), -- Ça (rendu)
     (6, 14, '2024-04-01', '2024-04-15', '2024-04-15', FALSE), -- E.T. DVD (rendu)
-    (6, 18, '2024-04-30', '2024-05-14', NULL,         FALSE), -- Château ambulant BR (en cours)
+    (6, 18, '2024-04-30', '2024-05-14', '2024-05-14',         FALSE), -- Château ambulant BR (en cours)
 
     -- Camille
     (7, 5,  '2024-03-10', '2024-03-24', '2024-03-24', FALSE), -- Main gauche nuit (rendu)
     (7, 12, '2024-03-25', '2024-04-08', '2024-04-07', FALSE), -- BO Dune CD (rendu)
-    (7, 16, '2024-05-01', '2024-05-15', NULL,         FALSE), -- Dune DVD (en cours)
+    (7, 16, '2024-05-01', '2024-05-15', '2024-05-15',         FALSE), -- Dune DVD (en cours)
 
     -- Romain
     (8, 8,  '2024-02-05', '2024-02-19', '2024-02-19', FALSE), -- L'Amant (rendu)
     (8, 10, '2024-03-01', '2024-04-05', '2024-04-05', TRUE), -- I'm Your Man prolongé (rendu)
-    (8, 19, '2024-04-15', '2024-04-29', '2024-04-28', FALSE); -- Shining BR (rendu)
+    (8, 19, '2024-04-15', '2024-04-29', '2024-04-28', FALSE),
+
+    --USER
+    (10, 26, '2026-06-10', '2026-08-01', NULL, TRUE), -- I'm Your Man prolongé (rendu)
+    (10, 27, '2026-06-15', '2026-07-10', NULL, FALSE); -- Shining BR (rendu)
 
 -- ============================================================
 --  MISE À JOUR DES SÉQUENCES
