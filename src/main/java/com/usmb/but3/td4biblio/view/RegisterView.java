@@ -141,6 +141,9 @@ public class RegisterView extends VerticalLayout {
             utilisateur.setMotDePasse(BCrypt.hashpw(utilisateur.getMotDePasse(), BCrypt.gensalt()));
             utilisateurService.saveUtilisateur(utilisateur);
             Notification.show("Compte créé avec succès.");
+            LoginView.utilisateur=utilisateur;
+            this.getUI().ifPresent(ui -> ui.navigate("accueil"));
+
         }
     }
     public String generateCardNumber(){
