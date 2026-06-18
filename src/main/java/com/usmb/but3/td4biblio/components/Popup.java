@@ -9,10 +9,10 @@ import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class Popup extends Composite<VerticalLayout> {
-    public Popup(int temps){
+    public Popup(String titre, String description){
         Dialog dialog = new Dialog();
-        H1 title = new H1("Expiration abonnement !");
-        Paragraph descParagraph = new Paragraph("Attention !! Il vous reste "+Integer.toString(temps)+" jours avant l'expiration de votre compte...");
+        H1 title = new H1(titre);
+        Paragraph descParagraph = new Paragraph(description);
         descParagraph.getStyle().set("text-wrap", "wrap");
         dialog.add(title,descParagraph);
         VerticalLayout layout = getContent();
