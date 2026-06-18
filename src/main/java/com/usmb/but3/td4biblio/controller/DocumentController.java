@@ -11,6 +11,9 @@ import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.service.DocumentService;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * La classe Controller où sont traitées toutes les requests de l'utilisateur et où les
@@ -109,6 +112,5 @@ public class DocumentController {
     @GetMapping("/search")
     public ResponseEntity<List<Document>> getDocumentsByTitreContaining(@RequestParam(name="titre") String titre) {
         return ResponseEntity.ok().body(documentService.getByTitreContainingIgnoreCase(titre));
-    }
-
+    }  
 }

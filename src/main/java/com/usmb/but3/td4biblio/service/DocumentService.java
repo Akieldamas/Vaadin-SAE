@@ -1,16 +1,21 @@
 package com.usmb.but3.td4biblio.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
 import com.usmb.but3.td4biblio.entity.Document;
 import com.usmb.but3.td4biblio.repository.DocumentRepo;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class DocumentService {
-
     private final DocumentRepo documentRepo;
 
     public List<Document> getAllDocuments() {
@@ -40,7 +45,6 @@ public class DocumentService {
     public List<Document> getByAuteurId(Integer auteurId) {
         return documentRepo.findByAuteurId(auteurId);
     }
-
     public List<Document> getDocumentsDisponibles() {
         return documentRepo.findDocumentsDisponibles();
     }

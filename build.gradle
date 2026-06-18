@@ -52,6 +52,7 @@ dependencies {
 	implementation 'com.vaadin:vaadin-spring-boot-starter'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 	implementation 'org.mindrot:jbcrypt:0.4'
+	implementation 'com.opencsv:opencsv:5.9'
 }
 
 dependencyManagement {  // MS added for Vaadin BOM

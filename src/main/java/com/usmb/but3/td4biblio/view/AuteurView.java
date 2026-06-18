@@ -2,8 +2,12 @@ package com.usmb.but3.td4biblio.view;
 
 import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.service.AuteurService;
+import com.usmb.but3.td4biblio.service.ImportExportService;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -14,8 +18,12 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.InputStreamFactory;
+import com.vaadin.flow.server.StreamResource;
 
-import org.hibernate.query.Page;
+import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -29,12 +37,15 @@ import org.springframework.util.StringUtils;
 public class AuteurView extends VerticalLayout implements BeforeEnterObserver{
 
 	private final AuteurService auteurService;
+	private final ImportExportService importExportService;
 
 	final Grid<Auteur> grid;
 
 	final TextField filter;
 
 	private final Button addNewBtn;
+	private final Button exportBtn;
+	private final Button downloadTemplateBtn;
 
 	public Button getAddNewBtn() {
 		return addNewBtn;
@@ -50,15 +61,44 @@ public class AuteurView extends VerticalLayout implements BeforeEnterObserver{
 
         }
     }
-	public AuteurView(AuteurService auteurService, AuteurEditor editor) {
+	public AuteurView(AuteurService auteurService, AuteurEditor editor, ImportExportService importExportService) {
 		this.auteurService = auteurService;
+		this.importExportService = importExportService;
 		this.editor = editor;
 		this.grid = new Grid<>(Auteur.class);
 		this.filter = new TextField();
 		this.addNewBtn = new Button("Ajouter un auteur", VaadinIcon.PLUS.create());
+        this.exportBtn = new Button("Export CSV", VaadinIcon.DOWNLOAD.create());  
+        this.downloadTemplateBtn = new Button("Télécharger la Template Import CSV", VaadinIcon.FILE.create());
+		addNewBtn.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        exportBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        downloadTemplateBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES, GridVariant.LUMO_COMPACT);
+
+        exportBtn.addClickListener(e -> {
+            String csvContent = importExportService.ExportAuteursToCSV();
+            InputStreamFactory factory = () -> new ByteArrayInputStream(csvContent.getBytes(StandardCharsets.ISO_8859_1));
+            StreamResource resource = new StreamResource("auteurs.csv", factory);
+            Anchor downloadLink = new Anchor(resource, "");
+            downloadLink.getElement().setAttribute("download", true);
+            downloadLink.getElement().setAttribute("style", "display:none");
+            add(downloadLink);
+            downloadLink.getElement().callJsFunction("click");
+        });
+
+		downloadTemplateBtn.addClickListener(e -> {
+            String csvContent = importExportService.DownloadCSVTemplate("auteur");
+            InputStreamFactory factory = () -> new ByteArrayInputStream(csvContent.getBytes(StandardCharsets.ISO_8859_1));
+            StreamResource resource = new StreamResource("auteur.csv", factory);
+            Anchor downloadLink = new Anchor(resource, "");
+            downloadLink.getElement().setAttribute("download", true);
+            downloadLink.getElement().setAttribute("style", "display:none");
+            add(downloadLink);
+            downloadLink.getElement().callJsFunction("click");
+        });
 
 		// build layout
-		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
+		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn, exportBtn, downloadTemplateBtn);
 		add(actions, grid, editor);
 
 		grid.setHeight("300px");

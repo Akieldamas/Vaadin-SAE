@@ -1,21 +1,38 @@
 package com.usmb.but3.td4biblio.view;
 
-import org.hibernate.validator.constraintvalidators.RegexpURLValidator;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.context.annotation.Scope;
 
 import com.usmb.but3.td4biblio.entity.Auteur;
 import com.usmb.but3.td4biblio.service.AuteurService;
-import com.vaadin.flow.component.BlurNotifier.BlurEvent;
+import com.usmb.but3.td4biblio.service.ImportExportService;
+import com.usmb.but3.td4biblio.service.NotificationService;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.NotificationVariant;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.upload.Upload;
+import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.validator.RegexpValidator;
 import com.vaadin.flow.spring.annotation.SpringComponent;
@@ -37,6 +54,7 @@ import com.vaadin.flow.spring.annotation.UIScope;
 public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 
 	private final AuteurService auteurService;
+	private final ImportExportService importExportService;
 
 	/**
 	 * The currently edited auteur
@@ -70,13 +88,68 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 	Button save = new Button("Sauvegarder", VaadinIcon.CHECK.create());
 	Button cancel = new Button("Annuler");
 	Button delete = new Button("Supprimer", VaadinIcon.TRASH.create());
-	HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
+	
+	MemoryBuffer buffer = new MemoryBuffer();
+    Upload upload = new Upload(buffer);
+    Button uploadBtn = new Button("Importer CSV");
+;
+	HorizontalLayout actions = new HorizontalLayout(save, cancel, delete, upload);
 
 	Binder<Auteur> binder = new Binder<>(Auteur.class);
 	private ChangeHandler changeHandler;
 
-	public AuteurEditor(AuteurService service) {
+	public AuteurEditor(AuteurService service, ImportExportService importExportService) {
 		this.auteurService = service;
+		this.importExportService = importExportService;
+
+		upload.setAutoUpload(true);
+        upload.setAcceptedFileTypes(".csv");
+
+        upload.setUploadButton(uploadBtn);
+
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        cancel.addThemeVariants(ButtonVariant.LUMO_ERROR);
+        uploadBtn.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        
+        upload.setDropLabel(null);
+        upload.setWidth("auto"); // don't let it stretch
+
+		upload.addSucceededListener(event -> {
+            try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(buffer.getInputStream(), Charset.forName("Windows-1252")))) {
+                
+                String headerLine = reader.readLine();
+                String[] headers = headerLine.split(";");
+                
+                List<Map<String, String>> rows = new ArrayList<>();
+                
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] values = line.split(";");
+                    Map<String, String> row = new HashMap<>();
+                    for (int i = 0; i < headers.length; i++) {
+                        row.put(headers[i].trim(), i < values.length ? values[i].trim() : "");
+                    }
+                    rows.add(row);
+                }
+        
+                Pair<Boolean, String> returned = importExportService.ImportAuteursFromCSV(rows);
+                Boolean result = returned.getLeft();
+                String message = returned.getRight();
+        
+                if (result) {
+                    NotificationService.showSuccess(message);
+                    setVisible(false);;
+                    changeHandler.onChange();
+                }
+				else
+					NotificationService.showError(message);
+        
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
 		add(fields, actions);
 
 		// bind using naming convention
@@ -86,6 +159,7 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		setSpacing(true);
 
 		save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		cancel.addThemeVariants(ButtonVariant.LUMO_WARNING);
 		delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
 		addKeyPressListener(Key.ENTER, e -> save());
@@ -93,7 +167,7 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		// wire action buttons to save, delete and reset
 		save.addClickListener(e -> save());
 		delete.addClickListener(e -> delete());
-		cancel.addClickListener(e -> editAuteur(auteur));
+		cancel.addClickListener(e -> setVisible(false));
 		binder.forField(prenom)
 		.asRequired()
 		.bind(Auteur::getPrenom, Auteur::setPrenom);
@@ -145,7 +219,6 @@ public class AuteurEditor extends VerticalLayout implements KeyNotifier {
 		else {
 			auteur = a;
 		}
-		cancel.setVisible(persisted);
 
 		// Bind auteur properties to similarly named fields
 		// Could also use annotation or "manual binding" or programmatically

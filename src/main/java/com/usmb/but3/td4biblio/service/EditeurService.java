@@ -23,6 +23,10 @@ public class EditeurService {
         return editeurRepo.findById(id).orElse(null);
     }
 
+    public Editeur getEditeurByNom(String nom) {
+        return editeurRepo.findByNom(nom).orElse(null);
+    }
+
     public Editeur saveEditeur(Editeur editeur) {
         return editeurRepo.save(editeur);
     }
@@ -35,7 +39,7 @@ public class EditeurService {
         editeurRepo.deleteById(id);
     }
 
-    public Editeur getByNom(String nom) {
+    public Optional<Editeur> getByNom(String nom) {
         return editeurRepo.findByNom(nom);
     }
 

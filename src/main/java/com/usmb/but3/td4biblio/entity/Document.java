@@ -60,8 +60,13 @@ public class Document {
     private Editeur editeur;
 
     // Relation N-N avec GenreDocument
+    
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "document_genre_document", joinColumns = @JoinColumn(name = "document_id"), inverseJoinColumns = @JoinColumn(name = "genre_document_id"))
+    @JoinTable(
+        name = "document_genre_document",
+        joinColumns = @JoinColumn(name = "document_id"),
+        inverseJoinColumns = @JoinColumn(name = "genre_document_id")
+    )
     private List<GenreDocument> genres;
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)

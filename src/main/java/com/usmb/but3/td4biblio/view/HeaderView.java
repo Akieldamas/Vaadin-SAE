@@ -18,6 +18,7 @@ import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 
+
 public class HeaderView extends HorizontalLayout {
     public HeaderView() {
         setWidthFull();  // full width of the page
