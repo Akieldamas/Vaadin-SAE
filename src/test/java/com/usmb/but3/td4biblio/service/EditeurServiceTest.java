@@ -44,14 +44,14 @@ public class EditeurServiceTest {
 
     @Test
     void testGetEditeurByNom_Gallimard_retourneGallimard() {
-        Editeur e = editeurService.getByNom("Gallimard");
+        Editeur e = editeurService.getEditeurByNom("Gallimard");
         assertThat(e).isNotNull();
         assertThat(e.getId()).isEqualTo(1);
     }
 
     @Test
     void testGetEditeurByNom_inexistantRetourneNull() {
-        assertThat(editeurService.getByNom("EditeurInexistant999")).isNull();
+        assertThat(editeurService.getEditeurByNom("EditeurInexistant999")).isNull();
     }
 
     @Test

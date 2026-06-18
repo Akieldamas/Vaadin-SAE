@@ -55,7 +55,7 @@ public class EditeurController {
      */
     @GetMapping("/nom/{nom}")
     public ResponseEntity<Editeur> getEditeurByNom(@PathVariable("nom") String nom) {
-        return ResponseEntity.ok().body(editeurService.getByNom(nom));
+        return ResponseEntity.ok().body(editeurService.getEditeurByNom(nom));
     }
 
     /**
